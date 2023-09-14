@@ -1,5 +1,3 @@
-// 'use client'
-
 import Carousel from "../components/Carousel"
 import CoursesHome from "@/components/CoursesHome"
 import HomeStrip from "@/components/HomeStrip"
