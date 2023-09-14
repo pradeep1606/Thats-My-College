@@ -11,10 +11,10 @@ const Footer = () => {
           <div className="flex flex-wrap pb-4">
 
             <div className="w-full sm:w-1/2 md:w-1/4 px-2 mb-8 sm:mb-0">
-              <Image src="https://flowbite.com/docs/images/logo.svg" className="m-2" width={50} height={50} alt="Flowbite Logo" />
+              <Image src="/logo/tmc_white.png" className="-mb-4 -ml-4" width={120} height={80} alt="Flowbite Logo" />
               <span>
-              <h1 className="text-3xl text-blue-500 font-semibold shadow-blue-600">ThatsMyCollege</h1>
-              <p className='text-sm'>Empowering Futures, One Admission at a Time: <br/> Your Pathway to Education Begins with TMC!</p>
+                <h1 className="text-3xl text-blue-500 font-semibold shadow-blue-600">ThatsMyCollege</h1>
+                <p className='text-sm'>Empowering Futures, One Admission at a Time: <br /> Your Pathway to Education Begins with TMC!</p>
               </span>
 
               <div className="flex mt-8">

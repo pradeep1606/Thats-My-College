@@ -35,8 +35,8 @@ const Navbar = ({ className }) => {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <Link href="/" className="flex items-center text-white">
-                <Image src="/logo/logo1.png" className="h-8 mr-3" width={50} height={50} alt="TMC" />
-                <span className="self-center text-2xl font-semibold whitespace-nowrap">ThatsMyCollege</span>
+                <Image src="/logo/tmc_white.png" className="h-20 mt-2 w-24 -mr-2" width={70} height={60} alt="TMC" />
+                <span className="self-center text-2xl font-semibold whitespace-nowrap mt-2">ThatsMyCollege</span>
               </Link>
             </div>
             {/* md menu */}

@@ -106,7 +106,7 @@ const Contact = () => {
               <strong><HiPhone className='text-xl text-blue-500 mr-3' /></strong> +91 7389796980
             </p>
             <p className="text-gray-700 flex">
-              <strong><FaEnvelope className='text-xl text-blue-500 mr-3' /></strong> contact@example.com
+              <strong><FaEnvelope className='text-xl text-blue-500 mr-3' /></strong> thatsmycollage@gmail.com
             </p>
 
             <h2 className="text-xl font-semibold mt-8 mb-4 text-slate-700">Follow us on </h2>
