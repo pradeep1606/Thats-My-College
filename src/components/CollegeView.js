@@ -31,7 +31,7 @@ const CollegeView = (currElem) => {
             {onlyCourseName && (
               <p className='text-sm mt-2'>Course : <span className='text-gray-400'>{onlyCourseName}</span></p>
             )}
-            <Link href="/" className='text-sm text-blue-400'>View Course Fee</Link>
+            <Link href={`/colleges/${id}`} className='text-sm text-blue-400'>View Course Fee</Link>
           </div>
         </div>
         <div className='flex flex-col ml-auto space-y-4 md:mt-0 mt-3 text-center'>

@@ -16,7 +16,7 @@ const roboto = Roboto({
 
 export const metadata = {
   title: 'Thats My College',
-  description: 'Find a college and Get Admission',
+  description: 'Find a college and Get Admission to start your education',
 }
 
 export default function RootLayout({ children }) {
