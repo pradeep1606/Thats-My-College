@@ -2,8 +2,8 @@
 
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchColleges } from '@/store/slices/FilterCollege';
-import { fetchApi } from '@/store/slices/FilterCollege';
+import { fetchColleges } from '@/store/slices/filterCollege';
+import { fetchApi } from '@/store/slices/filterCollege';
 
 const Test=()=> {
   const dispatch = useDispatch();

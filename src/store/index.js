@@ -1,10 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { FilterCollege } from "./slices/FilterCollege";
+
+import { configureStore } from '@reduxjs/toolkit';
+import filterCollegeSlice from '../slices/filterCollege';
 
 const store = configureStore({
-    reducer:{
-        allCollege:FilterCollege.reducer,
-    }
+  reducer: {
+    filterCollege: filterCollegeSlice,
+  },
 });
 
 export default store;
