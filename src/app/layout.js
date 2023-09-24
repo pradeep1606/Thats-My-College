@@ -7,6 +7,7 @@ import './globals.css'
 // const inter = Inter({ subsets: ['latin'] })
 import { Roboto } from 'next/font/google'
 import { FilterContextProvider } from '@/context/filterContext'
+import { ReduxProvider } from '@/store/ReduxProvider'
 
 const roboto = Roboto({
   weight: '400',
@@ -25,9 +26,11 @@ export default function RootLayout({ children }) {
       <FilterContextProvider>
         <html lang="en" className={roboto.className}>
           <body className={`bg-[#e6e6e6]`}>
-            <Navbar className="bg-gray-800"/>
-            {children}
-            <Footer />
+            <ReduxProvider>
+              <Navbar className="bg-gray-800" />
+              {children}
+              <Footer />
+            </ReduxProvider>
           </body>
         </html>
       </FilterContextProvider>

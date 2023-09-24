@@ -48,7 +48,7 @@ const Navbar = ({ className }) => {
                 <Link href="/about" className="text-white md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">About</Link>
                 <Link href="/contact" className="text-white md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">Contact</Link>
                 {/* dropdown div */}
-                <div className="inline-block relative group z-10">
+                {/* <div className="inline-block relative group z-10">
                   <button className="text-white md:border-0 md:hover:text-blue-500 text-xl rounded-md h-full"><FaRegUserCircle className="-my-1" /></button>
                   <div className="absolute hidden w-56 -right-2 group-hover:block">
                     <div className="h-2 w-full flex justify-end px-2"><VscTriangleUp className="text-2xl -mt-2 text-white" /></div>
@@ -75,7 +75,7 @@ const Navbar = ({ className }) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 

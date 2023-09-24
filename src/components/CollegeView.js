@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Popup from './Popup';
 import Register from './Register';
+import { useDispatch, useSelector } from 'react-redux';
+// import { getAllColleges } from '@/store/slices/FilterCollege';
 
 const CollegeView = (currElem) => {
+  
+  // const data = useSelector(state => state.allCollege.colleges)
+  // const dispatch = useDispatch();
+  // const getData=()=>{
+  //   dispatch(getAllColleges());
+  // }
+  // console.log("api data ", data);
+
+
   const [showPopup, setShowPopup] = useState(false);
   const togglePopup = () => {
     setShowPopup(!showPopup);
   }
-  const closePopupManual=()=>{
+  const closePopupManual = () => {
     setShowPopup(false);
   }
 
   const { id, name, university, courses, rating, logo } = currElem;
   const courseNames = courses?.map((currCourse) => currCourse.courseName);
   const onlyCourseName = courseNames?.join(', ');
-
   return (
     <>
       <div className="bg-white p-4 md:flex rounded">

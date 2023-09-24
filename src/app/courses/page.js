@@ -2,8 +2,10 @@
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
+import Test from '@/components/Test'
 
 const Courses = () => {
+    
     return (
         <>
             <div className='p-4'>
@@ -143,6 +145,8 @@ const Courses = () => {
                     </div>
                 </div>
             </div>
+
+            <Test />
 
         </>
     )
