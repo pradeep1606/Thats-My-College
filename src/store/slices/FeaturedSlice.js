@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Api = process.env.API_URL;
 
-export const fetchColleges = createAsyncThunk("FilterCollege/fetchColleges", async (apiPost) => {
+export const fetchFeaturedCollege = createAsyncThunk("FeaturedCollege/fetchFeaturedCollege", async (apiPost) => {
     try {
         const response = await axios.get(`${Api}${apiPost}`);
         return response.data;
@@ -13,25 +13,25 @@ export const fetchColleges = createAsyncThunk("FilterCollege/fetchColleges", asy
 });
 
 
-export const FilterCollege = createSlice({
-    name: 'filterCollege',
+export const FeaturedSlice = createSlice({
+    name: 'featuredCollege',
     initialState: {
-        colleges: [],
+        college: [],
         loading: true,
         error: null,
     },
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchColleges.pending, (state) => {
+            .addCase(fetchFeaturedCollege.pending, (state) => {
                 state.loading = true;
                 state.error = null;
             })
-            .addCase(fetchColleges.fulfilled, (state, action) => {
+            .addCase(fetchFeaturedCollege.fulfilled, (state, action) => {
                 state.loading = false;
-                state.colleges = action.payload;
+                state.college = action.payload;
             })
-            .addCase(fetchColleges.rejected, (state, action) => {
+            .addCase(fetchFeaturedCollege.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
             });

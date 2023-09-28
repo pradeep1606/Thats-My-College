@@ -1,7 +1,8 @@
 import React from 'react'
 
 const AdmissionTab = ({ college }) => {
-  const { name, collegeType, courses, branches } = college;
+  const { name, collegeType } = college.collegeId || {};
+  const { courses } = college || [];
   // console.log(typeof branches);
   const firstName = name.substring(0, name.indexOf(' '));
   const courseNames = courses.map(course => course.courseName + ", ");
@@ -73,11 +74,11 @@ const AdmissionTab = ({ college }) => {
                 </tr>
               </thead>
               <tbody>
-                {branches && branches.length > 0 ? (
-                  Object.keys(branches[0]).map((course, index) => (
+                {courses && courses.length > 0 ? (
+                  courses.map((course, index) => (
                     <tr key={index}>
-                      <td className="border px-4 py-2">{course}</td>
-                      <td className="border px-4 py-2">{branches[0][course].split(", ").join(" | ")}</td>
+                      <td className="border px-4 py-2">{course.courseName}</td>
+                      <td className="border px-4 py-2">{course.branches.join(" | ")}</td>
                     </tr>
                   ))
                 ) : (

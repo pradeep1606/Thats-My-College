@@ -1,22 +1,27 @@
 "use client"
 
-import CollegeView from '@/components/CollegeView';
 import { MobileFilter, DesktopFilter } from '@/components/Filter';
 import React, { useState } from 'react';
-// import collegeData from '../../api/colleges.json'
-import { useFilterContext } from '@/context/filterContext';
+import { useSelector } from 'react-redux';
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+import CollegesList from '@/components/CollegesList';
 
 const Colleges = () => {
   const [filterVisible, setFilterVisible] = useState(false);
+  const [page, setPage] = useState(1)
+
+  const { colleges } = useSelector((state) => state.allCollege);
+  const totalPages = colleges.data ? Math.ceil(colleges.data.totalDocuments / 10) : 0;
 
   const toggleFilter = () => {
     setFilterVisible(!filterVisible);
   };
-
-  const { filter_college } = useFilterContext();
-
-  // console.log(typeof filter_college, filter_college);
-
+  const handleNextClick = () => {
+    if (page < totalPages) setPage(page + 1);
+  }
+  const handlePrevClick = () => {
+    if (page > 1) setPage(page - 1)
+  }
   return (
     <>
       <div className='flex justify-end mt-6 mr-6 md:hidden'>
@@ -43,21 +48,30 @@ const Colleges = () => {
           </div>
         </div>
       )}
+
+
+
       <div className="flex md:mx-20 mx-1 my-6 md:my-10">
         <div className="w-1/4 mx-2 space-y-2 hidden md:block">
           <DesktopFilter />
         </div>
         <div className="md:w-3/4 w-[100%] mx-2 space-y-4">
-          {filter_college && filter_college.length > 0 ? (
-            filter_college.map((currElem) => {
-              return <CollegeView key={currElem.id} {...currElem} />
-            })
-          ) : filter_college && filter_college.length === 0 ? (
-            <div className='bg-white p-2 font-semibold text-sm text-gray-600'>Colleges Not Available</div>
-          ) : (
-            <p>Loading College...</p>
-          )}
+          <CollegesList page={page} />
+          <div className='flex justify-between text-white mx-[2%]'>
+            <button className={`text-white bg-gradient-to-r from-blue-500 to-cyan-400 hover:bg-gradient-to-bl py-1 px-2 flex justify-center gap-2 rounded-l ${page === 1 ? 'pointer-events-none' : ''
+              }`}
+              onClick={handlePrevClick}
+              disabled={page === 1}>
+              <GrFormPrevious className='mt-1' />Prev
+            </button>
+            <button className={`text-white bg-gradient-to-r from-cyan-400 to-blue-500 hover:bg-gradient-to-bl py-1 px-2 flex justify-center gap-2 rounded-l ${page === totalPages ? 'pointer-events-none' : ''
+              }`} onClick={handleNextClick}
+              disabled={page === totalPages}>
+              Next<GrFormNext className='mt-1' />
+            </button>
+          </div>
         </div>
+
       </div>
 
     </>

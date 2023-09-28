@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { RxCaretUp, RxCaretDown, RxCaretRight } from 'react-icons/rx';
-import { useFilterContext } from '@/context/filterContext';
 import TypeFilter from './TypeFilter';
 
 export const MobileFilter = () => {

@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 
 const GalleryTab = ({ college }) => {
-    const { image, name } = college
+    const { image, name } = college.collegeId
     const actName = name.split(",")[0];
     return (
         <>

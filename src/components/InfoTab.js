@@ -1,7 +1,8 @@
 import React from 'react'
 
 const InfoTab = ({ college }) => {
-    const { name, details, message, courses } = college;
+    const { name, details, message } = college.collegeId || {};
+    const { courses } = college || [];
     return (
         <>
             <div className='bg-white p-4 space-y-6'>

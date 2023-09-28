@@ -3,7 +3,8 @@ import React from 'react'
 import { BsArrowRightShort, BsDownload } from 'react-icons/bs';
 
 const FeesTab = ({ college }) => {
-  const { name, courses, branches } = college
+  const { name } = college.collegeId || {};
+  const { courses } = college || [];
   return (
     <>
       <div className='bg-white mb-2 p-4'>
@@ -38,7 +39,7 @@ const FeesTab = ({ college }) => {
 
       <div className='bg-white divide-y'>
         <div className='md:px-8 px-4 py-4 text-blue-900 text-lg font-semibold'>Top Courses offered by {name} :</div>
-        {branches && branches.length > 0 ? (
+        {courses && courses.length > 0 ? (
           courses.map((course, index) => (
             <div className='md:px-10 px-6 py-4' key={index}>
               <h2 className='text-lg font-semibold text-gray-800 pb-1'>{course.courseName}</h2>
@@ -49,12 +50,7 @@ const FeesTab = ({ college }) => {
                   <p className=''>Study Mode :<span className='font-semibold text-blue-950 text-sm'> Regular</span></p>
                 </div>
                 <p className=''>Specialization : <span className='font-semibold text-blue-950 text-sm'>
-                  {branches[0] && branches[0][course.courseName] ? (
-                    branches[0][course.courseName].split(',')
-                      .map((spec, i) => <span key={i}>{spec.trim()}{i < branches[0][course.courseName].split(',').length - 1 ? ' | ' : ''}</span>)
-                  ) : (
-                    'N/A' // Handle the case when branches[0] or branches[0][course.courseName] is undefined
-                  )}
+                  <span>{course.branches.join(" | ")}</span>
                 </span></p>
                 <div className='font-semibold text-sm flex space-x-6 py-1'>
                   <Link href="/" className='flex text-blue-700 hover:text-blue-500'>Apply Now <BsArrowRightShort className='mt-[0.2rem]' /></Link>

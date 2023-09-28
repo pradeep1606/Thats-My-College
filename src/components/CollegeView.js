@@ -1,31 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Popup from './Popup';
 import Register from './Register';
-import { useDispatch, useSelector } from 'react-redux';
-// import { getAllColleges } from '@/store/slices/FilterCollege';
 
-const CollegeView = (currElem) => {
-  
-  // const data = useSelector(state => state.allCollege.colleges)
-  // const dispatch = useDispatch();
-  // const getData=()=>{
-  //   dispatch(getAllColleges());
-  // }
-  // console.log("api data ", data);
-
-
+const CollegeView = (currElm) => {
   const [showPopup, setShowPopup] = useState(false);
   const togglePopup = () => {
     setShowPopup(!showPopup);
   }
-  const closePopupManual = () => {
-    setShowPopup(false);
-  }
 
-  const { id, name, university, courses, rating, logo } = currElem;
-  const courseNames = courses?.map((currCourse) => currCourse.courseName);
+  const { _id, name, university, rating, logo } = currElm.college
+
+  const courseNames = currElm.courses?.map((currCourse) => currCourse.courseName);
   const onlyCourseName = courseNames?.join(', ');
   return (
     <>
@@ -35,13 +22,13 @@ const CollegeView = (currElem) => {
             <Image src={logo} width={70} height={70} alt="" />
           </div>
           <div>
-            <Link href={`/colleges/${id}`} className='text-blue-700 text-xl'>{name}</Link>
+            <Link href={`/colleges/${_id}`} className='text-blue-700 text-xl'>{name}</Link>
             <p className=''>Rating {rating}</p>
             <p className='text-sm mt-2'>University : <span className='text-gray-500'>{university}</span></p>
             {onlyCourseName && (
-              <p className='text-sm mt-2'>Course : <span className='text-gray-400'>{onlyCourseName}</span></p>
+              <p className='text-sm mt-2'>Courses : <span className='text-gray-400'>{onlyCourseName}</span></p>
             )}
-            <Link href={`/colleges/${id}`} className='text-sm text-blue-400'>View Course Fee</Link>
+            <Link href={`/colleges/${_id}`} className='text-sm text-blue-400'>View All Course Fee</Link>
           </div>
         </div>
         <div className='flex flex-col ml-auto space-y-4 md:mt-0 mt-3 text-center'>
@@ -51,7 +38,7 @@ const CollegeView = (currElem) => {
       </div>
       {showPopup && (
         <Popup onClose={togglePopup}>
-          <Register closePopupManual={closePopupManual} {...currElem} />
+          <Register {...currElm.college || {}} />
         </Popup>
       )}
     </>

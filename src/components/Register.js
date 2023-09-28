@@ -33,7 +33,7 @@ const Register = (college) => {
             <div className="flex">
                 <div className="flex-col flex items-center mt-10 w-full overflow-y-auto">
                     <div className="flex mb-10 gap-4 px-2">
-                        <Image src={logo} width={50} height={50} alt="Logo" />
+                        <Image src={logo} width={70} height={50} alt="Logo" />
                         <span className="flex flex-col justify-start items-start">
                             <h1 className="font-bold text-2xl text-blue-900">Register Now To Apply</h1>
                             <h3 className="font-bold text-blue-900">{name}</h3>

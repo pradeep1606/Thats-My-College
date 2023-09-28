@@ -1,4 +1,3 @@
-import { CollegeProvider } from '@/context/collegeContext'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import './globals.css'
@@ -6,7 +5,6 @@ import './globals.css'
 
 // const inter = Inter({ subsets: ['latin'] })
 import { Roboto } from 'next/font/google'
-import { FilterContextProvider } from '@/context/filterContext'
 import { ReduxProvider } from '@/store/ReduxProvider'
 
 const roboto = Roboto({
@@ -22,8 +20,6 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <CollegeProvider>
-      <FilterContextProvider>
         <html lang="en" className={roboto.className}>
           <body className={`bg-[#e6e6e6]`}>
             <ReduxProvider>
@@ -33,7 +29,5 @@ export default function RootLayout({ children }) {
             </ReduxProvider>
           </body>
         </html>
-      </FilterContextProvider>
-    </CollegeProvider>
   )
 }

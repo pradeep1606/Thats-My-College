@@ -1,20 +1,20 @@
 'use client'
-
 import React, { useContext, useEffect, useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import Link from 'next/link';
-import { CollegeContext } from '@/context/collegeContext';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFeaturedCollege } from '@/store/slices/FeaturedSlice';
 
 const FeaturedCollege = () => {
-    const { getFeatureCollege, state } = useContext(CollegeContext);
-    const featuredCollege = state.featureColleges;
+    const dispatch = useDispatch();
+    const { college, loading, error } = useSelector((state) => state.featuredCollege);
 
     useEffect(() => {
-        getFeatureCollege();
-        // eslint-disable-next-line
-    }, []);
+        const apiPost = `/api/courses/get-all/college-details?featured=true`
+        dispatch(fetchFeaturedCollege(apiPost));
+    }, [dispatch]);
 
     const [chunkSize, setChunkSize] = useState(3);
 
@@ -29,20 +29,25 @@ const FeaturedCollege = () => {
                 setChunkSize(1);
             }
         };
-
         handleResize();
         window.addEventListener('resize', handleResize);
-
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
 
+    if (loading) {
+        return <p>loading .....</p>
+    }
+    if (error) {
+        return <p>Internal Server Error : `${error}`</p>
+    }
+    const featuredCollege = college.data.courses;
+
     const chunkedFeaturedColleges = [];
     for (let i = 0; i < featuredCollege.length; i += chunkSize) {
         chunkedFeaturedColleges.push(featuredCollege.slice(i, i + chunkSize));
     }
-
     return (
         <div className='mt-12 px-4 pb-12 sm:px-8 bg-white'>
             <div className='p-4 text-2xl sm:text-3xl text-[#262626] font-bold'>Top College</div>
@@ -79,12 +84,12 @@ const FeaturedCollege = () => {
 
                     {chunkedFeaturedColleges.map((chunk, index) => (
                         <div key={index} className="grid md:grid-cols-3 lg:grid-cols-3 sm:grid-cols-2 md:px-12 px-4 gap-4 bg-white">
-                            {chunk.map(college => (
-                                <div className="rounded-b-md" key={college.id} >
-                                    <div className="h-48 mx-[0.03rem] sm:h-56 bg-cover text-white px-4 rounded-t-md" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${college.image[0]})`, display: 'flex', alignItems: 'flex-end' }}>
-                                        <Link href={`/colleges/${college.id}`}>
-                                            <span className="font-semibold text-lg">{college.name}</span>
-                                            <p className="text-sm font-normal px-1">{college.address}</p>
+                            {chunk.map(clg => (
+                                <div className="rounded-b-md" key={clg.collegeId} >
+                                    <div className="h-48 mx-[0.03rem] sm:h-56 bg-cover text-white px-4 rounded-t-md" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${clg.college.image[0]})`, display: 'flex', alignItems: 'flex-end' }}>
+                                        <Link href={`/colleges/${clg.collegeId}`}>
+                                            <span className="font-semibold text-lg">{clg.college.name}</span>
+                                            <p className="text-sm font-normal px-1">{clg.college.address}</p>
                                         </Link>
                                     </div>
                                     <div className="p-4 border-2 border-t-0">
@@ -95,11 +100,11 @@ const FeaturedCollege = () => {
                                         </div>
                                         <div className='w-full h-[0.05rem] bg-slate-200'></div>
                                         <div className='flex flex-col items-start'>
-                                            <div className="py-1 text-sm"><Link href={`/colleges/${college.id}`}>Show All Courses</Link></div>
+                                            <div className="py-1 text-sm"><Link href={`/colleges/${clg.collegeId}`}>Show All Courses</Link></div>
                                             <div className='w-full h-[0.05rem] bg-slate-200'></div>
-                                            <div className="py-1 text-sm"><Link href={`/colleges/${college.id}`}>Download Brochure</Link></div>
+                                            <div className="py-1 text-sm"><Link href={`/colleges/${clg.collegeId}`}>Download Brochure</Link></div>
                                             <div className='w-full h-[0.05rem] bg-slate-200'></div>
-                                            <div className="py-1 text-sm"><Link href={`/colleges/${college.id}`}>Admission</Link></div>
+                                            <div className="py-1 text-sm"><Link href={`/colleges/${clg.collegeId}`}>Admission</Link></div>
                                         </div>
                                     </div>
                                 </div>
