@@ -1,5 +1,5 @@
 import React from 'react';
-import Popup from './Popup1';
+import Popup from './SearchPopup';
 import { HiPhone } from 'react-icons/hi';
 import { FcPhoneAndroid } from "react-icons/fc";
 

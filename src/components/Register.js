@@ -4,28 +4,54 @@ import { FaUser, FaEnvelope, FaGraduationCap } from 'react-icons/fa';
 import { MdLocationPin } from 'react-icons/md';
 import { HiPhone } from 'react-icons/hi';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
+import { RotatingLines } from 'react-loader-spinner';
+import { sendApplyForm } from '@/lib/api';
 
 const Register = (college) => {
     const { name, logo } = college;
 
-    const [formData, setFormData] = useState({
+    const initialForm = {
         collegeName: name,
         name: '',
         email: '',
         mobile: '',
         city: '',
         course: '',
-    });
+    }
+    const [formData, setFormData] = useState(initialForm);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Add logic to handle form submission (e.g., sending data to a server)
-        console.log(formData);
+        if (!formData.collegeName || !formData.name || !formData.email || !formData.mobile) {
+            setIsLoading(false)
+            return toast.error('Please fill all required feilds.')
+        }
+        if (!isValidEmail(formData.email)) {
+            setIsLoading(false);
+            return toast.error('Please enter a valid email.');
+        }
+        try {
+            await sendApplyForm(formData);
+            toast(<div><p>✅ Apply successfully</p><p>Our Expert will contact soon.</p></div>);
+            setFormData(initialForm);
+        } catch (error) {
+            toast.error('Error! Try again later.');
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    // Simple email validation using regular expression
+    const isValidEmail = (email) => {
+        const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return regex.test(email);
     };
 
     return (
@@ -123,9 +149,16 @@ const Register = (college) => {
                         </div>
                         <button
                             type="submit"
-                            className="bg-blue-400 hover:bg-blue-500 py-4 text-center text-white rounded text-xl md:text-base font-sans mt-4 mb-10"
+                            className="bg-blue-400 hover:bg-blue-500 py-4 text-center text-white rounded text-xl md:text-base font-sans mt-4 mb-10 flex items-center justify-center"
                         >
-                            Apply Now
+                            {isLoading ? (
+                                <div className="flex items-center">
+                                    <RotatingLines strokeColor="white" strokeWidth="4" animationDuration="0.75" width="25" visible={true} />
+                                    <span className="ml-2">Applying...</span>
+                                </div>
+                            ) : (
+                                "Apply Now"
+                            )}
                         </button>
                     </form>
                 </div>

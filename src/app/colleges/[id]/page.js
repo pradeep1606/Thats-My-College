@@ -19,6 +19,7 @@ const CollegeDetails = ({ params }) => {
     useEffect(() => {
         const apiPost = `/api/courses/college/${id}`
         dispatch(fetchSingleCollege(apiPost));
+        // eslint-disable-next-line
     }, [dispatch]);
 
     const [showPopup, setShowPopup] = useState(false);

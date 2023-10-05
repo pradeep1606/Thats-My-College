@@ -2,8 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
+import SearchPopup from './SearchPopup';
 
 const Carousel = () => {
+const [searchBar, setSearchBar] = useState(false)
+const toggleSearch=()=>{
+setSearchBar(!searchBar)
+}
+
   const slides = [
     {
       url: '/images/1.jpeg',
@@ -15,14 +21,7 @@ const Carousel = () => {
       url: '/images/3.jpeg',
     },
   ];
-
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  // const prevSlide = () => {
-  //   const isFirstSlide = currentIndex === 0;
-  //   const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-  //   setCurrentIndex(newIndex);
-  // };
 
   const nextSlide = () => {
     const isLastSlide = currentIndex === slides.length - 1;
@@ -58,13 +57,18 @@ const Carousel = () => {
           {/* Search Bar */}
           <div className='flex w-8/12'>
             <div className='relative flex items-center w-10/12'>
-              <input type='text' className='h-full w-full p-4 pl-10 rounded-l-lg' placeholder='Search Your College' />
+              <input type='text' onClick={toggleSearch} className='h-full w-full p-4 pl-10 rounded-l-lg' placeholder='Search for Colleges' />
               <div className='absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500'>
                 <AiOutlineSearch />
               </div>
             </div>
             <button className='md:w-2/12 w-[25%] bg-blue-700 text-white rounded-r-lg'>Search</button>
           </div>
+
+          { searchBar && (
+            <SearchPopup onClose={toggleSearch} />
+          )}
+
 
           <div className='mt-8'>
             <button className='bg-blue-700 text-white px-10 py-[0.4rem] rounded-md'>Admission 2023</button>

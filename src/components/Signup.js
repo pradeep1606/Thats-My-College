@@ -1,5 +1,5 @@
 import React from 'react';
-import Popup from './Popup1';
+import Popup from './SearchPopup';
 import { FaUser, FaEnvelope, FaGraduationCap } from 'react-icons/fa';
 import { MdLocationPin } from 'react-icons/md';
 import { HiPhone } from 'react-icons/hi';

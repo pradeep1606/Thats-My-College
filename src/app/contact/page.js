@@ -4,24 +4,58 @@ import { MdOutlineMarkEmailUnread, MdLocationPin } from 'react-icons/md';
 import { FaEnvelope } from 'react-icons/fa';
 import { HiPhone } from 'react-icons/hi';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { sendContactForm } from '@/lib/api';
+import { toast } from 'react-toastify';
+import { RotatingLines } from 'react-loader-spinner'
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: '',
     email: '',
     mobile: '',
     message: '',
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add logic to handle form submission (e.g., sending an email)
-    console.log(formData);
+    setIsLoading(true);
+
+    // form validation
+    if (!formData.name || !formData.email || !formData.mobile || !formData.message) {
+      setIsLoading(false);
+      return toast.error('Please fill in all fields.');
+    }
+
+    // More specific email validation
+    if (!isValidEmail(formData.email)) {
+      setIsLoading(false);
+      return toast.error('Please enter a valid email.');
+    }
+
+    try {
+      await sendContactForm(formData);
+      toast(<div><p>✅ Mail sent successfully</p><p>We will contact you soon.</p></div>);
+      setFormData(initialFormData);
+    } catch (error) {
+      toast.error('Error! Try again later.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+
+  // Simple email validation using regular expression
+  const isValidEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return regex.test(email);
   };
 
   return (
@@ -39,7 +73,7 @@ const Contact = () => {
                 id="name"
                 type="text"
                 name="name"
-                placeholder="Your Name"
+                placeholder="Enter Your Name"
                 value={formData.name}
                 onChange={handleChange}
               />
@@ -53,7 +87,7 @@ const Contact = () => {
                 id="email"
                 type="email"
                 name="email"
-                placeholder="Your Email"
+                placeholder="Enter Your Email"
                 value={formData.email}
                 onChange={handleChange}
               />
@@ -65,9 +99,9 @@ const Contact = () => {
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="mobile"
-                type="tel"
+                type="number"
                 name="mobile"
-                placeholder="Your Mobile Number"
+                placeholder="Enter Your Mobile Number"
                 value={formData.mobile}
                 onChange={handleChange}
               />
@@ -91,11 +125,18 @@ const Contact = () => {
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
               >
-                Send
+                {isLoading ? (
+                  <RotatingLines strokeColor="white" strokeWidth="4" animationDuration="0.75" width="25" visible={true} />
+                ) : (
+                  "Send"
+                )}
               </button>
             </div>
           </form>
         </div>
+
+
+        {/* Address and details */}
         <div className="lg:col-span-1 mt-8 lg:mt-0 ">
           <div className='bg-white py-6 px-8 rounded-md'>
             <h2 className="text-xl font-semibold mb-4 text-slate-700">Contact Us</h2>
@@ -127,9 +168,10 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      
+
+      {/* map */}
       <div className='h-72 w-full'>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d298.8326152639311!2d77.4637789926512!3d23.25196948816571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c43aba6ff2abd%3A0x64fad68413137cba!2sBs%20library!5e0!3m2!1sen!2sin!4v1693935467279!5m2!1sen!2sin" width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d298.8326152639311!2d77.4637789926512!3d23.25196948816571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c43aba6ff2abd%3A0x64fad68413137cba!2sBs%20library!5e0!3m2!1sen!2sin!4v1693935467279!5m2!1sen!2sin" width="100%" height="100%" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </>
   );

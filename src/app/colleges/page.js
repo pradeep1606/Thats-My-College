@@ -58,14 +58,13 @@ const Colleges = () => {
         <div className="md:w-3/4 w-[100%] mx-2 space-y-4">
           <CollegesList page={page} />
           <div className='flex justify-between text-white mx-[2%]'>
-            <button className={`text-white bg-gradient-to-r from-blue-500 to-cyan-400 hover:bg-gradient-to-bl py-1 px-2 flex justify-center gap-2 rounded-l ${page === 1 ? 'pointer-events-none' : ''
-              }`}
+            <button className={`text-white bg-gradient-to-r from-blue-500 to-cyan-400 hover:bg-gradient-to-bl py-1 px-2 flex justify-center gap-2 rounded-l `}
               onClick={handlePrevClick}
               disabled={page === 1}>
               <GrFormPrevious className='mt-1' />Prev
             </button>
-            <button className={`text-white bg-gradient-to-r from-cyan-400 to-blue-500 hover:bg-gradient-to-bl py-1 px-2 flex justify-center gap-2 rounded-l ${page === totalPages ? 'pointer-events-none' : ''
-              }`} onClick={handleNextClick}
+            <button className={`text-white bg-gradient-to-r from-cyan-400 to-blue-500 hover:bg-gradient-to-bl py-1 px-2 flex justify-center gap-2 rounded-l `} 
+              onClick={handleNextClick}
               disabled={page === totalPages}>
               Next<GrFormNext className='mt-1' />
             </button>
