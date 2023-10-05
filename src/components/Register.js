@@ -29,6 +29,8 @@ const Register = (college) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
+        
         if (!formData.collegeName || !formData.name || !formData.email || !formData.mobile) {
             setIsLoading(false)
             return toast.error('Please fill all required feilds.')
