@@ -8,6 +8,7 @@ import Popup from '@/components/Popup';
 import Register from '@/components/Register';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleCollege } from '@/store/slices/SingleCollege';
+import SingleCollegeSkeleton from '@/skeleton/SingleCollegeSkeleton';
 
 const CollegeDetails = ({ params }) => {
 
@@ -28,7 +29,7 @@ const CollegeDetails = ({ params }) => {
     }
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <SingleCollegeSkeleton />
     }
 
     if (error) {

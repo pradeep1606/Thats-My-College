@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFeaturedCollege } from '@/store/slices/FeaturedSlice';
+import FeaturedCollegeSkeleton from '@/skeleton/FeaturedCollegeSkeleton';
 
 const FeaturedCollege = () => {
     const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const FeaturedCollege = () => {
     }, []);
 
     if (loading) {
-        return <p>loading .....</p>
+        return <FeaturedCollegeSkeleton />
     }
     if (error) {
         return <p>Internal Server Error : `${error}`</p>

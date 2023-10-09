@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import CollegeView from './CollegeView'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchColleges } from '@/store/slices/FilterCollege';
+import CollegeListSkeleton from '@/skeleton/CollegeListSkeleton';
 
 const CollegesList = ({ page }) => {
     const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const CollegesList = ({ page }) => {
     }, [dispatch, page]);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <CollegeListSkeleton />
     }
     if (error) {
         return <p>Error: {error.message}</p>;

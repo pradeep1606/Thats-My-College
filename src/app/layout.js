@@ -7,6 +7,7 @@ import { Roboto } from 'next/font/google'
 import { ReduxProvider } from '@/store/ReduxProvider'
 import { ToastContainer } from '@/app/reactToast'
 import 'react-toastify/dist/ReactToastify.css';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 const roboto = Roboto({
   weight: '400',
@@ -21,15 +22,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-        <html lang="en" className={roboto.className}>
-          <body className={`bg-[#e6e6e6]`}>
-            <ReduxProvider>
-              <Navbar className="bg-gray-800" />
-              {children}
-              <Footer />
-              <ToastContainer />
-            </ReduxProvider>
-          </body>
-        </html>
+    <html lang="en" className={roboto.className}>
+      <body className={`bg-[#e6e6e6]`}>
+        <SkeletonTheme baseColor="#313131" highlightColor="#525252">
+          <ReduxProvider>
+            <Navbar className="bg-gray-800" />
+            {children}
+            <Footer />
+            <ToastContainer />
+          </ReduxProvider>
+        </SkeletonTheme>
+      </body>
+    </html>
   )
 }
