@@ -8,7 +8,7 @@ export const fetchSearchCollege = createAsyncThunk("SearchCollege/searchCollege"
         const response = await axios.get(`${Api}${apiPost}`);
         return response.data;
     } catch (error) {
-        throw error;
+        throw error;    
     }
 });
 

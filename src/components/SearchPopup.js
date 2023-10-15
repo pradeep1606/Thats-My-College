@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSearchCollege } from '@/store/slices/SearchCollege';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const SearchPopup = ({ onClose }) => {
   const dispatch = useDispatch();
   const { colleges, loading, error } = useSelector((state) => state.searchCollege);
   const [searchQuery, setSearchQuery] = useState('');
+  const [queryLimit, setQueryLimit] = useState('Enter 3 or more characters')
 
   let searchTimer;
   const handleSearchInputChange = (e) => {
@@ -14,12 +17,17 @@ const SearchPopup = ({ onClose }) => {
     setSearchQuery(query);
 
     clearTimeout(searchTimer);
+    if (query.length < 3) {
+      setQueryLimit('Enter 3 or more characters')
+      return;
+    }
 
     searchTimer = setTimeout(() => {
       if (query) {
         dispatch(fetchSearchCollege(`/api/college?collegeName=${query}`));
       }
     }, 1000);
+    setQueryLimit('')
   };
 
   useEffect(() => {
@@ -31,12 +39,12 @@ const SearchPopup = ({ onClose }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-10">
       <div className="bg-white p-8 shadow-md w-full absolute top-0">
-        <button className="absolute md:top-2 top-6 md:right-0 right-0 mt-2 mr-2 text-gray-500" onClick={onClose}>
+        <button className="absolute md:top-5 top-6 md:right-4 right-0 mt-2 mr-2 text-gray-500" onClick={onClose}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
-        <div className='relative flex items-center w-full'>
+        <div className='relative flex items-center w-[95%]'>
           <input
             type='text'
             className='h-full w-full p-4 pl-10 rounded-md text-lg font-semibold text-slate-600'
@@ -49,17 +57,31 @@ const SearchPopup = ({ onClose }) => {
           </div>
         </div>
         <div>
-          {loading ? (
-            <div>loading...</div>
-          ) : error ? (
-            <div>Error: {error.message}</div>
-          ) : colleges.data ? (
-            <ul>
-              {searchQuery && colleges.data.colleges.map((college) => (
-                <li key={college._id}>{college.name}</li>
-              ))}
-            </ul>
-          ) : null}
+          {
+            queryLimit ? (
+              <div className='py-2 px-6 text-xl text-blue-800'>{queryLimit}</div>
+            ) : (
+              loading ? (
+                <div>loading...</div>
+              ) : error ? (
+                <div>Error: {error.message}</div>
+              ) : (colleges.data ? (
+                <ul className='m-2'>
+                  {colleges.data.colleges.map((college) => (
+                    <li key={college._id} className='hover:bg-gray-200 p-2'>
+                      <Link href={`/colleges/${college._id}`} className='flex gap-4'>
+                        <Image className='rounded-full h-8' src={college.logo} width={40} height={30} alt={college.name} />
+                        <span className='mt-1 font-semibold text-gray-600'>{college.name}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className='text-gray-600'>No college found</div>
+              )
+              )
+            )
+          }
         </div>
       </div>
     </div>

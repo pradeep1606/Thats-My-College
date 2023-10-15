@@ -9,7 +9,7 @@ const CoursesHome = () => {
                 <div className='p-4 text-3xl text-[#262626] font-bold'>Choose Your Course</div>
                 <div className='p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
                     {/* Engineering */}
-                    <div className='p-4 grid grid-rows-3 border border-gray-300 rounded'>
+                    <div className='p-4 grid grid-rows-3 border border-gray-300 rounded shadow-md'>
                         <div className='grid grid-cols-3'>
                             <div className='border border-gray-300 rounded-full p-2'>
                                 <Image src='/logo/engineering.png' width={50} height={50} alt="" />
@@ -24,7 +24,7 @@ const CoursesHome = () => {
                     </div>
 
                     {/* Pharmacy */}
-                    <div className='p-4 grid grid-rows-3 border border-gray-300 rounded'>
+                    <div className='p-4 grid grid-rows-3 border border-gray-300 rounded shadow-md'>
                         <div className='grid grid-cols-3'>
                             <div className='border border-gray-300 rounded-full p-2'>
                                 <Image src='/logo/pharmacy.png' width={50} height={50} alt="" />
@@ -39,7 +39,7 @@ const CoursesHome = () => {
                     </div>
 
                     {/* Management */}
-                    <div className='p-4 grid grid-rows-3 border border-gray-300 rounded'>
+                    <div className='p-4 grid grid-rows-3 border border-gray-300 rounded shadow-md'>
                         <div className='grid grid-cols-3'>
                             <div className='border border-gray-300 rounded-full p-2'>
                                 <Image src='/logo/management1.png' width={50} height={50} alt="" />
@@ -54,7 +54,7 @@ const CoursesHome = () => {
                     </div>
 
                     {/* Arts */}
-                    <div className='p-4 grid grid-rows-3 border border-gray-300 rounded'>
+                    <div className='p-4 grid grid-rows-3 border border-gray-300 rounded shadow-md'>
                         <div className='grid grid-cols-3'>
                             <div className='border border-gray-300 rounded-full p-2'>
                                 <Image src='/logo/art.png' width={50} height={50} alt="" />
