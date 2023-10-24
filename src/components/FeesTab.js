@@ -1,8 +1,15 @@
 import Link from 'next/link'
-import React from 'react'
+import React, {useState} from 'react'
 import { BsArrowRightShort, BsDownload } from 'react-icons/bs';
+import Popup from './Popup';
+import Register from './Register';
 
 const FeesTab = ({ college }) => {
+  const [showPopup, setShowPopup] = useState(false);
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  }
+
   const { name } = college.collegeId || {};
   const { courses } = college || [];
   return (
@@ -53,7 +60,7 @@ const FeesTab = ({ college }) => {
                   <span>{course.branches.join(" | ")}</span>
                 </span></p>
                 <div className='font-semibold text-sm flex space-x-6 py-1'>
-                  <Link href="/" className='flex text-blue-700 hover:text-blue-500'>Apply Now <BsArrowRightShort className='mt-[0.2rem]' /></Link>
+                  <button onClick={togglePopup} className='flex text-blue-700 hover:text-blue-500'>Apply Now <BsArrowRightShort className='mt-[0.2rem]' /></button>
                   <Link href="/" className='flex text-[#339933] hover:text-[#53c653]'>Download Brochure &nbsp; <BsDownload className='mt-[0.2rem]' /></Link>
                 </div>
               </div>
@@ -63,6 +70,11 @@ const FeesTab = ({ college }) => {
           <p className="px-4 py-2 text-center">Loading...</p>
         )}
       </div>
+      {showPopup && (
+        <Popup onClose={togglePopup}>
+          <Register {...college.collegeId || {}} />
+        </Popup>
+      )}
 
     </>
   )

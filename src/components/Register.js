@@ -159,7 +159,7 @@ const Register = (college) => {
                                     <span className="ml-2">Applying...</span>
                                 </div>
                             ) : (
-                                "Apply Now"
+                                "Submit"
                             )}
                         </button>
                     </form>

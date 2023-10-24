@@ -1,12 +1,25 @@
 "use client"
 
 import { MobileFilter, DesktopFilter } from '@/components/Filter';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import CollegesList from '@/components/CollegesList';
+import { useSearchParams } from 'next/navigation';
 
 const Colleges = () => {
+  const searchParams = useSearchParams();
+  const ct = searchParams.get('name');
+  const [collegeTypes, setCollegeTypes] = useState(ct)
+  useEffect(() => {
+    setCollegeTypes(ct)
+  }, [ct])
+
+  const handleCollegeTypeSelect = (selectedType) => {
+    setCollegeTypes(selectedType);
+  };
+
+
   const [filterVisible, setFilterVisible] = useState(false);
   const [page, setPage] = useState(1)
 
@@ -43,34 +56,27 @@ const Colleges = () => {
               </svg>
             </button>
             <div className="mt-4">
-              <MobileFilter />
+              <MobileFilter initialType={collegeTypes} onCollegeTypeSelect={handleCollegeTypeSelect} />
             </div>
           </div>
         </div>
       )}
 
-
-
       <div className="flex md:mx-20 mx-1 my-6 md:my-10">
         <div className="w-1/4 mx-2 space-y-2 hidden md:block">
-          <DesktopFilter />
+          <DesktopFilter initialType={collegeTypes} onCollegeTypeSelect={handleCollegeTypeSelect} />
         </div>
         <div className="md:w-3/4 w-[100%] mx-2 space-y-4">
-          <CollegesList page={page} />
-          <div className='flex justify-between text-white mx-[2%]'>
-            <button className={`text-white bg-gradient-to-r from-blue-500 to-cyan-400 hover:bg-gradient-to-bl py-1 px-2 flex justify-center gap-2 rounded-l `}
-              onClick={handlePrevClick}
-              disabled={page === 1}>
+          <CollegesList page={page} collegeTypes={collegeTypes} />
+          <div className={`flex text-white mx-[2%] ${page === 1 ? 'justify-end' : 'justify-between'}`}>
+            <button className={`text-white bg-gradient-to-r from-blue-500 to-cyan-400 hover:bg-gradient-to-bl py-1 px-2 flex justify-center gap-2 rounded-l ${page === 1 ? 'hidden' : ''}`} onClick={handlePrevClick}>
               <GrFormPrevious className='mt-1' />Prev
             </button>
-            <button className={`text-white bg-gradient-to-r from-cyan-400 to-blue-500 hover:bg-gradient-to-bl py-1 px-2 flex justify-center gap-2 rounded-l `} 
-              onClick={handleNextClick}
-              disabled={page === totalPages}>
+            <button className={`text-white bg-gradient-to-r from-cyan-400 to-blue-500 hover:bg-gradient-to-bl py-1 px-2 flex justify-center gap-2 rounded-l ${page === totalPages ? 'hidden' : ''}`} onClick={handleNextClick}>
               Next<GrFormNext className='mt-1' />
             </button>
           </div>
         </div>
-
       </div>
 
     </>

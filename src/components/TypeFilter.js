@@ -1,29 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 
-const TypeFilter = () => {
+const TypeFilter = ({ onCollegeTypeSelect, initialType }) => {
+  const collegeType = ["engineering", "management", "pharmacy", "medical", "arts", "science", "commerce", "education", "computer application"];
+  const [activeType, setActiveType] = useState(initialType);
 
-  const collegeType = ["engineering", "management", "pharmacy", "medical", "arts", "science", "commerce", "law", "education", "computer application"];
+  const handleTypeClick = (type) => {
+    onCollegeTypeSelect(type);
+    setActiveType(type);
+  };
+
+  useEffect(() => {
+    setActiveType(initialType);
+  }, [initialType]);
 
   return (
     <>
-      {/* <div className='px-6 py-2 flex flex-col items-start'>
+      <div className='pl-4 py-2 flex flex-col items-start'>
         {collegeType.map((currElem, index) => {
+          const truncatedElem = currElem.length > 14 ? currElem.slice(0, 14) + '...' : currElem;
           return (
-            <label key={index} className='flex items-center'>
-              <input
-                type='checkbox'
-                name='collegeType'
-                value={currElem}
-                onChange={updateFilterValue}
-                className='mr-2'
-              />
-              {currElem.charAt(0).toUpperCase() + currElem.slice(1)}
-            </label>
+            <button key={index} className={`${activeType.toLocaleLowerCase() === currElem.toLocaleLowerCase() ? 'underline underline-offset-4 text-[#2975f0]' : ''}`} onClick={() => handleTypeClick(currElem)}>
+              {truncatedElem.charAt(0).toUpperCase() + truncatedElem.slice(1)}
+            </button>
           );
         })}
-      </div> */}
+      </div>
+
     </>
-  )
-}
+  );
+};
 
 export default TypeFilter;

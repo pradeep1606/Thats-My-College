@@ -1,9 +1,11 @@
 "use client";
+import Load from '@/components/Load';
 import React from 'react';
 
 const About = () => {
   return (
     <>
+    <Load />
       <div className="bg-gray-100">
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
