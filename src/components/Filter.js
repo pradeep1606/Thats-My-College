@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { RxCaretUp, RxCaretDown, RxCaretRight } from 'react-icons/rx';
 import TypeFilter from './TypeFilter';
+import CourseFilter from './CourseFilter';
 
-export const MobileFilter = () => {
+export const MobileFilter = ({ onCollegeTypeSelect, initialType }) => {
   const [content, setContent] = useState('collegeType');
   const handleButtonClick = (newContent) => {
     setContent(newContent);
@@ -31,7 +32,7 @@ export const MobileFilter = () => {
         {/* First  */}
         <div className='col-span-3 mt-4 px-4'>
           {content === 'collegeType' &&
-            <TypeFilter />
+            <TypeFilter initialType={initialType} onCollegeTypeSelect={onCollegeTypeSelect} />
           }
 
           {/* Second */}
@@ -46,24 +47,42 @@ export const MobileFilter = () => {
 
 
 
-
-export const DesktopFilter = () => {
+export const DesktopFilter = ({ onCollegeTypeSelect, initialType }) => {
   const [collegeTypeOpen, setCollegeTypeOpen] = useState(true);
+  const [courseTypeOpen, setCourseTypeOpen] = useState(true)
+  
+  const toggleAccordion2=()=>(
+    setCourseTypeOpen(!courseTypeOpen)
+  )
   const toggleAccordion = () => {
     setCollegeTypeOpen(!collegeTypeOpen);
   };
 
   return (
-    <div className='bg-white p-4 rounded'>
-      <div className='px-4 py-2 flex justify-between items-center cursor-pointer' onClick={toggleAccordion}>
-        <h2 className='font-semibold text-gray-700'>College Type</h2>
-        <span className='text-xl'>{collegeTypeOpen ? <RxCaretUp /> : <RxCaretDown />}</span>
-      </div>
-      {collegeTypeOpen && (
-        <div>
-          <TypeFilter />
+    <>
+      <div className='bg-white p-4 rounded'>
+        <div className='px-4 py-2 flex justify-between items-center cursor-pointer' onClick={toggleAccordion}>
+          <h2 className='font-semibold text-gray-700'>College Type</h2>
+          <span className='text-xl'>{collegeTypeOpen ? <RxCaretUp /> : <RxCaretDown />}</span>
         </div>
-      )}
-    </div>
+        {collegeTypeOpen && (
+          <div>
+            <TypeFilter initialType={initialType} onCollegeTypeSelect={onCollegeTypeSelect} />
+          </div>
+        )}
+      </div>
+
+      <div className='bg-white p-4 rounded'>
+        <div className='px-4 py-2 flex justify-between items-center cursor-pointer' onClick={toggleAccordion2}>
+          <h2 className='font-semibold text-gray-700'>College Type</h2>
+          <span className='text-xl'>{courseTypeOpen ? <RxCaretUp /> : <RxCaretDown />}</span>
+        </div>
+        {courseTypeOpen && (
+          <div>
+            <CourseFilter />
+          </div>
+        )}
+      </div>
+    </>
   );
 };

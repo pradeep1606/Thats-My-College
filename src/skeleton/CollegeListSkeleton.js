@@ -14,7 +14,7 @@ const CollegeListSkeleton = () => {
                                 <Skeleton circle width={70} height={70} />
                             </div>
                             <div>
-                                <Skeleton className='' variant="text" width={300} height={22} />
+                                <Skeleton variant="text" width={300} height={22} />
                                 <Skeleton variant="text" width={100} height={14} />
                                 <Skeleton variant="text" width={200} height={14} />
                                 <Skeleton variant="text" width={300} height={14} />

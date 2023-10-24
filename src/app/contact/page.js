@@ -128,7 +128,7 @@ const Contact = () => {
                 {isLoading ? (
                   <RotatingLines strokeColor="white" strokeWidth="4" animationDuration="0.75" width="25" visible={true} />
                 ) : (
-                  "Send"
+                  "Submit"
                 )}
               </button>
             </div>
