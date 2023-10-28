@@ -35,25 +35,25 @@ const Footer = () => {
             <div className="w-full sm:w-1/2 md:w-1/4 px-10 mb-8 sm:mb-0">
               <h4 className="text-lg font-semibold mb-6">Top Colleges</h4>
               <ul>
-                <li><a href="" className="text-gray-400 hover:text-white">Engineering</a></li>
-                <li><a href="" className="text-gray-400 hover:text-white">Management</a></li>
-                <li><a href="" className="text-gray-400 hover:text-white">Pharmacy</a></li>
-                <li><a href="" className="text-gray-400 hover:text-white">Commerce</a></li>
-                <li><a href="" className="text-gray-400 hover:text-white">Science</a></li>
-                <li><a href="" className="text-gray-400 hover:text-white">Arts</a></li>
-                <li><a href="" className="text-gray-400 hover:text-white">Education</a></li>
+                <li><Link href={{ pathname: '/colleges', query: { name: 'Engineering' }, }} className="text-gray-400 hover:text-white" >Engineering</Link></li>
+                <li><Link href={{ pathname: '/colleges', query: { name: 'Management' }, }} className="text-gray-400 hover:text-white" >Management</Link></li>
+                <li><Link href={{ pathname: '/colleges', query: { name: 'Commerce' }, }} className="text-gray-400 hover:text-white" >Commerce</Link></li>
+                <li><Link href={{ pathname: '/colleges', query: { name: 'Arts' }, }} className="text-gray-400 hover:text-white" >Arts</Link></li>
+                <li><Link href={{ pathname: '/colleges', query: { name: 'Science' }, }} className="text-gray-400 hover:text-white" >Science</Link></li>
+                <li><Link href={{ pathname: '/colleges', query: { name: 'Pharmacy' }, }} className="text-gray-400 hover:text-white" >Pharmacy</Link></li>
+                <li><Link href={{ pathname: '/colleges', query: { name: 'Education' }, }} className="text-gray-400 hover:text-white" >Education</Link></li>
               </ul>
             </div>
             <div className="w-full sm:w-1/2 md:w-1/4 px-10 mb-8 sm:mb-0">
               <h4 className="text-lg font-semibold mb-6">Top Courses</h4>
               <ul>
-                <li><a href="" className="text-gray-400 hover:text-white">B.Tech</a></li>
-                <li><a href="" className="text-gray-400 hover:text-white">M.Tech</a></li>
-                <li><a href="" className="text-gray-400 hover:text-white">BCA</a></li>
-                <li><a href="" className="text-gray-400 hover:text-white">MBA</a></li>
-                <li><a href="" className="text-gray-400 hover:text-white">BBA</a></li>
-                <li><a href="" className="text-gray-400 hover:text-white">B.Pharma</a></li>
-                <li><a href="" className="text-gray-400 hover:text-white">D.Pharma</a></li>
+                <li><Link href={{ pathname: '/colleges', query: { course: 'B.Tech', name:'Engineering' }, }} className="text-gray-400 hover:text-white">B.Tech</Link></li>
+                <li><Link href={{ pathname: '/colleges', query: { course: 'M.Tech', name:'Engineering' }, }} className="text-gray-400 hover:text-white">M.Tech</Link></li>
+                <li><Link href={{ pathname: '/colleges', query: { course: 'MBA', name:'Management' }, }} className="text-gray-400 hover:text-white">MBA</Link></li>
+                <li><Link href={{ pathname: '/colleges', query: { course: 'BBA', name:'Management' }, }} className="text-gray-400 hover:text-white">BBA</Link></li>
+                <li><Link href={{ pathname: '/colleges', query: { course: 'BCA', name:'Computer Application' }, }} className="text-gray-400 hover:text-white">BCA</Link></li>
+                <li><Link href={{ pathname: '/colleges', query: { course: 'B.Pharma', name:'Pharmacy' }, }} className="text-gray-400 hover:text-white">B.Pharma</Link></li>
+                <li><Link href={{ pathname: '/colleges', query: { course: 'D.Pharma', name:'Pharmacy' }, }} className="text-gray-400 hover:text-white">D.Pharma</Link></li>
               </ul>
             </div>
             <div className="w-full sm:w-1/2 md:w-1/4 px-8 mb-8 sm:mb-0">

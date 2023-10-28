@@ -3,7 +3,7 @@ import { RxCaretUp, RxCaretDown, RxCaretRight } from 'react-icons/rx';
 import TypeFilter from './TypeFilter';
 import CourseFilter from './CourseFilter';
 
-export const MobileFilter = ({ onCollegeTypeSelect, initialType }) => {
+export const MobileFilter = ({ courses, types, onSelectType, onSelectCourse, selectedCourse, selectedType }) => {
   const [content, setContent] = useState('collegeType');
   const handleButtonClick = (newContent) => {
     setContent(newContent);
@@ -32,11 +32,13 @@ export const MobileFilter = ({ onCollegeTypeSelect, initialType }) => {
         {/* First  */}
         <div className='col-span-3 mt-4 px-4'>
           {content === 'collegeType' &&
-            <TypeFilter initialType={initialType} onCollegeTypeSelect={onCollegeTypeSelect} />
+            <TypeFilter types={types} onSelectType={onSelectType} selectedType={selectedType} />
           }
 
           {/* Second */}
-          {content === 'city' && <div>This is the second content</div>}
+          {content === 'city' &&
+            <CourseFilter courses={courses} onSelectCourse={onSelectCourse} selectedCourse={selectedCourse} />
+          }
 
         </div>
       </div>
@@ -47,11 +49,12 @@ export const MobileFilter = ({ onCollegeTypeSelect, initialType }) => {
 
 
 
-export const DesktopFilter = ({ onCollegeTypeSelect, initialType }) => {
+export const DesktopFilter = ({ courses, types, onSelectType, onSelectCourse, selectedCourse, selectedType }) => {
   const [collegeTypeOpen, setCollegeTypeOpen] = useState(true);
   const [courseTypeOpen, setCourseTypeOpen] = useState(true)
-  
-  const toggleAccordion2=()=>(
+
+
+  const toggleAccordion2 = () => (
     setCourseTypeOpen(!courseTypeOpen)
   )
   const toggleAccordion = () => {
@@ -67,19 +70,19 @@ export const DesktopFilter = ({ onCollegeTypeSelect, initialType }) => {
         </div>
         {collegeTypeOpen && (
           <div>
-            <TypeFilter initialType={initialType} onCollegeTypeSelect={onCollegeTypeSelect} />
+            <TypeFilter types={types} onSelectType={onSelectType} selectedType={selectedType} />
           </div>
         )}
       </div>
 
       <div className='bg-white p-4 rounded'>
         <div className='px-4 py-2 flex justify-between items-center cursor-pointer' onClick={toggleAccordion2}>
-          <h2 className='font-semibold text-gray-700'>College Type</h2>
+          <h2 className='font-semibold text-gray-700'>Courses</h2>
           <span className='text-xl'>{courseTypeOpen ? <RxCaretUp /> : <RxCaretDown />}</span>
         </div>
         {courseTypeOpen && (
           <div>
-            <CourseFilter />
+            <CourseFilter courses={courses} onSelectCourse={onSelectCourse} selectedCourse={selectedCourse} />
           </div>
         )}
       </div>
