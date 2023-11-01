@@ -2,3 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+.nav-text{
+    color: #fff;
+    border: none;
+    width: 50%;
+}
+.cool-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: skyblue;
+    transition: width .3s;
+}
+
+.cool-link:hover::after {
+    width: 100%;
+    transition: width .3s;
+}
+
+.white-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffff;
+    transition: width .3s;
+}
+
+.white-link:hover::after {
+    width: 100%;
+    transition: width .3s;
+}

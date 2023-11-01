@@ -61,31 +61,32 @@ const Navbar = ({ className }) => {
             {/* md menu */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4 text-gray-900">
+                <Link href="/" className="block py-2 pl-3 pr-4 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Notes</Link>
                 <Link href="/" className="block py-2 pl-3 pr-4 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Internship</Link>
-                <Link href="/courses" className="text-white md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">Courses</Link>
+                <Link href="/courses" className=" white-link text-white md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">Courses</Link>
                 <div className="inline-block relative group z-10">
-                  <button className="text-white md:border-0 md:hover:text-blue-500 rounded-md">Colleges</button>
+                  <button className="white-link text-white md:border-0 md:hover:text-blue-500 rounded-md">Colleges</button>
                   <div className="absolute hidden w-56 -right-2 group-hover:block">
-                    <div className="h-2 w-full flex justify-end px-2"><VscTriangleUp className="text-2xl -mt-2 text-white" /></div>
-                    <div className="bg-white p-2 shadow-md rounded-md">
-                      <div className="flex flex-col justify-center p-4 space-y-6">
+                    <div className="h-2 w-full flex justify-end px-2"><VscTriangleUp className="text-2xl -mt-2 text-slate-800" /></div>
+                    <div className=" bg-slate-800 text-white p-2 shadow-md ">
+                      <div className="flex flex-col justify-center rounded space-y-6">
                         <ul>
-                          <li><Link href={{ pathname: '/colleges', query: { name: 'Engineering' }, }}>Engineering</Link></li>
-                          <li><Link href={{ pathname: '/colleges', query: { name: 'Management' }, }}>Management</Link></li>
-                          <li><Link href={{ pathname: '/colleges', query: { name: 'Commerce' }, }}>Commerce</Link></li>
-                          <li><Link href={{ pathname: '/colleges', query: { name: 'Arts' }, }}>Arts</Link></li>
-                          <li><Link href={{ pathname: '/colleges', query: { name: 'Science' }, }}>Science</Link></li>
-                          <li><Link href={{ pathname: '/colleges', query: { name: 'Pharmacy' }, }}>Pharmacy</Link></li>
-                          <li><Link href={{ pathname: '/colleges', query: { name: 'Medical' }, }}>Medical</Link></li>
-                          <li><Link href={{ pathname: '/colleges', query: { name: 'Computer Application' }, }}>Computer Application</Link></li>
-                          <li><Link href={{ pathname: '/colleges', query: { name: 'Education' }, }}>Education</Link></li>
+                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Engineering' }, }}>Engineering</Link></li>
+                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Management' }, }}>Management</Link></li>
+                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Commerce' }, }}>Commerce</Link></li>
+                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Arts' }, }}>Arts</Link></li>
+                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Science' }, }}>Science</Link></li>
+                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Pharmacy' }, }}>Pharmacy</Link></li>
+                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Medical' }, }}>Medical</Link></li>
+                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Computer Application' }, }}>Computer Application</Link></li>
+                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Education' }, }}>Education</Link></li>
                         </ul>
                       </div>
                     </div>
                   </div>
                 </div>
-                <Link href="/about" className="text-white md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">About</Link>
-                <Link href="/contact" className="text-white md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">Contact</Link>
+                <Link href="/about" className="text-white white-link md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">About</Link>
+                <Link href="/contact" className="text-white white-link md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">Contact</Link>
               </div>
             </div>
 
@@ -130,20 +131,20 @@ const Navbar = ({ className }) => {
               {isDropdownOpen && (
                 <div className="absolute w-56">
                   <div className="h-2 w-full flex justify-start px-2">
-                    <VscTriangleUp className="text-2xl -mt-2 text-white" />
+                    <VscTriangleUp className="text-2xl -mt-2 text-slate-800" />
                   </div>
-                  <div className="bg-white p-2 shadow-md rounded-md">
+                  <div className="bg-slate-800 p-2 shadow-md rounded-md">
                     <div className="flex flex-col justify-center p-4 space-y-6">
                       <ul>
-                        <li><Link href={{ pathname: '/colleges', query: { name: 'Engineering' }, }} onClick={toggleNavbar}>Engineering</Link></li>
-                        <li><Link href={{ pathname: '/colleges', query: { name: 'Management' }, }} onClick={toggleNavbar}>Management</Link></li>
-                        <li><Link href={{ pathname: '/colleges', query: { name: 'Commerce' }, }} onClick={toggleNavbar}>Commerce</Link></li>
-                        <li><Link href={{ pathname: '/colleges', query: { name: 'Arts' }, }} onClick={toggleNavbar}>Arts</Link></li>
-                        <li><Link href={{ pathname: '/colleges', query: { name: 'Science' }, }} onClick={toggleNavbar}>Science</Link></li>
-                        <li><Link href={{ pathname: '/colleges', query: { name: 'Pharmacy' }, }} onClick={toggleNavbar}>Pharmacy</Link></li>
-                        <li><Link href={{ pathname: '/colleges', query: { name: 'Medical' }, }} onClick={toggleNavbar}>Medical</Link></li>
-                        <li><Link href={{ pathname: '/colleges', query: { name: 'Computer Application' }, }} onClick={toggleNavbar}>Computer Application</Link></li>
-                        <li><Link href={{ pathname: '/colleges', query: { name: 'Education' }, }} onClick={toggleNavbar}>Education</Link></li>
+                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Engineering' }, }} onClick={toggleNavbar}>Engineering</Link></li>
+                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Management' }, }} onClick={toggleNavbar}>Management</Link></li>
+                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Commerce' }, }} onClick={toggleNavbar}>Commerce</Link></li>
+                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Arts' }, }} onClick={toggleNavbar}>Arts</Link></li>
+                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Science' }, }} onClick={toggleNavbar}>Science</Link></li>
+                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Pharmacy' }, }} onClick={toggleNavbar}>Pharmacy</Link></li>
+                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Medical' }, }} onClick={toggleNavbar}>Medical</Link></li>
+                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Computer Application' }, }} onClick={toggleNavbar}>Computer Application</Link></li>
+                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Education' }, }} onClick={toggleNavbar}>Education</Link></li>
                       </ul>
                     </div>
                   </div>

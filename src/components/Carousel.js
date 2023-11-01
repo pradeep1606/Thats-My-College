@@ -13,13 +13,13 @@ const Carousel = () => {
 
   const slides = [
     {
-      url: '/images/1.jpeg',
+      url: '/images/download.webp',
     },
     {
-      url: '/images/2.jpeg',
+      url: '/images/download2.webp',
     },
     {
-      url: '/images/3.jpeg',
+      url: '/images/download3.webp',
     },
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -49,7 +49,7 @@ const Carousel = () => {
       <div className='md:h-[500px] h-[350px] w-full m-auto relative group z-[1]'>
         <div
           style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${slides[currentIndex].url})`,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(${slides[currentIndex].url})`,
           }}
           className='w-full h-full bg-center bg-cover duration-500'
         ></div>
