@@ -17,9 +17,9 @@ const CoursesHome = () => {
                             <div className='col-span-2 p-2 text-[#262626] font-bold font-serif text-lg'>Engineering</div>
                         </div>
                         <div className='row-span-2 divide-y space-y-3 flex flex-col pt-4 text-gray-600 font-sans'>
-                            <Link href='#'>BE/B.Tech</Link>
-                            <Link href='#'>ME/M.Tech</Link>
-                            <Link href='#'>Diploma/Polytechnic</Link>
+                            <Link href={{ pathname: '/colleges', query: { course: 'B.Tech', name: 'Engineering' }, }} >BE/B.Tech</Link>
+                            <Link href={{ pathname: '/colleges', query: { course: 'M.Tech', name: 'Engineering' }, }} >ME/M.Tech</Link>
+                            <Link href={{ pathname: '/colleges', query: { course: 'Diploma', name: 'Engineering' }, }} >Diploma (Polytechnic)</Link>
                         </div>
                     </div>
 
@@ -32,9 +32,9 @@ const CoursesHome = () => {
                             <div className='col-span-2 p-2 text-[#262626] font-bold font-serif text-lg'>Pharmacy</div>
                         </div>
                         <div className='row-span-2 divide-y space-y-3 flex flex-col pt-4 text-gray-600 font-sans'>
-                            <Link href='#'>B.Pharma</Link>
-                            <Link href='#'>D.Pharma</Link>
-                            <Link href='#'>M.Pharma</Link>
+                            <Link href={{ pathname: '/colleges', query: { course: 'B.Pharma', name:'Pharmacy' }, }}>B.Pharma</Link>
+                            <Link href={{ pathname: '/colleges', query: { course: 'D.Pharma', name:'Pharmacy' }, }}>D.Pharma</Link>
+                            <Link href={{ pathname: '/colleges', query: { course: 'M.Pharma', name:'Pharmacy' }, }}>M.Pharma</Link>
                         </div>
                     </div>
 
@@ -47,9 +47,9 @@ const CoursesHome = () => {
                             <div className='col-span-2 p-2 text-[#262626] font-bold font-serif text-lg'>Management</div>
                         </div>
                         <div className='row-span-2 divide-y space-y-3 flex flex-col pt-4 text-gray-600 font-sans'>
-                            <Link href='#'>BBA</Link>
-                            <Link href='#'>MBA</Link>
-                            <Link href='#'>Executive MBA</Link>
+                            <Link href={{ pathname: '/colleges', query: { course: 'BBA', name:'Management' }, }}>BBA</Link>
+                            <Link href={{ pathname: '/colleges', query: { course: 'MBA', name:'Management' }, }}>MBA</Link>
+                            <Link href={{ pathname: '/colleges', query: { course: 'Executive MBA', name:'Management' }, }}>Executive MBA</Link>
                         </div>
                     </div>
 
@@ -62,9 +62,9 @@ const CoursesHome = () => {
                             <div className='col-span-2 p-2 text-[#262626] font-bold font-serif text-lg'>Arts</div>
                         </div>
                         <div className='row-span-2 divide-y space-y-3 flex flex-col pt-4 text-gray-600 font-sans'>
-                            <Link href='#'>BA</Link>
-                            <Link href='#'>MA</Link>
-                            <Link href='#'>BFA</Link>
+                            <Link href={{ pathname: '/colleges', query: { course: 'BA', name:'Arts' }, }}>BA</Link>
+                            <Link href={{ pathname: '/colleges', query: { course: 'MA', name:'Arts' }, }}>MA</Link>
+                            <Link href={{ pathname: '/colleges', query: { course: 'BFA', name:'Arts' }, }}>BFA</Link>
                         </div>
                     </div>
                 </div>

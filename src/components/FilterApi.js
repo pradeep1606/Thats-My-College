@@ -32,6 +32,10 @@ export const collegeStream = [
         coursesData: ['B.Ed','M.Ed','B.P.Ed','M.P.Ed']
     },
     {
+        name: "law",
+        coursesData: ['LLB','LLM','BA LLB']
+    },
+    {
         name: "computer application",
         coursesData: ['BCA', 'MCA']
     }
