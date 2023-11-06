@@ -3,13 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useRef, useEffect } from 'react';
-// import { FaRegUserCircle } from 'react-icons/fa';
-import Login from '@/components/Login';
-import Signup from '@/components/Signup';
+import { FaRegUserCircle } from 'react-icons/fa';
 import { GiCheckMark } from "react-icons/gi";
 import { VscTriangleUp } from "react-icons/vsc";
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = ({ className }) => {
+  const { status, data } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null)
@@ -35,18 +35,6 @@ const Navbar = ({ className }) => {
     setIsOpen(!isOpen);
   };
 
-  const [showLoginPopup, setShowLoginPopup] = useState(false);
-  const [showSignupPopup, setShowSignupPopup] = useState(false);
-
-  const toggleLoginPopup = () => {
-    setShowLoginPopup(!showLoginPopup);
-    setShowSignupPopup(false);
-  };
-
-  const toggleSignupPopup = () => {
-    setShowSignupPopup(!showSignupPopup);
-    setShowLoginPopup(false);
-  };
   return (
     <>
       <nav className={`${className} md:border-gray-200 shadow-lg bg-gray-900`}>
@@ -87,6 +75,37 @@ const Navbar = ({ className }) => {
                 </div>
                 <Link href="/about" className="text-white white-link md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">About</Link>
                 <Link href="/contact" className="text-white white-link md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">Contact</Link>
+                <div className="inline-block relative group z-10">
+                  <button className="text-white md:border-0 md:hover:text-blue-500 text-xl rounded-md h-full">{status === 'authenticated' ? (<Image src={data?.user?.image} width={30} height={24} alt="User" className="rounded-full" />) : (<FaRegUserCircle className="-my-1 text-2xl" />)}</button>
+                  <div className="absolute hidden w-56 -right-2 group-hover:block">
+                    <div className="h-2 w-full flex justify-end px-2"><VscTriangleUp className="text-2xl -mt-2 text-white" /></div>
+                    <div className="bg-white p-2 shadow-md rounded-md">
+                      <div className="flex flex-col justify-center p-4 space-y-6">
+                        {status === 'authenticated' ? (
+                          <div>
+                            <Link href='/profile' className="block bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 py-2 px-4 text-center text-white rounded text-xl md:text-base font-sans mt-2">
+                              Profile
+                            </Link>
+                            <button onClick={() => signOut()} className="block bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 py-2 px-4 text-center text-white rounded text-xl md:text-base font-sans mt-2">
+                              Log Out
+                            </button>
+                          </div>
+                        ) : (
+                          <Link href='/profile' className="block bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 py-2 px-4 text-center text-white rounded text-xl md:text-base font-sans mt-2">
+                            Login Your Account
+                          </Link>
+                        )}
+
+                        <div className="">
+                          <span className="font-semibold">By creating an account -</span>
+                          <span className="flex"><GiCheckMark className="text-green-700" /><p>Get free counselling</p></span>
+                          <span className="flex"><GiCheckMark className="text-green-700" /><p>Get Internship offer</p></span>
+                          <span className="flex"><GiCheckMark className="text-green-700" /><p>Free expert Advice</p></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -154,18 +173,16 @@ const Navbar = ({ className }) => {
             <Link href="/about" onClick={toggleNavbar} className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</Link>
             <Link href="/contact" onClick={toggleNavbar} className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</Link>
             <div className="flex space-x-6">
+              {status === 'authenticated' ? (
+                <Link href="/profile" onClick={() => { toggleNavbar(); }} className="block py-2 pl-3 pr-4 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Profile</Link>
+              ):( 
+                <Link href="/profile" onClick={() => { toggleNavbar(); }} className="block py-2 pl-3 pr-4 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Login</Link>
+              )}
               <Link href="/" onClick={toggleNavbar} className="block py-2 pl-3 pr-4 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Internship</Link>
             </div>
           </div>
         </div>
-
       </nav>
-      {showLoginPopup && (
-        <Login onClose={toggleLoginPopup} onToggleSignup={toggleSignupPopup} />
-      )}
-      {showSignupPopup && (
-        <Signup onClose={toggleSignupPopup} onToggleLogin={toggleLoginPopup} />
-      )}
     </>
   );
 };

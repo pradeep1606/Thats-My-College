@@ -9,6 +9,7 @@ const nextConfig = {
             pathname: '/dcgre5gxz/image/upload/**',
           },
         ],
+        domains: ["lh3.googleusercontent.com"],
       },
       env:{
         API_URL:process.env.API_URL
