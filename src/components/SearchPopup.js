@@ -40,7 +40,7 @@ const SearchPopup = ({ onClose, isOpen }) => {
   }, [isOpen]);
 
   return (
-    <div className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-10 ${isOpen ? '' : 'hidden'}`}>
+    <div className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-20 ${isOpen ? '' : 'hidden'}`}>
       <div className="bg-white p-8 shadow-md w-full absolute top-0">
         <button className="absolute md:top-5 top-6 md:right-4 right-0 mt-2 mr-2 text-gray-500" onClick={onClose}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

@@ -46,7 +46,7 @@ const Carousel = () => {
 
   return (
     <>
-      <div className='md:h-[500px] h-[350px] w-full m-auto relative group z-[1]'>
+      <div className='md:h-[500px] h-[350px] w-full m-auto relative group z-0'>
         <div
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(${slides[currentIndex].url})`,
@@ -70,11 +70,6 @@ const Carousel = () => {
             <Link href='' className='md:w-2/12 w-[25%] h-full bg-blue-700 flex justify-center items-center text-white rounded-r-lg'>Search</Link>
           </div>
 
-          {/* Search Popup */}
-          {searchBar && (
-            <SearchPopup onClose={toggleSearch} isOpen={searchBar} />
-          )}
-
           <div className='mt-8'>
             <button className='bg-blue-700 text-white px-10 py-[0.4rem] rounded-md'>Admission 2023</button>
           </div>
@@ -89,6 +84,11 @@ const Carousel = () => {
           ))}
         </div>
       </div>
+
+      {/* Search Popup */}
+      {searchBar && (
+        <SearchPopup onClose={toggleSearch} isOpen={searchBar} />
+      )}
     </>
   );
 };

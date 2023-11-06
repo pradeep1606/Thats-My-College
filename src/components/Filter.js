@@ -22,8 +22,8 @@ export const MobileFilter = ({ courses, types, onSelectType, onSelectCourse, sel
             College Type <RxCaretRight />
           </button>
           <button
-            className={`px-2 py-4 flex items-center justify-between w-full ${content === 'city' ? 'text-blue-600' : ''}`}
-            onClick={() => handleButtonClick('city')}
+            className={`px-2 py-4 flex items-center justify-between w-full ${content === 'course' ? 'text-blue-600' : ''}`}
+            onClick={() => handleButtonClick('course')}
           >
             City <RxCaretRight />
           </button>
@@ -36,7 +36,7 @@ export const MobileFilter = ({ courses, types, onSelectType, onSelectCourse, sel
           }
 
           {/* Second */}
-          {content === 'city' &&
+          {content === 'course' &&
             <CourseFilter courses={courses} onSelectCourse={onSelectCourse} selectedCourse={selectedCourse} />
           }
 
