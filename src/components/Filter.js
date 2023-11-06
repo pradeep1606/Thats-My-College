@@ -25,7 +25,7 @@ export const MobileFilter = ({ courses, types, onSelectType, onSelectCourse, sel
             className={`px-2 py-4 flex items-center justify-between w-full ${content === 'course' ? 'text-blue-600' : ''}`}
             onClick={() => handleButtonClick('course')}
           >
-            City <RxCaretRight />
+            courses <RxCaretRight />
           </button>
         </div>
 

@@ -6,7 +6,7 @@ const TypeFilter = ({ types, onSelectType, selectedType }) => {
         return (
           <button
             key={index}
-            className={`${selectedType.toLowerCase() === currElem.toLowerCase() ? 'underline underline-offset-4 text-[#2975f0]' : ''}`} 
+            className={`${selectedType.toLowerCase() === currElem.toLowerCase() ? 'underline underline-offset-4 text-[#2975f0]' : 'coool-link'}`} 
             onClick={() => onSelectType(currElem)}
           >
             {truncatedElem.charAt(0).toUpperCase() + truncatedElem.slice(1)}

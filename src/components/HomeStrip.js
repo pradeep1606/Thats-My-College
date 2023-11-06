@@ -35,8 +35,8 @@ const HomeStrip = () => {
     return (
         <>
             {/* mobile view */}
-            <div className="h-40 w-full flex justify-center items-center md:hidden" style={{ background: 'linear-gradient(to right, #f2870d, #3f53d9f0)' }}>
-                <div className="text-gray-200 relative">
+            <div className="h-40 w-full flex justify-center items-center md:hidden" style={{ background: 'linear-gradient(to right, #fff, #fff)' }}>
+                <div className="text-black relative">
                     <div className="flex items-center justify-center">
                         <div className="mr-2">
                             <Image src={items[activeIndex].src} alt="" width={50} height={50} />
@@ -49,12 +49,12 @@ const HomeStrip = () => {
                         </div>
                     </div>
                     <div className="absolute left-0 flex items-center pl-2">
-                        <button className="bg-transparent text-white text-xl p-2" onClick={handlePrev}>
+                        <button className="bg-transparent text-black text-xl p-2" onClick={handlePrev}>
                             &lt;
                         </button>
                     </div>
                     <div className="absolute right-0 flex items-center pr-2">
-                        <button className="bg-transparent text-white text-xl p-2" onClick={handleNext}>
+                        <button className="bg-transparent text-black text-xl p-2" onClick={handleNext}>
                             &gt;
                         </button>
                     </div>
@@ -62,8 +62,8 @@ const HomeStrip = () => {
             </div>
 
             {/* desktop view */}
-            <div className="h-40 w-full hidden md:block" style={{ background: 'linear-gradient(to right, #f2870d, #3f53d9f0)' }}>
-                <div className="grid grid-cols-3 gap-32 text-gray-200 py-12">
+            <div className="h-40 w-full  hidden md:block" style={{ background: 'linear-gradient(to right, #ffff, #ffff)' }}>
+                <div className="grid grid-cols-3 w-11/12  ml-16 border-2 border-gray-300 shadow-lg shadow-indigo-500/40  bg-white gap-32 text-black py-12">
                     {items.map((item, index) => (
                         <div className="flex items-center justify-center" key={index}>
                             <div className="mr-2">
