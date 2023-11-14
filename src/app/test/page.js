@@ -1,42 +1,22 @@
 'use client'
-import Link from "next/link";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { LoginSlice } from "@/store/slices/LoginSlice";
 
 const Test = () => {
-  const coursesData = [
-    {
-      type: 'Engineering',
-      course: ['Diploma', 'B.Tech'],
-    },
-    {
-      type: 'Commerce',
-      course: ['B.com', 'M.com'],
-    },
-    {
-      type: 'Management',
-      course: ['MBA', 'BBA'],
-    },
-  ];
+  const dispatch = useDispatch();
 
-  const [selectedType, setSelectedType] = useState("--Type--");
+  const { isLogin } = useSelector((state) => state.loginStatus);
+
+  const handleClick = () => {
+    // Dispatch the setIsLogin action from LoginSlice.actions
+    // dispatch(LoginSlice.actions.setIsLogin(!isLogin));
+  }
+  // console.log(isLogin);
 
   return (
     <div>
-      <p className="text-xl">Select College Type and Course</p>
-      <ul>
-        {coursesData.map((ctr, index) => (
-          <button key={index} onClick={() => setSelectedType(ctr.type)}>
-            {ctr.type}
-          </button>
-        ))}
-      </ul>
-      <ul>
-        {coursesData
-          .find((ctr) => ctr.type === selectedType)
-          ?.course.map((course, index) => (
-            <li key={index}>{course}</li>
-          ))}
-      </ul>
+      This is Test 
+      <button onClick={handleClick}>click me</button>
     </div>
   );
 };

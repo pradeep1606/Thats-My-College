@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { FaUser, FaEnvelope, FaGraduationCap } from 'react-icons/fa';
 import { MdLocationPin } from 'react-icons/md';
 import { HiPhone } from 'react-icons/hi';
-import Link from 'next/link';
 import { toast } from 'react-toastify';
 import { RotatingLines } from 'react-loader-spinner';
 import { sendApplyForm } from '@/lib/api';

@@ -51,8 +51,6 @@ const Contact = () => {
     }
   };
 
-
-  // Simple email validation using regular expression
   const isValidEmail = (email) => {
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return regex.test(email);
@@ -61,6 +59,8 @@ const Contact = () => {
   return (
     <>
       <div className="container mx-auto my-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        {/* Contact Form */}
         <div className="lg:col-span-1 bg-white py-6 px-8 rounded-md">
           <h1 className="text-2xl font-semibold mb-6 flex text-blue-500"><MdOutlineMarkEmailUnread className='mt-1' />&nbsp; Send A Mail For Any Query</h1>
           <form className="w-full max-w-lg" onSubmit={handleSubmit}>
@@ -135,7 +135,6 @@ const Contact = () => {
           </form>
         </div>
 
-
         {/* Address and details */}
         <div className="lg:col-span-1 mt-8 lg:mt-0 ">
           <div className='bg-white py-6 px-8 rounded-md'>
@@ -147,7 +146,7 @@ const Contact = () => {
               <strong><HiPhone className='text-xl text-blue-500 mr-3' /></strong> +91 7389796980
             </p>
             <p className="text-gray-700 flex">
-              <strong><FaEnvelope className='text-xl text-blue-500 mr-3' /></strong> thatsmycollage@gmail.com
+              <strong><FaEnvelope className='text-xl text-blue-500 mr-3' /></strong> thatsmycollege@outlook.com
             </p>
 
             <h2 className="text-xl font-semibold mt-8 mb-4 text-slate-700">Follow us on </h2>
