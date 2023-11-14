@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="container mx-auto divide-y divide-slate-500">
           <div className="flex flex-wrap pb-4">
 
-            <div className="w-full sm:w-1/2 md:w-1/4 pl-6 mb-8 sm:mb-0">
+            <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 pl-6 mb-8 sm:mb-0">
               <span><Image src="/logo/tmc_lightblue.png" className="-mb-4 -ml-4" width={120} height={80} alt="Flowbite Logo" /></span>
               <span>
                 <h1 className="text-3xl text-blue-500 font-semibold shadow-blue-600">ThatsMyCollege</h1>

@@ -1,8 +1,19 @@
 import Image from 'next/image';
 import { signOut } from 'next-auth/react';
-import Link from 'next/link';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
+import { setIsLogin } from "@/store/slices/LoginSlice";
+import { useDispatch } from "react-redux";
 
 const UserProfile = ({ sessionData }) => {
+    const router = useRouter();
+    const dispatch = useDispatch();
+    const handleLogout=async()=>{
+        await signOut();
+        toast(<div> Log Out successfully</div>);
+        dispatch(setIsLogin(false));
+        router.push('/profile')
+    }
     return (
         <div className='bg-yellow-100 p-10 rounded-lg space-y-14 shadow-md'>
             <div className="flex flex-col items-center space-x-4">
@@ -13,7 +24,7 @@ const UserProfile = ({ sessionData }) => {
                     <h2 className="text-xl font-semibold">{sessionData?.user?.name}</h2>
                     <p className="text-gray-500">{sessionData?.user?.email}</p>
                 </div>
-                <Link href="" className='text-blue-800 text-xl font-semibold' onClick={() => signOut()}>Log Out</Link>
+                <button className='text-blue-800 text-xl font-semibold' onClick={handleLogout}>Log Out</button>
             </div>
         </div>
     );
