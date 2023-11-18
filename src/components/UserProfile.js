@@ -9,7 +9,7 @@ const UserProfile = ({ sessionData }) => {
             <div className='back-img'>
             <Image src='/images/back-img.jpeg' width={1400} height={100} alt="" className='backimage' />
             </div>
-                <div className=' profile flex items-center z-10 justify-center'>
+                <div className=' profile bg-transparent flex items-center z-10 justify-center'>
                 <div className=" profile-img w-40  h-40">
                     <Image src={sessionData?.user?.image || '/logo/art.png'} width={120} height={120} alt="User" className="rounded-md user-img " />
                 </div>
