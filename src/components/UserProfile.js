@@ -1,30 +1,152 @@
 import Image from 'next/image';
 import { signOut } from 'next-auth/react';
-import { toast } from 'react-toastify';
-import { useRouter } from 'next/navigation';
-import { setIsLogin } from "@/store/slices/LoginSlice";
-import { useDispatch } from "react-redux";
+import Link from 'next/link';
 
 const UserProfile = ({ sessionData }) => {
-    const router = useRouter();
-    const dispatch = useDispatch();
-    const handleLogout=async()=>{
-        await signOut();
-        toast(<div> Log Out successfully</div>);
-        dispatch(setIsLogin(false));
-        router.push('/profile')
-    }
     return (
-        <div className='bg-yellow-100 p-10 rounded-lg space-y-14 shadow-md'>
-            <div className="flex flex-col items-center space-x-4">
-                <div className="w-16 h-16">
-                    <Image src={sessionData?.user?.image || '/logo/art.png'} width={64} height={64} alt="User" className="rounded-full" />
+        <div className=' back  shadow-md'>
+            <div className=" main-dets">
+            <div className='back-img'>
+            <Image src='/images/back-img.jpeg' width={1400} height={100} alt="" className='backimage' />
+            </div>
+                <div className=' profile bg-transparent flex items-center z-10 justify-center'>
+                <div className=" profile-img w-40  h-40">
+                    <Image src={sessionData?.user?.image || '/logo/art.png'} width={120} height={120} alt="User" className="rounded-md user-img " />
                 </div>
-                <div>
-                    <h2 className="text-xl font-semibold">{sessionData?.user?.name}</h2>
-                    <p className="text-gray-500">{sessionData?.user?.email}</p>
+                <div className=' user flex flex-col'>
+                    <h2 className="text-[35px] text-white font-semibold">{sessionData?.user?.name}</h2>
+                    <p className="text-white text-xl">{sessionData?.user?.email}</p>
+                    <p className="text-white text-xl">phone number</p>
                 </div>
-                <button className='text-blue-800 text-xl font-semibold' onClick={handleLogout}>Log Out</button>
+                </div>
+                <div className='log-btn z-10'>
+                    <Link href="" className=' btn block bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 py-2 px-4 text-center text-white rounded text-xl md:text-base font-sans mt-2'>sitting</Link>
+                    <Link href="" className=' btn block bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 py-2 px-4 text-center text-white rounded text-xl md:text-base font-sans mt-2' onClick={() => signOut()}>Log Out</Link>
+                    </div>
+            </div>
+            <div className='status'>
+                <h3>status</h3>
+            </div>
+            <div className='basic'>
+                <div className='section'>
+                    <h2>colleges you applied</h2>
+                <div className='all-clg'>
+                    <div className='scroller'>
+                    <div className='clg'>
+                        <div className='clg-img'>
+                        <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='card-img' />
+                        </div>
+                        <div className='clg-name'>
+                            <h1>college name</h1>
+                        </div>
+                    </div>
+                    <div className='clg'>
+                        <div className='clg-img'>
+                        <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='card-img' />
+                        </div>
+                        <div className='clg-name'>
+                            <h1>college name</h1>
+                        </div>
+                    </div>
+                    <div className='clg'>
+                        <div className='clg-img'>
+                        <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='card-img' />
+                        </div>
+                        <div className='clg-name'>
+                            <h1>college name</h1>
+                        </div>
+                    </div>
+                    <div className='clg'>
+                        <div className='clg-img'>
+                        <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='card-img' />
+                        </div>
+                        <div className='clg-name'>
+                            <h1>college name</h1>
+                        </div>
+                    </div>
+                    <div className='clg'>
+                        <div className='clg-img'>
+                        <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='card-img' />
+                        </div>
+                        <div className='clg-name'>
+                            <h1>college name</h1>
+                        </div>
+                    </div>
+                    <div className='clg'>
+                        <div className='clg-img'>
+                        <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='card-img' />
+                        </div>
+                        <div className='clg-name'>
+                            <h1>college name</h1>
+                        </div>
+                    </div>
+                    
+                    </div>
+            </div>
+                </div>
+                <div className='section'>
+                    <h2>internship you applied</h2>
+                <div className='all-clg'>
+                    <div className='scroller'>
+                    <div className='clg'>
+                        <div className='clg-img'>
+                        <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='card-img' />
+                        </div>
+                        <div className='clg-name'>
+                            <h1>internship name</h1>
+                        </div>
+                    </div>
+                    <div className='clg'>
+                        <div className='clg-img'>
+                        <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='card-img' />
+                        </div>
+                        <div className='clg-name'>
+                            <h1>internship name</h1>
+                        </div>
+                    </div>
+                    <div className='clg'>
+                        <div className='clg-img'>
+                        <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='card-img' />
+                        </div>
+                        <div className='clg-name'>
+                            <h1>internship name</h1>
+                        </div>
+                    </div>
+                    <div className='clg'>
+                        <div className='clg-img'>
+                        <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='card-img' />
+                        </div>
+                        <div className='clg-name'>
+                            <h1>internship name</h1>
+                        </div>
+                    </div>
+                    <div className='clg'>
+                        <div className='clg-img'>
+                        <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='card-img' />
+                        </div>
+                        <div className='clg-name'>
+                            <h1>internship name</h1>
+                        </div>
+                    </div>
+                    <div className='clg'>
+                        <div className='clg-img'>
+                        <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='card-img' />
+                        </div>
+                        <div className='clg-name'>
+                            <h1>internship name</h1>
+                        </div>
+                    </div>
+                    <div className='clg'>
+                        <div className='clg-img'>
+                        <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='card-img' />
+                        </div>
+                        <div className='clg-name'>
+                            <h1>internship name</h1>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+                </div>
             </div>
         </div>
     );

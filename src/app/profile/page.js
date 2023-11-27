@@ -54,7 +54,7 @@ const Page = () => {
 
   return (
     <>
-      <div style={{ background: 'linear-gradient(to bottom, #3498db, #86c5f7)' }} className='flex flex-col justify-center items-center py-10 md:px-14 md:py-14'>
+      <div style={{ background: 'linear-gradient(to bottom, #86c5f7, #E6E6E6)' }} className='flex flex-col justify-center items-center py-10 md:px-14 md:py-14'>
         {status !== 'authenticated' ? (
           <SignInButton />
         ) : isLogin ? (
