@@ -8,12 +8,12 @@ const HomeStrip = () => {
         {
             src: '/logo/college.png',
             value: '5,000+',
-            label: 'College Listed'
+            label: 'Colleges Listed'
         },
         {
             src: '/logo/expert.png',
-            value: '40+',
-            label: 'Expert Available Every Time'
+            value: '20+',
+            label: 'Experts Available Every Time'
         },
         {
             src: '/logo/admission.png',
@@ -35,9 +35,10 @@ const HomeStrip = () => {
     return (
         <>
             {/* mobile view */}
+            <div className='h-2 w-full bg-gray-200 md:hidden'></div>
             <div className="h-40 w-full flex justify-center items-center md:hidden" style={{ background: 'linear-gradient(to right, #fff, #fff)' }}>
                 <div className="text-black relative">
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center ">
                         <div className="mr-2">
                             <Image src={items[activeIndex].src} alt="" width={50} height={50} />
                         </div>

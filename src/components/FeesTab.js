@@ -30,7 +30,7 @@ const FeesTab = ({ college }) => {
                 courses.map((course, index) => (
                   <tr className='' key={index}>
                     <td className="border px-4 py-2">{course.courseName}</td>
-                    <td className="border px-4 py-2">&#8377;{(course.fee).toLocaleString('en-US')}</td>
+                    <td className="border px-4 py-2">&#8377;{(course.fee).toLocaleString('en-US')} /year</td>
                     <td className="border px-4 py-2">{course.eligibility} or equivalent qualification</td>
                   </tr>
                 ))
@@ -52,8 +52,8 @@ const FeesTab = ({ college }) => {
               <h2 className='text-lg font-semibold text-gray-800 pb-1'>{course.courseName}</h2>
               <div className='space-y-1'>
                 <div className='flex justify-between'>
-                  <p className=''>Fees :<span className='font-semibold text-blue-950 text-sm'> &#8377; {(course.fee).toLocaleString('en-us')}</span></p>
-                  <p className=''>Duration :<span className='font-semibold text-blue-950 text-sm'> {course.duration} Year</span></p>
+                  <p className=''>Fees :<span className='font-semibold text-blue-950 text-sm'> &#8377;{(course.fee).toLocaleString('en-us')}/year</span></p>
+                  <p className=''>Duration :<span className='font-semibold text-blue-950 text-sm'> {course.duration}Year</span></p>
                   <p className=''>Study Mode :<span className='font-semibold text-blue-950 text-sm'> Regular</span></p>
                 </div>
                 <p className=''>Specialization : <span className='font-semibold text-blue-950 text-sm'>

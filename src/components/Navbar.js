@@ -101,7 +101,7 @@ const Navbar = ({ className }) => {
                   <button className="text-white md:border-0 md:hover:text-blue-500 text-xl rounded-md h-full">{status === 'authenticated' && isLogin ? (<Image src={data?.user?.image} width={30} height={24} alt="User" className="rounded-full" />) : (<FaRegUserCircle className="-my-1 text-2xl" />)}</button>
                   <div className="absolute hidden w-56 -right-2 group-hover:block">
                     <div className="h-2 w-full flex justify-end px-2"><VscTriangleUp className="text-2xl -mt-2 text-white" /></div>
-                    <div className="bg-white p-2 shadow-md rounded-md">
+                    <div className="bg-white p-2 shadow-md rounded-md z-10">
                       <div className="flex flex-col justify-center p-4 space-y-6">
                         {status === 'authenticated' && isLogin ? (
                           <div>

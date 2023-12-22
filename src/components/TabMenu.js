@@ -16,7 +16,7 @@ const TabMenu = (college) => {
 
     return (
         <div className="">
-            <div className="flex flex-nowrap bg-white md:px-20 shadow-lg space-x-10 md:py-3 font-[helvetica] text-gray-900 overflow-x-auto scrollbar-hide">
+            <div className="flex flex-nowrap bg-white md:px-20 px-2 shadow-lg space-x-10 md:py-3 font-[helvetica] text-gray-900 overflow-x-auto scrollbar-hide">
                 <button
                     className={`${activeTab === 'tab1'
                         ? 'border-b-2 border-blue-500 text-blue-500'

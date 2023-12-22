@@ -32,7 +32,7 @@ const LoginForm = ({ formData, setFormData }) => {
             });
 
             // Log the response or handle it as needed
-            toast(<div>✅ Successfully created you account</div>);
+            toast(<div>✅ Successfully created your account</div>);
             // console.log('API Response:', response.data.message);
             dispatch(setIsLogin(true));
             // console.log('Form data:', formData);

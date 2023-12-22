@@ -8,6 +8,7 @@ import UserProfile from "@/components/UserProfile";
 import LoginForm from '@/components/LoginForm';
 import { setIsLogin } from '@/store/slices/LoginSlice';
 import axios from 'axios';
+import UserProfileSkeleton from '@/skeleton/UserProfileSkeleton';
 
 const Page = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Page = () => {
       const response = await axios.get(`${Api}/api/users/email/${email}`);
       return response.data.status;
     } catch (error) {
-      // console.error('Error checking email existence:', error);
+      console.error('Error checking email existence:', error);
       return false;
     }
   };
@@ -55,7 +56,9 @@ const Page = () => {
   return (
     <>
       <div style={{ background: 'linear-gradient(to bottom, #86c5f7, #E6E6E6)' }} className='flex flex-col justify-center items-center py-10 md:px-14 md:py-14'>
-        {status !== 'authenticated' ? (
+          {status === 'loading' ? (
+          <UserProfileSkeleton /> 
+        ) : status === 'unauthenticated' ? (
           <SignInButton />
         ) : isLogin ? (
           <UserProfile sessionData={session} />
