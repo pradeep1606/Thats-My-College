@@ -55,7 +55,7 @@ const Carousel = () => {
         ></div>
         <div className='absolute inset-0 flex flex-col items-center justify-center'>
           {/* Search Bar */}
-          <div className='flex w-8/12 cursor-pointer'>
+          <div className='flex w-10/12 md:w-8/12 cursor-pointer'>
             <div className='relative flex items-center w-10/12'>
               <input
                 type='text'
@@ -71,7 +71,7 @@ const Carousel = () => {
           </div>
 
           <div className='mt-8'>
-            <button className='bg-blue-700 text-white px-10 py-[0.4rem] rounded-md'>Admission 2023</button>
+            <button className='bg-blue-700 text-white px-10 py-[0.4rem] rounded-md'>Admission 2024</button>
           </div>
         </div>
         <div className='flex top-4 justify-center py-2'>

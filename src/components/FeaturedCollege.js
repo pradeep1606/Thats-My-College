@@ -87,12 +87,12 @@ const FeaturedCollege = () => {
                         <div key={index} className="grid md:grid-cols-3 lg:grid-cols-3 sm:grid-cols-2 md:px-12 px-4 gap-4 bg-white">
                             {chunk.map(clg => (
                                 <div className="rounded-b-md" key={clg.collegeId} >
-                                    <div className="h-48 mx-[0.03rem] sm:h-56 bg-cover text-white px-4 rounded-t-md" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${clg.college.image[0]})`, display: 'flex', alignItems: 'flex-end' }}>
-                                        <Link href={`/colleges/${clg.collegeId}`}>
+                                    <Link href={`/colleges/${clg.collegeId}`} className="h-48 mx-[0.03rem] sm:h-56 bg-cover text-white px-4 rounded-t-md" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${clg.college.image[0]})`, display: 'flex', alignItems: 'flex-end' }}>
+                                        <div>
                                             <span className="font-semibold text-lg">{clg.college.name}</span>
                                             <p className="text-sm font-normal px-1">{clg.college.address}</p>
-                                        </Link>
-                                    </div>
+                                        </div>
+                                    </Link>
                                     <div className="p-4 border-2 border-t-0">
                                         <div className="pb-2 sm:pb-4 flex flex-col items-start">
                                             <p className="font-semibold">BE/B.Tech</p>

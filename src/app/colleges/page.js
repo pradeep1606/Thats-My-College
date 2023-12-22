@@ -8,7 +8,6 @@ import CollegesList from '@/components/CollegesList';
 import { useSearchParams } from 'next/navigation';
 import { collegeStream } from '@/components/FilterApi';
 
-
 const Colleges = () => {
   const searchParams = useSearchParams();
   const ct = searchParams.get('name');

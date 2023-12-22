@@ -5,7 +5,7 @@ const InfoTab = ({ college }) => {
     const { courses } = college || [];
     return (
         <>
-            <div className='bg-white p-4 space-y-6'>
+            <div className='bg-white p-4 space-y-6 w-full'>
                 <div className=''>
                     <div className='text-xl text-slate-800 font-semibold pb-2'>{name}</div>
                     <pre className='whitespace-pre-wrap font-serif text-base px-4'>{details}</pre>
@@ -26,7 +26,7 @@ const InfoTab = ({ college }) => {
                                     courses.map((course, index) => (
                                         <tr className='' key={index}>
                                             <td className="border px-4 py-2">{course.courseName}</td>
-                                            <td className="border px-4 py-2">{course.duration} Year</td>
+                                            <td className="border px-2 py-2">&#8377;{course.fee} /year</td>
                                             <td className="border px-4 py-2">{course.eligibility} or equivalent with minimum 50% mark</td>
                                         </tr>
                                     ))
