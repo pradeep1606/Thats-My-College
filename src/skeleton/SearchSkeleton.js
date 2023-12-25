@@ -8,6 +8,8 @@ const SearchSkeleton = () => {
             <ul className='m-2'></ul>
             <li className='p-2 rounded'>
                 <Skeleton className='' style={{ width: '100%' }} variant="text" height={40} />
+                <Skeleton className='' style={{ width: '100%' }} variant="text" height={40} />
+                <Skeleton className='' style={{ width: '100%' }} variant="text" height={40} />
             </li>
         </ul>
   )

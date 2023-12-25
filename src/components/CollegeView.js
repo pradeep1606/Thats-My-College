@@ -19,7 +19,7 @@ const CollegeView = (currElm) => {
       <div className="bg-white p-4 md:flex rounded">
         <div className='flex'>
           <div className='h-auto w-20'>
-            <Image className='object-contain' src={logo} width={60} height={60} alt="" />
+            <Image className='object-contain' src={logo} width={60} height={60} alt="" style={{width:'auto'}} />
           </div>
           <div>
             <Link href={`/colleges/${_id}`} className='text-blue-700 text-xl'>{name}</Link>

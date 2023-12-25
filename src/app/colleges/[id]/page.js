@@ -45,8 +45,8 @@ const CollegeDetails = ({ params }) => {
     return (
         <>
             <div className="py-8 px-4 md:px-8 lg:px-20 bg-gradient-to-r to-cyan-300 from-blue-300">
-                <div className="text-2xl text-gray-900 font-bold flex items-center space-x-4">
-                    <span><Image src={logo} width={70} height={50} className="rounded-lg md:w-16 md:h-16 w-40 h-16" alt="" /></span>
+                <div className="text-2xl text-gray-900 font-bold flex items-start space-x-4">
+                    <span className='pt-2 md:pt-0'><Image src={logo} width={70} height={50} className="rounded-lg md:w-16 md:h-16 w-40 h-16" alt="logo" /></span>
                     <span>
                         {name} - Admission, Fees, Courses
                         <div className='md:flex md:space-x-6 font-medium'>
