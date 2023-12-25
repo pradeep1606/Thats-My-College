@@ -7,6 +7,7 @@ import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import CollegesList from '@/components/CollegesList';
 import { useSearchParams } from 'next/navigation';
 import { collegeStream } from '@/components/FilterApi';
+import { cityAndState } from '@/components/FilterApi';
 
 const Colleges = () => {
   const searchParams = useSearchParams();
@@ -17,8 +18,12 @@ const Colleges = () => {
   
   const [activeType, setActiveType] = useState(collegeTypes);
   const [activeCourse, setActiveCourse] = useState(courseType)
-  
   const selectedCourses = collegeStream.find((ctr) => ctr.name === activeType.toLowerCase())?.coursesData || [];
+
+  const [activeState, setActiveState] = useState("");
+  const [activeCity, setActiveCity] = useState("");
+  const cityOfState = cityAndState.find((sta) => sta.stateName.toLowerCase() === activeState.toLowerCase())?.cityName || [];
+  // console.log(activeCity)
 
   useEffect(() => {
     setCollegeTypes(ct)
@@ -68,7 +73,7 @@ const Colleges = () => {
               </svg>
             </button>
             <div className="mt-4">
-              <MobileFilter courses={selectedCourses} types={collegeStream.map((ctr) => ctr.name)} onSelectType={handleCourse} selectedType={activeType} onSelectCourse={setActiveCourse} selectedCourse={activeCourse} />
+              <MobileFilter cities={cityOfState} activeCity={activeCity} setActiveCity={setActiveCity} activeState={activeState} setActiveState={setActiveState} stateType={cityAndState.map((st)=>st.stateName)} courses={selectedCourses} types={collegeStream.map((ctr) => ctr.name)} onSelectType={handleCourse} selectedType={activeType} onSelectCourse={setActiveCourse} selectedCourse={activeCourse} toggleFilter={toggleFilter} />
             </div>
           </div>
         </div>
@@ -76,10 +81,10 @@ const Colleges = () => {
 
       <div className="flex md:mx-20 mx-1 my-6 md:my-10">
         <div className="w-1/4 mx-2 space-y-2 hidden md:block">
-          <DesktopFilter courses={selectedCourses} types={collegeStream.map((ctr) => ctr.name)} onSelectType={handleCourse} selectedType={activeType} onSelectCourse={setActiveCourse} selectedCourse={activeCourse} />
+          <DesktopFilter cities={cityOfState} activeCity={activeCity} setActiveCity={setActiveCity} activeState={activeState} setActiveState={setActiveState} stateType={cityAndState.map((st)=>st.stateName)} courses={selectedCourses} types={collegeStream.map((ctr) => ctr.name)} onSelectType={handleCourse} selectedType={activeType} onSelectCourse={setActiveCourse} selectedCourse={activeCourse} />
         </div>
         <div className="md:w-3/4 w-[100%] mx-2 space-y-4">
-          <CollegesList page={page} activeType={activeType} activeCourse={activeCourse} courseType={courseType} />
+          <CollegesList activeCity={activeCity || ""} activeState={activeState || ""} page={page} activeType={activeType} activeCourse={activeCourse} courseType={courseType} />
           <div className={`flex text-white mx-[2%] ${page === 1 ? 'justify-end' : 'justify-between'}`}>
             <button className={`text-white bg-gradient-to-r from-blue-500 to-cyan-400 hover:bg-gradient-to-bl py-1 px-2 flex justify-center gap-2 rounded-l ${page === 1 ? 'hidden' : ''}`} onClick={handlePrevClick}>
               <GrFormPrevious className='mt-1' />Prev

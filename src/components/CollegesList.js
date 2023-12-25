@@ -4,16 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchColleges } from '@/store/slices/FilterCollege';
 import CollegeListSkeleton from '@/skeleton/CollegeListSkeleton';
 
-const CollegesList = ({ page, activeType, activeCourse, courseType }) => {
+const CollegesList = ({ activeState, activeCity, page, activeType, activeCourse, courseType }) => {
     const dispatch = useDispatch();
     const { colleges, loading, error } = useSelector((state) => state.allCollege);
     const courses = colleges.courses || (colleges.data && colleges.data.courses) || [];
     const totleColleges = colleges.totalDocuments || (colleges.data && colleges.data.totalDocuments) || [];
 
     useEffect(() => {
-        const apiPost = `/api/courses/get-all/college-details?collegeType=${activeType.toLowerCase()}&courseName=${activeCourse.toLowerCase()}&page=${page}`
+        const apiPost = `/api/courses/get-all/college-details?collegeType=${activeType.toLowerCase()}&courseName=${activeCourse.toLowerCase()}&state=${activeState}&city=${activeCity}&page=${page}`
         dispatch(fetchColleges(apiPost));
-    }, [dispatch, page, activeType, activeCourse]);
+    }, [dispatch, page, activeType, activeCourse, activeCity, activeState]);
 
     if (loading) {
         return <CollegeListSkeleton />
