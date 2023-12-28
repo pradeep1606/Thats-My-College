@@ -36,6 +36,10 @@ const Colleges = () => {
     setActiveType(type);
     setActiveCourse("");
   }
+  const handleState =(st)=>{
+    setActiveState(st);
+    setActiveCity("");
+  }
 
   const [filterVisible, setFilterVisible] = useState(false);
   const [page, setPage] = useState(1)
@@ -81,7 +85,7 @@ const Colleges = () => {
 
       <div className="flex md:mx-20 mx-1 my-6 md:my-10">
         <div className="w-1/4 mx-2 space-y-2 hidden md:block">
-          <DesktopFilter cities={cityOfState} activeCity={activeCity} setActiveCity={setActiveCity} activeState={activeState} setActiveState={setActiveState} stateType={cityAndState.map((st)=>st.stateName)} courses={selectedCourses} types={collegeStream.map((ctr) => ctr.name)} onSelectType={handleCourse} selectedType={activeType} onSelectCourse={setActiveCourse} selectedCourse={activeCourse} />
+          <DesktopFilter cities={cityOfState} activeCity={activeCity} setActiveCity={setActiveCity} activeState={activeState} setActiveState={handleState} stateType={cityAndState.map((st)=>st.stateName)} courses={selectedCourses} types={collegeStream.map((ctr) => ctr.name)} onSelectType={handleCourse} selectedType={activeType} onSelectCourse={setActiveCourse} selectedCourse={activeCourse} />
         </div>
         <div className="md:w-3/4 w-[100%] mx-2 space-y-4">
           <CollegesList activeCity={activeCity || ""} activeState={activeState || ""} page={page} activeType={activeType} activeCourse={activeCourse} courseType={courseType} />

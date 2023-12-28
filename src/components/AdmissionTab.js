@@ -48,8 +48,8 @@ const AdmissionTab = ({ college }) => {
                 {courses && courses.length > 0 ? (
                   courses.map((course, index) => (
                     <tr className='' key={index}>
-                      <td className="border px-4 py-2">{course.courseName}</td>
-                      <td className="border px-4 py-2">&#8377; {(course.fee).toLocaleString('en-us')}</td>
+                      <td className="border px-3 py-2">{course.courseName}</td>
+                      <td className="border px-3 py-2">&#8377;{(course.fee).toLocaleString('en-us')} /year</td>
                       <td className="border px-4 py-2">{course.eligibility}</td>
                     </tr>
                   ))

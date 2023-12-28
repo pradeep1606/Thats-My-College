@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +16,6 @@ body {
 }
 
 /* nav bar css design */
-
 
 .cool-link::after {
     content: '';
@@ -54,7 +52,6 @@ body {
     -o-transition: width .3s;
     transition: width .3s;
 }
-
 
 .coool-link::after {
     content: '';

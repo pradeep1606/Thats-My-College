@@ -59,7 +59,7 @@ const CollegeDetails = ({ params }) => {
                 <div className="mt-8 space-x-4 text-lg">
                     <button onClick={togglePopup} className="bg-blue-500 text-white px-6 py-2 rounded shadow-lg shadow-blue-500/50 hover:bg-blue-600">Apply Now</button>
 
-                    <Link href="/" className="text-blue-600 border border-blue-600 px-6 py-2 rounded hover:bg-blue-500 hover:text-white">Contact</Link>
+                    {/* <Link href="/" className="text-blue-600 border border-blue-600 px-6 py-2 rounded hover:bg-blue-500 hover:text-white">Contact</Link> */}
                 </div>
             </div>
             {showPopup && (

@@ -25,9 +25,9 @@ const InfoTab = ({ college }) => {
                                 {courses && courses.length > 0 ? (
                                     courses.map((course, index) => (
                                         <tr className='' key={index}>
-                                            <td className="border px-4 py-2">{course.courseName}</td>
+                                            <td className="border px-2 py-2">{course.courseName}</td>
                                             <td className="border px-2 py-2">&#8377;{course.fee} /year</td>
-                                            <td className="border px-4 py-2">{course.eligibility} or equivalent with minimum 50% mark</td>
+                                            <td className="border px-3 py-2">{course.eligibility} or equivalent with minimum 50% mark</td>
                                         </tr>
                                     ))
                                 ) : (

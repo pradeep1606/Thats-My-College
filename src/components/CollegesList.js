@@ -24,12 +24,24 @@ const CollegesList = ({ activeState, activeCity, page, activeType, activeCourse,
     return (
         <>
             <div className='mx-4'>
-                <p className='text-2xl font-semibold text-blue-900'>List of {activeType} colleges </p>
-                {courseType ? (
-                    <p className=" font-semibold text-blue-900">
-                        Course : {activeCourse}
+                <p className='text-2xl font-semibold text-blue-900'>List of {activeType.charAt(0).toUpperCase() + activeType.slice(1)} colleges </p>
+                <span className='md:flex gap-2 my-1'>
+                {activeCourse && (
+                    <p className="font-semibold text-blue-900 md:border border-blue-700 rounded-lg md:px-1 md:bg-blue-100">
+                        Course: {activeCourse}
                     </p>
-                ) : null}
+                )}
+                {activeCity && (
+                    <p className=" font-semibold text-blue-900 md:border border-blue-700 rounded-lg md:px-1 md:bg-blue-100">
+                        City : {activeCity}
+                    </p>
+                )}
+                {activeState && (
+                    <p className=" font-semibold text-blue-900 md:border border-blue-700 rounded-lg md:px-1 md:bg-blue-100">
+                        State : {activeState}
+                    </p>
+                )}
+                </span>
                 <p className='text-sm text-slate-500'>Found {totleColleges} colleges</p>
             </div>
             {courses.length > 0 ? (

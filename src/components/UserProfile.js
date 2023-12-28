@@ -7,7 +7,6 @@ import { toast } from 'react-toastify';
 import { setIsLogin } from "@/store/slices/LoginSlice";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { FaUser } from "react-icons/fa";
 
 
 const UserProfile = ({ sessionData }) => {
@@ -59,13 +58,13 @@ const UserProfile = ({ sessionData }) => {
         <div className='justify-center gap-[4vw] sm:gap-1 bg-transparent flex items-center md:space-x-4 z-10 '>
           <div className="m-2">
             {profilePic ? (
-              <div class="relative w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                <svg class="absolute w-16 h-16 text-gray-400 left-2 top-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-              </div>
+              <Image src={profilePic} width={90} height={90} alt="User" className="rounded-md" />
             ) : (
-              <Image src={profilePic} width={120} height={120} alt="User" className="rounded-md h-[20vw] w-[20vw] " />
+              <div className="relative w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                <svg className="absolute w-16 h-16 text-gray-400 left-2 top-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path></svg>
+              </div>
             )}
-            <Link href="" className='md:hidden text-center py-2 block bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 text-white rounded font-sans mt-6' onClick={handleLogout}>Log Out</Link>
+            <Link href="" className='md:hidden text-center py-2 block bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 text-white rounded font-sans mt-2' onClick={handleLogout}>Log Out</Link>
           </div>
           <div className='user flex flex-col space-y-1 mt-2 md:mt-0'>
             <h2 className="sm:text-[35px] text-[6vw] text-white font-semibold">{firstName} {lastName}</h2>
@@ -75,8 +74,8 @@ const UserProfile = ({ sessionData }) => {
             <p className="text-white text-[4vw] sm:text-sm">Qualification: {qualification}</p>
           </div>
         </div>
-        <div className='h-[4vw] sm:h-[3vw] flex justify-center gap-[2vw] z-0'>
-          <Link href="" className='hidden md:block px-[2vw] py-[1vw] text-[5vw] bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 sm:py-2 sm:px-4 text-center text-white rounded text-xl md:text-base font-sans mt-2' onClick={handleLogout}>Log Out</Link>
+        <div className='flex justify-center gap-[2vw] z-0'>
+          <Link href="" className='hidden md:block px-4 py-2 bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 text-center text-white rounded text-xl font-sans mt-2' onClick={handleLogout}>Log Out</Link>
         </div>
       </div>
       <div className='max-h-screen w-full flex flex-col items-center justify-center px-[4vw] py-[2vw] mt-[2vw]'>

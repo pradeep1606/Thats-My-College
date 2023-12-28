@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={roboto.className}>
       <body className={`bg-[#e6e6e6]`}>
         <NextAuthProvider>
-          <SkeletonTheme baseColor="#313131" highlightColor="#525252">
+          <SkeletonTheme baseColor="#cccccc" highlightColor="#a6a6a6">
             <ReduxProvider>
               <Navbar className="bg-gray-800" />
               {children}

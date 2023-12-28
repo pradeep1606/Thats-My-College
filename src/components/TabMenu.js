@@ -67,11 +67,11 @@ const TabMenu = (college) => {
             <div className="py-4 mt-2">
                 {/* Tab 1 content */}
                 <div id="tab1" className={`tab-content ${activeTab === 'tab1' ? '' : 'hidden'}`}>
-                    <div className='flex md:grid grid-cols-10 px-1'>
-                        <div className='col-span-8 mx-2 rounded-md'>
+                    <div className='md:grid md:grid-cols-10 px-1'>
+                        <div className='md:col-span-8 mx-2 rounded-md'>
                             <InfoTab college={college} />
                         </div>
-                        <div className='md:block hidden col-span-2'>
+                        <div className='md:col-span-2'>
                             <SideTab college={college} />
                         </div>
                     </div>

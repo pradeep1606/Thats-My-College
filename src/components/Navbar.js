@@ -71,7 +71,7 @@ const Navbar = ({ className }) => {
             {/* md navbar */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4 text-gray-900">
-                <Link href="/" className="block py-2 pl-3 pr-4 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Notes</Link>
+                <Link href="/notes" className="block py-2 pl-3 pr-4 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Notes</Link>
                 <Link href="/" className="block py-2 pl-3 pr-4 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Internship</Link>
                 <Link href="/courses" className=" white-link text-white md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">Courses</Link>
                 <div className="inline-block relative group z-10">
@@ -98,7 +98,7 @@ const Navbar = ({ className }) => {
                 <Link href="/about" className="text-white white-link md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">About</Link>
                 <Link href="/contact" className="text-white white-link md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">Contact</Link>
                 <div className="inline-block relative group z-10">
-                  <button className="text-white md:border-0 md:hover:text-blue-500 text-xl rounded-md h-full">{status === 'authenticated' && isLogin ? (<Image src={data?.user?.image} width={30} height={24} alt="User" className="rounded-full" />) : (<FaRegUserCircle className="-my-1 text-2xl" />)}</button>
+                  <button className="text-white md:border-0 md:hover:text-blue-500 text-xl rounded-md h-full">{status === 'authenticated' && isLogin ? (<Image src={data?.user?.image} width={30} height={24} alt="User" className="rounded-full -my-2" />) : (<FaRegUserCircle className="-my-1 text-2xl" />)}</button>
                   <div className="absolute hidden w-56 -right-2 group-hover:block">
                     <div className="h-2 w-full flex justify-end px-2"><VscTriangleUp className="text-2xl -mt-2 text-slate-800" /></div>
                     <div className="bg-slate-800 text-white p-2 shadow-md rounded-md z-10">
@@ -213,6 +213,7 @@ const Navbar = ({ className }) => {
               ) : (
                 <Link href="/profile" onClick={() => { toggleNavbar(); }} className="block py-2 pl-3 pr-4 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Login</Link>
               )}
+              <Link href="/notes" onClick={toggleNavbar} className="block py-2 pl-3 pr-4 h-10 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Notes</Link>
               <Link href="/" onClick={toggleNavbar} className="block py-2 pl-3 pr-4 h-10 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Internship</Link>
             </div>
           </div>
