@@ -1,5 +1,6 @@
 "use client";
 import Load from '@/components/Load';
+import Image from 'next/image';
 import React from 'react';
 
 const About = () => {
@@ -10,7 +11,7 @@ const About = () => {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="md:order-2 animate__animated animate__fadeInRight">
-                {/* <img src="https://images.unsplash.com/photo-1682685797769-481b48222adf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" className="m-2" width={500} height={2000} alt="Flowbite Logo" /> */}
+                <Image src="/logo/tmc_lightblue.png" className="m-2" width={500} height={2000} alt="user" />
               </div>
               <div className="md:order-1 animate__animated animate__fadeInLeft">
                 <h2 className="text-3xl font-semibold mb-4">About</h2>
