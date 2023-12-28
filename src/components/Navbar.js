@@ -81,15 +81,15 @@ const Navbar = ({ className }) => {
                     <div className=" bg-slate-800 text-white p-2 shadow-md ">
                       <div className="flex flex-col justify-center rounded space-y-6">
                         <ul>
-                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Engineering' }, }}>Engineering</Link></li>
-                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Management' }, }}>Management</Link></li>
-                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Commerce' }, }}>Commerce</Link></li>
-                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Arts' }, }}>Arts</Link></li>
-                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Science' }, }}>Science</Link></li>
-                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Pharmacy' }, }}>Pharmacy</Link></li>
-                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Medical' }, }}>Medical</Link></li>
-                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Computer Application' }, }}>Computer Application</Link></li>
-                          <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Education' }, }}>Education</Link></li>
+                          <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Engineering' }, }}>Engineering</Link></li>
+                          <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Management' }, }}>Management</Link></li>
+                          <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Commerce' }, }}>Commerce</Link></li>
+                          <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Arts' }, }}>Arts</Link></li>
+                          <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Science' }, }}>Science</Link></li>
+                          <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Pharmacy' }, }}>Pharmacy</Link></li>
+                          <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Medical' }, }}>Medical</Link></li>
+                          <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Computer Application' }, }}>Computer Application</Link></li>
+                          <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Education' }, }}>Education</Link></li>
                         </ul>
                       </div>
                     </div>
@@ -100,8 +100,8 @@ const Navbar = ({ className }) => {
                 <div className="inline-block relative group z-10">
                   <button className="text-white md:border-0 md:hover:text-blue-500 text-xl rounded-md h-full">{status === 'authenticated' && isLogin ? (<Image src={data?.user?.image} width={30} height={24} alt="User" className="rounded-full" />) : (<FaRegUserCircle className="-my-1 text-2xl" />)}</button>
                   <div className="absolute hidden w-56 -right-2 group-hover:block">
-                    <div className="h-2 w-full flex justify-end px-2"><VscTriangleUp className="text-2xl -mt-2 text-white" /></div>
-                    <div className="bg-white p-2 shadow-md rounded-md z-10">
+                    <div className="h-2 w-full flex justify-end px-2"><VscTriangleUp className="text-2xl -mt-2 text-slate-800" /></div>
+                    <div className="bg-slate-800 text-white p-2 shadow-md rounded-md z-10">
                       <div className="flex flex-col justify-center p-4 space-y-6">
                         {status === 'authenticated' && isLogin ? (
                           <div>
@@ -187,15 +187,15 @@ const Navbar = ({ className }) => {
                   <div className="bg-slate-800 p-2 shadow-md rounded-md">
                     <div className="flex flex-col justify-center p-4 space-y-6">
                       <ul>
-                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Engineering' }, }} onClick={toggleNavbar}>Engineering</Link></li>
-                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Management' }, }} onClick={toggleNavbar}>Management</Link></li>
-                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Commerce' }, }} onClick={toggleNavbar}>Commerce</Link></li>
-                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Arts' }, }} onClick={toggleNavbar}>Arts</Link></li>
-                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Science' }, }} onClick={toggleNavbar}>Science</Link></li>
-                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Pharmacy' }, }} onClick={toggleNavbar}>Pharmacy</Link></li>
-                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Medical' }, }} onClick={toggleNavbar}>Medical</Link></li>
-                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Computer Application' }, }} onClick={toggleNavbar}>Computer Application</Link></li>
-                        <li className=" nav-text cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Education' }, }} onClick={toggleNavbar}>Education</Link></li>
+                        <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Engineering' }, }} onClick={toggleNavbar}>Engineering</Link></li>
+                        <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Management' }, }} onClick={toggleNavbar}>Management</Link></li>
+                        <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Commerce' }, }} onClick={toggleNavbar}>Commerce</Link></li>
+                        <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Arts' }, }} onClick={toggleNavbar}>Arts</Link></li>
+                        <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Science' }, }} onClick={toggleNavbar}>Science</Link></li>
+                        <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Pharmacy' }, }} onClick={toggleNavbar}>Pharmacy</Link></li>
+                        <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Medical' }, }} onClick={toggleNavbar}>Medical</Link></li>
+                        <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Computer Application' }, }} onClick={toggleNavbar}>Computer Application</Link></li>
+                        <li className=" text-[#fff] border-[none] w-1/2 cool-link mx-2 p-1"><Link href={{ pathname: '/colleges', query: { name: 'Education' }, }} onClick={toggleNavbar}>Education</Link></li>
                       </ul>
                     </div>
                   </div>
