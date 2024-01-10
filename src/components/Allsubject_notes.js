@@ -3,7 +3,7 @@ import React from 'react'
 const Allsubject_notes = () => {
   return (
     <div>
-      all subject notes
+      All Subject_notes
     </div>
   )
 }
