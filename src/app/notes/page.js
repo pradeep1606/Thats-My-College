@@ -7,10 +7,10 @@ import Branch_notes from '@/components/Branch_notes'
 const page = () => {
   return (
     <>
-      <Course_notes/>
+      {/* <Course_notes/> */}
       {/* <Branch_notes/> */}
       {/* <Subject_notes/> */}
-      {/* <Allsubject_notes/> */}
+      <Allsubject_notes/>
       
     </>
   )
