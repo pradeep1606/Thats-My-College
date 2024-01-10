@@ -8,9 +8,9 @@ const page = () => {
   return (
     <>
       <Course_notes/>
-      <Branch_notes/>
-      <Subject_notes/>
-      <Allsubject_notes/>
+      {/* <Branch_notes/> */}
+      {/* <Subject_notes/> */}
+      {/* <Allsubject_notes/> */}
       
     </>
   )

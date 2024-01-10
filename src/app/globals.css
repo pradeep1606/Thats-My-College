@@ -70,3 +70,10 @@ body {
     -o-transition: width .3s;
     transition: width .3s;
 }
+
+.library{
+    background: linear-gradient(rgba(0, 0, 0, 0.584), rgba(0, 0, 0, 0.575)),  url('/images/library.jpg');
+    background-size: cover;
+    background-position: center;
+    
+}
