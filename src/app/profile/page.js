@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSession } from 'next-auth/react';
 import SignInButton from "@/components/SignInButton";
@@ -19,8 +19,9 @@ const Page = () => {
 
   const checkEmailExistence = async (email) => {
     try {
-      const response = await axios.get(`${Api}/api/users/email/${email}`);
-      return response.data.status;
+      const { data } = await axios.get(`${Api}/api/users/email/${email}`);
+      localStorage.setItem('authToken', data.data.authToken)
+      return data.status;
     } catch (error) {
       console.error('Error checking email existence:', error);
       return false;
@@ -34,7 +35,6 @@ const Page = () => {
         const firstName = fullNameArray[0];
         const lastName = fullNameArray.length > 1 ? fullNameArray.slice(1).join(' ') : ' ';
 
-        const emailExists = await checkEmailExistence(session.user.email);
         setFormData((prevFormData) => ({
           ...prevFormData,
           firstName,
@@ -45,19 +45,22 @@ const Page = () => {
           qualification: prevFormData.qualification || '',
           gender: prevFormData.gender || 'MALE',
         }));
+        const emailExists = await checkEmailExistence(session.user.email);
         if (emailExists) {
           dispatch(setIsLogin(true));
         }
       }
     };
+
     fetchData();
-  }, [status, session, dispatch]);
+  }, [status, session?.user?.email, dispatch]);
+
 
   return (
     <>
       <div style={{ background: 'linear-gradient(to bottom, #86c5f7, #E6E6E6)' }} className='flex flex-col justify-center items-center py-10 md:px-14 md:py-14'>
-          {status === 'loading' ? (
-          <UserProfileSkeleton /> 
+        {status === 'loading' ? (
+          <UserProfileSkeleton />
         ) : status === 'unauthenticated' ? (
           <SignInButton />
         ) : isLogin ? (
@@ -70,4 +73,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default React.memo(Page);

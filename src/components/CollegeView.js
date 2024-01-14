@@ -43,7 +43,7 @@ const CollegeView = (currElm) => {
       </div>
       {showPopup && (
         <Popup onClose={togglePopup}>
-          <Register {...currElm.college || {}} />
+          <Register college={currElm.college || {}} toggleRegisterPopup={togglePopup} />
         </Popup>
       )}
       {enquryPopup && (

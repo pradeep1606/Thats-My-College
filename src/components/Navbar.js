@@ -47,10 +47,11 @@ const Navbar = ({ className }) => {
     setIsLoading(true)
     try {
       await signOut({ redirect: false, callbackUrl: '/' })
+      localStorage.removeItem("authToken");
       toast(<div> Log Out successfully</div>);
       dispatch(setIsLogin(false));
     } catch (error) {
-      console.error('Error signing out:', error);
+      // console.error('Error signing out:', error);
       toast.error('Error! Try again later.');
     } finally {
       setIsLoading(false)

@@ -6,14 +6,21 @@ import { HiPhone } from 'react-icons/hi';
 import { toast } from 'react-toastify';
 import { RotatingLines } from 'react-loader-spinner';
 import { sendApplyForm } from '@/lib/api';
+import { useSession } from 'next-auth/react';
+import { useSelector } from 'react-redux';
+import axiosInstance from '@/config/AxiosIntercepter';
 
-const Register = (college) => {
-    const { name, logo } = college;
+const Register = ({college, toggleRegisterPopup}) => {
+    const { name, logo, _id } = college;
+    const Api = process.env.API_URL;
+    const { isLogin } = useSelector((state) => state.loginStatus);
+    const { status, data: session } = useSession();
 
     const initialForm = {
+        collegeId: _id,
         collegeName: name,
         name: '',
-        email: '',
+        email: session?.user?.email,
         mobile: '',
         city: '',
         course: '',
@@ -26,11 +33,32 @@ const Register = (college) => {
         setFormData({ ...formData, [name]: value });
     };
 
+    const applyAdmissionForm = async (formData) => {
+        const requestData = {
+            applicantName: formData.name,
+            applicantMobile: formData.mobile,
+            applicantEmail: formData.email,
+            collegeId: formData.collegeId,
+            interestedCourse: formData.course,
+            applicantCurrentCity: formData.city,
+        }
+        try {
+            const { data } = await axiosInstance.post(`${Api}/api/admission-application`, requestData);
+            return data;
+        } catch (error) {
+            console.error('Error get user data:', error);
+            return error;
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        
-        if (!formData.collegeName || !formData.name || !formData.email || !formData.mobile) {
+
+        if (!(status === 'authenticated' && isLogin)) {
+            return toast.error('Please Login first')
+        }
+        if (!formData.collegeName || !formData.name || !formData.email || !formData.mobile || !formData.course) {
             setIsLoading(false)
             return toast.error('Please fill all required feilds.')
         }
@@ -38,10 +66,16 @@ const Register = (college) => {
             setIsLoading(false);
             return toast.error('Please enter a valid email.');
         }
+        if (!isValidMobileNumber(formData.mobile)) {
+            setIsLoading(false);
+            return toast.error('Enter valid Mobile number.');
+        }
         try {
             await sendApplyForm(formData);
-            toast(<div><p>✅ Apply successfully</p><p>Our Expert will contact soon.</p></div>);
+            await applyAdmissionForm(formData);
+            toast.success(<div><p>Form Apply successfully</p><p>Our Expert will contact soon.</p></div>);
             setFormData(initialForm);
+            toggleRegisterPopup();
         } catch (error) {
             toast.error('Error! Try again later.');
         } finally {
@@ -49,10 +83,16 @@ const Register = (college) => {
         }
     };
 
-    // Simple email validation using regular expression
+    // Email validation using regular expression
     const isValidEmail = (email) => {
         const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         return regex.test(email);
+    };
+    // Check if the mobile number is exactly 10 digits long
+    const isValidMobileNumber = (mobile) => {
+        const pattern = /^[6-9]\d{9}$/
+        const cleanedNumber = pattern.test(mobile);
+        return cleanedNumber;
     };
 
     return (
@@ -75,6 +115,7 @@ const Register = (college) => {
                                         <FaUser />
                                     </span>
                                 </div>
+                                <span className="text-red-500">*</span>
                                 <input
                                     type="text"
                                     className="flex-auto w-px border-0 h-10 self-center"
@@ -90,6 +131,7 @@ const Register = (college) => {
                                         <FaEnvelope />
                                     </span>
                                 </div>
+                                <span className="text-red-500">*</span>
                                 <input
                                     type="email"
                                     className="flex-auto w-px border-0 h-10 self-center"
@@ -97,6 +139,7 @@ const Register = (college) => {
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
+                                    readOnly
                                 />
                             </div>
                             <div className="flex relative h-12 border bg-white items-center rounded">
@@ -108,6 +151,7 @@ const Register = (college) => {
                                         +91
                                     </span>
                                 </div>
+                                <span className="text-red-500">*</span>
                                 <input
                                     type="text"
                                     className="flex-auto w-px border-0 h-10 self-center"
@@ -123,6 +167,7 @@ const Register = (college) => {
                                         <MdLocationPin />
                                     </span>
                                 </div>
+                                <span className="text-red-500">*</span>
                                 <input
                                     type="text"
                                     className="flex-auto w-px border-0 h-10 self-center"
@@ -138,6 +183,7 @@ const Register = (college) => {
                                         <FaGraduationCap />
                                     </span>
                                 </div>
+                                <span className="text-red-500">*</span>
                                 <input
                                     type="text"
                                     className="flex-auto w-px border-0 h-10 self-center"

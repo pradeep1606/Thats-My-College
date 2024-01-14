@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 import { signOut } from 'next-auth/react';
 import Link from 'next/link';
@@ -5,9 +6,10 @@ import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { setIsLogin } from "@/store/slices/LoginSlice";
-import axios from 'axios';
+import axiosInstance from '@/config/AxiosIntercepter';
 import { useEffect, useState } from 'react';
-
+import AppliedCollegeList from './AppliedCollegeList';
+import AppliedInternship from './AppliedInternship';
 
 const UserProfile = ({ sessionData }) => {
   const { user = {} } = sessionData;
@@ -15,19 +17,37 @@ const UserProfile = ({ sessionData }) => {
   const Api = process.env.API_URL;
   const router = useRouter();
   const dispatch = useDispatch();
-
   const [userData, setUserData] = useState({});
+  const [appliedColleges, setappliedColleges] = useState({})
 
   const handleLogout = async () => {
     await signOut();
+    localStorage.removeItem("authToken");
     toast(<div> Log Out successfully</div>);
     dispatch(setIsLogin(false));
     router.push('/profile')
   }
 
+  const getAppliedColleges = async (userId) => {
+    try {
+      const { data } = await axiosInstance.get(`${Api}/api/admission-application/user/${userId}`);
+      return data;
+    } catch (error) {
+      console.error('Error get user data :', error);
+      return false;
+    }
+  };
+  const fetchAppliedColleges = async () => {
+    const fetchColleges = await getAppliedColleges(userData?.data?._id);
+    if (fetchColleges) {
+      setappliedColleges(fetchColleges);
+    }
+  }
+
   const getUserDataFromBD = async (email) => {
     try {
-      const { data } = await axios.get(`${Api}/api/users/email/${email}`);
+      const { data } = await axiosInstance.get(`${Api}/api/users/email/${email}`);
+      localStorage.setItem('authToken', data.data.authToken)
       return data;
     } catch (error) {
       console.error('Error get user data :', error);
@@ -41,12 +61,37 @@ const UserProfile = ({ sessionData }) => {
       if (fetchedUserData) {
         setUserData(fetchedUserData);
       }
+    };
+    if (!userData || !userData.data) {
+      fetchUserData();
     }
-    fetchUserData();
-  }, [email])
+
+    if (!appliedColleges || Object.keys(appliedColleges).length === 0) {
+      fetchAppliedColleges();
+    }
+  }, [userData, appliedColleges, setUserData]);
 
   const { firstName = "", lastName = "", phone, gender, profilePic, qualification } = userData?.data || {};
-  // console.log("userData  &&&&&&", firstName, lastName, phone, userData);
+  // console.log("colleges data  &&&&&&", appliedColleges?.data?.applications?.collegeId);
+
+  const appliedColleges2 = [
+    {
+      name: 'Millennium Group of Institutions, Bhopal',
+      status: 'Apply and Forward',
+    },
+    {
+      name: 'XYZ College, City',
+      status: 'Applied',
+    },
+    {
+      name: 'ABC University, Town',
+      status: 'Application Received',
+    },
+    {
+      name: 'PQR Institute of Technology',
+      status: 'Applied',
+    },
+  ];
 
 
   return (
@@ -75,137 +120,17 @@ const UserProfile = ({ sessionData }) => {
           </div>
         </div>
         <div className='flex justify-center gap-[2vw] z-0'>
-          <Link href="" className='hidden md:block px-4 py-2 bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 text-center text-white rounded text-xl font-sans mt-2' onClick={handleLogout}>Log Out</Link>
+          <Link href="" className='hidden md:block px-4 py-1 bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 text-center text-white rounded text-lg font-sans mt-2' onClick={handleLogout}>Log Out</Link>
         </div>
       </div>
-      <div className='max-h-screen w-full flex flex-col items-center justify-center px-[4vw] py-[2vw] mt-[2vw]'>
-        <div className='mt-[2vw] text-[4vw] sm:text-[1.5vw]'>
-          <h2 className='capitalize'>colleges you applied</h2>
-          <div className='[&::-webkit-scrollbar]:hidden h-[30vh] sm:h-[40vh] rounded  w-[85vw] border-[2px] border-[solid] border-[rgb(241,238,238)] [box-shadow:12px_8px_24px_-13px_rgba(0,_0,_0,_0.65)] flex items-center overflow-x-scroll overflow-y-hidden whitespace-nowrap  gap-[2vw] sm:p-[10px] p-[1vw]'>
-            <div className='h-[30vh] w-[2000px] sm:h-[40vh] sm:w-[210vw]  flex items-center p-[10px] gap-[2vw] p-[1vw]'>
-              <div className='h-[28vh] w-[450px] relative sm:relative sm:h-[90%] sm:w-[350px] bg-[lavender] border-[2px] border-[solid] border-[rgb(216,206,206)] flex flex-col items-center justify-center rounded-[20px] overflow-hidden'>
-                <div className='h-full w-full bg-cover bg-center'>
-                  <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='object-cover object-center h-full w-full filter brightness-[90%]' />
-                </div>
-                <div className='h-[30%] w-full absolute bottom-[10%] sm:absolute sm:bottom-[10%] flex bg-transparent items-center justify-center flex-col'>
-                  <h1 className='text-[#fff] text-[3.5vw] sm:text-[1.1vw]'>
-Millennium Group of Institutions, Bhopal</h1>
-                </div>
-              </div>
-              <div className='h-[28vh] w-[450px] relative sm:relative sm:h-[90%] sm:w-[350px] bg-[lavender] border-[2px] border-[solid] border-[rgb(216,206,206)] flex flex-col items-center justify-center rounded-[20px] overflow-hidden'>
-                <div className='h-full w-full bg-cover bg-center'>
-                  <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='object-cover object-center h-full w-full filter brightness-[90%]' />
-                </div>
-                <div className='h-[30%] w-full absolute bottom-[10%] sm:absolute sm:bottom-[10%] flex bg-transparent items-center justify-center flex-col'>
-                  <h1 className='text-[#fff] text-[3.5vw] sm:text-[1.1vw]'>
-Millennium Group of Institutions, Bhopal</h1>
-                </div>
-              </div>
-              <div className='h-[28vh] w-[450px] relative sm:relative sm:h-[90%] sm:w-[350px] bg-[lavender] border-[2px] border-[solid] border-[rgb(216,206,206)] flex flex-col items-center justify-center rounded-[20px] overflow-hidden'>
-                <div className='h-full w-full bg-cover bg-center'>
-                  <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='object-cover object-center h-full w-full filter brightness-[90%]' />
-                </div>
-                <div className='h-[30%] w-full absolute bottom-[10%] sm:absolute sm:bottom-[10%] flex bg-transparent items-center justify-center flex-col'>
-                  <h1 className='text-[#fff] text-[3.5vw] sm:text-[1.1vw]'>
-Millennium Group of Institutions, Bhopal</h1>
-                </div>
-              </div>
-              <div className='h-[28vh] w-[450px] relative sm:relative sm:h-[90%] sm:w-[350px] bg-[lavender] border-[2px] border-[solid] border-[rgb(216,206,206)] flex flex-col items-center justify-center rounded-[20px] overflow-hidden'>
-                <div className='h-full w-full bg-cover bg-center'>
-                  <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='object-cover object-center h-full w-full filter brightness-[90%]' />
-                </div>
-                <div className='h-[30%] w-full absolute bottom-[10%] sm:absolute sm:bottom-[10%] flex bg-transparent items-center justify-center flex-col'>
-                  <h1 className='text-[#fff] text-[3.5vw] sm:text-[1.1vw]'>
-Millennium Group of Institutions, Bhopal</h1>
-                </div>
-              </div>
-              <div className='h-[28vh] w-[450px] relative sm:relative sm:h-[90%] sm:w-[350px] bg-[lavender] border-[2px] border-[solid] border-[rgb(216,206,206)] flex flex-col items-center justify-center rounded-[20px] overflow-hidden'>
-                <div className='h-full w-full bg-cover bg-center'>
-                  <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='object-cover object-center h-full w-full filter brightness-[90%]' />
-                </div>
-                <div className='h-[30%] w-full absolute bottom-[10%] sm:absolute sm:bottom-[10%] flex bg-transparent items-center justify-center flex-col'>
-                  <h1 className='text-[#fff] text-[3.5vw] sm:text-[1.1vw]'>
-Millennium Group of Institutions, Bhopal</h1>
-                </div>
-              </div>
-              <div className='h-[28vh] w-[450px] relative sm:relative sm:h-[90%] sm:w-[350px] bg-[lavender] border-[2px] border-[solid] border-[rgb(216,206,206)] flex flex-col items-center justify-center rounded-[20px] overflow-hidden'>
-                <div className='h-full w-full bg-cover bg-center'>
-                  <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='object-cover object-center h-full w-full filter brightness-[90%]' />
-                </div>
-                <div className='h-[30%] w-full absolute bottom-[10%] sm:absolute sm:bottom-[10%] flex bg-transparent items-center justify-center flex-col'>
-                  <h1 className='text-[#fff] text-[3.5vw] sm:text-[1.1vw]'>
-Millennium Group of Institutions, Bhopal</h1>
-                </div>
-              </div>
 
-            </div>
-          </div>
-        </div>
-        <div className='mt-[2vw] text-[4vw] sm:text-[1.5vw]'>
-          <h2 className='capitalize'>Internship you applied</h2>
-          <div className='[&::-webkit-scrollbar]:hidden h-[30vh] sm:h-[40vh] rounded mb-5 w-[85vw] border-[2px] border-[solid] border-[rgb(241,238,238)] [box-shadow:12px_8px_24px_-13px_rgba(0,_0,_0,_0.65)] flex items-center overflow-x-scroll overflow-y-hidden whitespace-nowrap  gap-[2vw] sm:p-[10px] p-[1vw]'>
-            <div className='h-[30vh] w-[2000px] sm:h-[40vh] sm:w-[210vw]  flex items-center p-[10px] gap-[2vw] p-[1vw]'>
-              <div className='h-[28vh] w-[450px] relative sm:relative sm:h-[90%] sm:w-[350px] bg-[lavender] border-[2px] border-[solid] border-[rgb(216,206,206)] flex flex-col items-center justify-center rounded-[20px] overflow-hidden'>
-                <div className='h-full w-full bg-cover bg-center'>
-                  <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='object-cover object-center h-full w-full filter brightness-[90%]' />
-                </div>
-                <div className='h-[30%] w-full absolute bottom-[10%] sm:absolute sm:bottom-[10%] flex bg-transparent items-center justify-center flex-col'>
-                  <h1 className='text-[#fff] text-[3.5vw] sm:text-[1.1vw]'>
-Millennium Group of Institutions, Bhopal</h1>
-                </div>
-              </div>
-              <div className='h-[28vh] w-[450px] relative sm:relative sm:h-[90%] sm:w-[350px] bg-[lavender] border-[2px] border-[solid] border-[rgb(216,206,206)] flex flex-col items-center justify-center rounded-[20px] overflow-hidden'>
-                <div className='h-full w-full bg-cover bg-center'>
-                  <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='object-cover object-center h-full w-full filter brightness-[90%]' />
-                </div>
-                <div className='h-[30%] w-full absolute bottom-[10%] sm:absolute sm:bottom-[10%] flex bg-transparent items-center justify-center flex-col'>
-                  <h1 className='text-[#fff] text-[3.5vw] sm:text-[1.1vw]'>
-Millennium Group of Institutions, Bhopal</h1>
-                </div>
-              </div>
-              <div className='h-[28vh] w-[450px] relative sm:relative sm:h-[90%] sm:w-[350px] bg-[lavender] border-[2px] border-[solid] border-[rgb(216,206,206)] flex flex-col items-center justify-center rounded-[20px] overflow-hidden'>
-                <div className='h-full w-full bg-cover bg-center'>
-                  <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='object-cover object-center h-full w-full filter brightness-[90%]' />
-                </div>
-                <div className='h-[30%] w-full absolute bottom-[10%] sm:absolute sm:bottom-[10%] flex bg-transparent items-center justify-center flex-col'>
-                  <h1 className='text-[#fff] text-[3.5vw] sm:text-[1.1vw]'>
-Millennium Group of Institutions, Bhopal</h1>
-                </div>
-              </div>
-              <div className='h-[28vh] w-[450px] relative sm:relative sm:h-[90%] sm:w-[350px] bg-[lavender] border-[2px] border-[solid] border-[rgb(216,206,206)] flex flex-col items-center justify-center rounded-[20px] overflow-hidden'>
-                <div className='h-full w-full bg-cover bg-center'>
-                  <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='object-cover object-center h-full w-full filter brightness-[90%]' />
-                </div>
-                <div className='h-[30%] w-full absolute bottom-[10%] sm:absolute sm:bottom-[10%] flex bg-transparent items-center justify-center flex-col'>
-                  <h1 className='text-[#fff] text-[3.5vw] sm:text-[1.1vw]'>
-Millennium Group of Institutions, Bhopal</h1>
-                </div>
-              </div>
-              <div className='h-[28vh] w-[450px] relative sm:relative sm:h-[90%] sm:w-[350px] bg-[lavender] border-[2px] border-[solid] border-[rgb(216,206,206)] flex flex-col items-center justify-center rounded-[20px] overflow-hidden'>
-                <div className='h-full w-full bg-cover bg-center'>
-                  <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='object-cover object-center h-full w-full filter brightness-[90%]' />
-                </div>
-                <div className='h-[30%] w-full absolute bottom-[10%] sm:absolute sm:bottom-[10%] flex bg-transparent items-center justify-center flex-col'>
-                  <h1 className='text-[#fff] text-[3.5vw] sm:text-[1.1vw]'>
-Millennium Group of Institutions, Bhopal</h1>
-                </div>
-              </div>
-              <div className='h-[28vh] w-[450px] relative sm:relative sm:h-[90%] sm:w-[350px] bg-[lavender] border-[2px] border-[solid] border-[rgb(216,206,206)] flex flex-col items-center justify-center rounded-[20px] overflow-hidden'>
-                <div className='h-full w-full bg-cover bg-center'>
-                  <Image src='/images/back-img.jpeg' width={1400} height={400} alt="" className='object-cover object-center h-full w-full filter brightness-[90%]' />
-                </div>
-                <div className='h-[30%] w-full absolute bottom-[10%] sm:absolute sm:bottom-[10%] flex bg-transparent items-center justify-center flex-col'>
-                  <h1 className='text-[#fff] text-[3.5vw] sm:text-[1.1vw]'>
-Millennium Group of Institutions, Bhopal</h1>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
+      <div className='max-h-screen w-full flex flex-col items-center justify-center px-[4vw] mt-8 md:mt-4 divide-y'>
+        <AppliedCollegeList appliedColleges={appliedColleges} />
+        <AppliedInternship />
       </div>
+
     </div>
   );
 };
 
-export default UserProfile;
+export default React.memo(UserProfile);

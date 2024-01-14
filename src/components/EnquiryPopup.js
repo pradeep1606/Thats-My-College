@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { SiGmail } from 'react-icons/si';
 import { IoMdCall } from 'react-icons/io';
 import { toast } from 'react-toastify';
-import { useSession, signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { useSelector } from 'react-redux';
 import { requestCallBack } from '@/lib/api';
-import axios from 'axios';
 import { RotatingLines } from 'react-loader-spinner'
+import axiosInstance from '@/config/AxiosIntercepter';
 
 const EnquiryPopup = ({ collegeData, toggleEnqueryPopup }) => {
     const { name } = collegeData;
@@ -16,15 +16,23 @@ const EnquiryPopup = ({ collegeData, toggleEnqueryPopup }) => {
     const { user = {} } = session || {};
     const { email = {} } = user;
     const [isLoading, setIsLoading] = useState(false)
-    console.log(isLoading)
 
     const getUserDataFromBD = async (email) => {
         try {
-            const { data } = await axios.get(`${Api}/api/users/email/${email}`);
+            const { data } = await axiosInstance.get(`${Api}/api/users/email/${email}`);
             return data;
         } catch (error) {
             console.error('Error get user data:', error);
-            return false;
+            return error;
+        }
+    };
+    const requestCallBackAPI = async () => {
+        try {
+            const { data } = await axiosInstance.post(`${Api}/api/callback-requests`);
+            return data;
+        } catch (error) {
+            console.error('Error get user data:', error);
+            return error;
         }
     };
 
@@ -53,29 +61,34 @@ const EnquiryPopup = ({ collegeData, toggleEnqueryPopup }) => {
         mobile: '',
     };
     const [formData, setFormData] = useState(initialForm);
-    //   console.log(formData)
 
     const handleCallBack = async () => {
         setIsLoading(true);
         if (status === 'authenticated' && isLogin) {
             try {
-                await requestCallBack(formData);
-                toast(
-                    <div>
-                        <p>Callback Request Received.</p>
-                        <p>We will contact you within the next 2 hours.</p>
-                    </div>
-                );
+                const requestData = await requestCallBackAPI();
+                if (requestData.isCallbackRequestExists) {
+                    toast(<div>{requestData.message}</div>)
+                } else {
+                    await requestCallBack(formData);
+                    toast(<div>{requestData.message}</div>)
+                    toast(
+                        <div>
+                            <p>We will contact you within the next 2 hours.</p>
+                        </div>
+                    );
+                }
                 setIsLoading(false);
                 toggleEnqueryPopup();
             } catch (error) {
-                // await signOut();
+                await signOut();
                 setIsLoading(false);
                 toast(<div>Please Login again</div>);
                 console.error(error)
             }
         } else {
             toast(<div>Please Login First</div>);
+            setIsLoading(false)
         }
     };
 
