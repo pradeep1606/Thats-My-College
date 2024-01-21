@@ -24,21 +24,17 @@ const LoginForm = ({ formData, setFormData }) => {
                 profilePic: formData.profilePic,
             };
 
-            const requestDataString = JSON.stringify(requestData);
-            const response = await axios.post(`${Api}/api/users/oauth-login`, requestDataString, {
+            const { data } = await axios.post(`${Api}/api/users/oauth-login`, requestData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
-
-            // Log the response or handle it as needed
+            localStorage.setItem('authToken', data.data.authToken)
             toast(<div>✅ Successfully created your account</div>);
-            // console.log('API Response:', response.data.message);
             dispatch(setIsLogin(true));
-            // console.log('Form data:', formData);
         } catch (error) {
             toast.error('Error! Try again later.');
-            // console.error('Error during form submission:', error.response.data);
+            console.error(error)
         } finally {
             setIsLoading(false)
         }
@@ -53,7 +49,7 @@ const LoginForm = ({ formData, setFormData }) => {
     };
 
     return (
-        <div className="bg-yellow-100 p-10 rounded-lg space-y-14 shadow-md">
+        <div className="bg-blue-100 p-10 rounded-lg space-y-14 shadow-md">
             <div className="text-xl font-semibold text-blue-800">Few more questions</div>
             <form onSubmit={handleFormSubmit} className="w-full max-w-lg">
                 <div className="flex flex-wrap -mx-3 mb-6">
