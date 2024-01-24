@@ -72,7 +72,7 @@ const FeesTab = ({ college }) => {
       </div>
       {showPopup && (
         <Popup onClose={togglePopup}>
-          <Register {...college.collegeId || {}} />
+          <Register college={college.collegeId || {}} toggleRegisterPopup={togglePopup} />
         </Popup>
       )}
 

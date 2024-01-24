@@ -29,7 +29,7 @@ const AdmissionTab = ({ college }) => {
           )}
           &nbsp; etc.
         </p>
-        <p className='my-3 font-semibold text-blue-900'>Admission process of {name} is very easy. Click on apply button and fill some information and our expert will cantact you and done all admission process.</p>
+        <p className='my-3 font-semibold text-blue-900'>Admission process of {name} is very easy. Click on apply button and fill some information to apply and our expert will cantact you and done all admission process.</p>
         <p>Courses offered by {firstName} is &nbsp;{courseNames} and many courses.</p>
         <p>The admission to all the courses will be based on marks obtained by the students in higher secondary education and other corresponding degree</p>
 

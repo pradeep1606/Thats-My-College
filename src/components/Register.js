@@ -10,11 +10,12 @@ import { useSession } from 'next-auth/react';
 import { useSelector } from 'react-redux';
 import axiosInstance from '@/config/AxiosIntercepter';
 
-const Register = ({college, toggleRegisterPopup}) => {
+const Register = ({ college, toggleRegisterPopup }) => {
     const { name, logo, _id } = college;
     const Api = process.env.API_URL;
     const { isLogin } = useSelector((state) => state.loginStatus);
     const { status, data: session } = useSession();
+    const [userId, setUserId] = useState()
 
     const initialForm = {
         collegeId: _id,
@@ -51,6 +52,28 @@ const Register = ({college, toggleRegisterPopup}) => {
         }
     };
 
+    const getUserDataFromBD = async (email) => {
+        try {
+            const { data } = await axiosInstance.get(`${Api}/api/users/email/${email}`);
+            localStorage.setItem('authToken', data.data.authToken)
+            return data;
+        } catch (error) {
+            console.error('Error get user data :', error);
+            return false;
+        }
+    };
+
+    const getAllAppliedCollege = async () => {
+        const user = await getUserDataFromBD(session?.user?.email)
+        try {
+            const { data } = await axiosInstance.get(`${Api}/api/admission-application/user/${user.data._id}`);
+            return data;
+        } catch (error) {
+            console.error('Error get applied colleges:', error);
+            return error;
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
@@ -58,7 +81,7 @@ const Register = ({college, toggleRegisterPopup}) => {
         if (!(status === 'authenticated' && isLogin)) {
             return toast.error('Please Login first')
         }
-        if (!formData.collegeName || !formData.name || !formData.email || !formData.mobile || !formData.course) {
+        if (!formData.collegeName || !formData.name || !formData.email || !formData.mobile || !formData.city || !formData.course) {
             setIsLoading(false)
             return toast.error('Please fill all required feilds.')
         }
@@ -70,9 +93,14 @@ const Register = ({college, toggleRegisterPopup}) => {
             setIsLoading(false);
             return toast.error('Enter valid Mobile number.');
         }
+        const totleCollege = await getAllAppliedCollege();
+        if (totleCollege.data.totalDocuments >= 4) {
+            setIsLoading(false);
+            return toast.error('Already 4 colleges applied');
+        }
         try {
-            await sendApplyForm(formData);
             await applyAdmissionForm(formData);
+            await sendApplyForm(formData);
             toast.success(<div><p>Form Apply successfully</p><p>Our Expert will contact soon.</p></div>);
             setFormData(initialForm);
             toggleRegisterPopup();
@@ -88,7 +116,7 @@ const Register = ({college, toggleRegisterPopup}) => {
         const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         return regex.test(email);
     };
-    // Check if the mobile number is exactly 10 digits long
+    // Check if the mobile number is exactly 10 digits long with start 6-9
     const isValidMobileNumber = (mobile) => {
         const pattern = /^[6-9]\d{9}$/
         const cleanedNumber = pattern.test(mobile);

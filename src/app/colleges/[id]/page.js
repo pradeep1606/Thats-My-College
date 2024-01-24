@@ -64,7 +64,7 @@ const CollegeDetails = ({ params }) => {
             </div>
             {showPopup && (
                 <Popup onClose={togglePopup}>
-                    <Register {...singleCollege.collegeId || {}} />
+                    <Register college={singleCollege.collegeId || {}} toggleRegisterPopup={togglePopup} />
                 </Popup>
             )}
             <TabMenu {...singleCollege || {}} />

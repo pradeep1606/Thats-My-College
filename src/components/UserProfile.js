@@ -74,26 +74,6 @@ const UserProfile = ({ sessionData }) => {
   const { firstName = "", lastName = "", phone, gender, profilePic, qualification } = userData?.data || {};
   // console.log("colleges data  &&&&&&", appliedColleges?.data?.applications?.collegeId);
 
-  const appliedColleges2 = [
-    {
-      name: 'Millennium Group of Institutions, Bhopal',
-      status: 'Apply and Forward',
-    },
-    {
-      name: 'XYZ College, City',
-      status: 'Applied',
-    },
-    {
-      name: 'ABC University, Town',
-      status: 'Application Received',
-    },
-    {
-      name: 'PQR Institute of Technology',
-      status: 'Applied',
-    },
-  ];
-
-
   return (
     <div className='max-h-[200vh]  w-[95vw] sm:w-[90vw]  rounded-[10px] bg-[#fff] overflow-hidden relative shadow-md'>
       <div className="p-[2vw] flex flex-col sm:flex-row sm:p-[1vw] items-center justify-between bg-cover bg-top">
@@ -125,7 +105,7 @@ const UserProfile = ({ sessionData }) => {
       </div>
 
       <div className='max-h-screen w-full flex flex-col items-center justify-center px-[4vw] mt-8 md:mt-4 divide-y'>
-        <AppliedCollegeList appliedColleges={appliedColleges} />
+        <AppliedCollegeList appliedColleges={appliedColleges} setappliedColleges={setappliedColleges} />
         <AppliedInternship />
       </div>
 

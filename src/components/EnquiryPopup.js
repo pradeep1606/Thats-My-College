@@ -103,7 +103,7 @@ const EnquiryPopup = ({ collegeData, toggleEnqueryPopup }) => {
                     <button onClick={handleCallBack} className='border border-blue-400 text-blue-400 rounded-md px-6 py-2 text-lg hover:bg-blue-500 hover:text-white'>
                         {isLoading ? (
                             <span>
-                                Request Call Back
+                                Requesting
                                 <RotatingLines strokeColor="white" strokeWidth="4" animationDuration="0.75" width="25" visible={true} />
                             </span>
                         ) : (

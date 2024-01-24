@@ -31,16 +31,16 @@ export const MobileFilter = ({ cities, activeCity, setActiveCity, activeState, s
             Courses <RxCaretRight />
           </button>
           <button
-            className={`px-2 py-4 flex items-center justify-between w-full ${content === 'city' ? 'text-blue-600' : ''}`}
-            onClick={() => handleButtonClick('city')}
-          >
-            City <RxCaretRight />
-          </button>
-          <button
             className={`px-2 py-4 flex items-center justify-between w-full ${content === 'state' ? 'text-blue-600' : ''}`}
             onClick={() => handleButtonClick('state')}
           >
             State <RxCaretRight />
+          </button>
+          <button
+            className={`px-2 py-4 flex items-center justify-between w-full ${content === 'city' ? 'text-blue-600' : ''}`}
+            onClick={() => handleButtonClick('city')}
+          >
+            City <RxCaretRight />
           </button>
         </div>
 
@@ -123,6 +123,19 @@ export const DesktopFilter = ({ cities, activeCity, setActiveCity, activeState, 
           </div>
         )}
       </div>
+      
+      {/* State Filter */}
+      <div className='bg-white p-4 rounded'>
+        <div className='px-4 py-2 flex justify-between items-center cursor-pointer' onClick={toggleAccordion4}>
+          <h2 className='font-semibold text-gray-700'>State</h2>
+          <span className='text-xl'>{stateTypeOpen ? <RxCaretUp /> : <RxCaretDown />}</span>
+        </div>
+        {stateTypeOpen && (
+          <div>
+            <StateFilter stateType={stateType} activeState={activeState} setActiveState={setActiveState} />
+          </div>
+        )}
+      </div>
 
       {/* City Filter */}
       <div className='bg-white p-4 rounded'>
@@ -133,19 +146,6 @@ export const DesktopFilter = ({ cities, activeCity, setActiveCity, activeState, 
         {cityTypeOpen && (
           <div>
             <CityFilter cities={cities} activeCity={activeCity} setActiveCity={setActiveCity} />
-          </div>
-        )}
-      </div>
-
-      {/* State Filter */}
-      <div className='bg-white p-4 rounded'>
-        <div className='px-4 py-2 flex justify-between items-center cursor-pointer' onClick={toggleAccordion4}>
-          <h2 className='font-semibold text-gray-700'>State</h2>
-          <span className='text-xl'>{stateTypeOpen ? <RxCaretUp /> : <RxCaretDown />}</span>
-        </div>
-        {stateTypeOpen && (
-          <div>
-            <StateFilter stateType={stateType} activeState={activeState} setActiveState={setActiveState} />
           </div>
         )}
       </div>
