@@ -33,7 +33,7 @@ const Carousel = () => {
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
-
+  
   useEffect(() => {
     // Auto-slide every 3 seconds
     const interval = setInterval(() => {
@@ -71,7 +71,7 @@ const Carousel = () => {
           </div>
 
           <div className='mt-8'>
-            <button className='bg-blue-700 text-white px-10 py-[0.4rem] rounded-md'>Admission 2024</button>
+            <Link href='/registration' className='bg-blue-700 text-white px-10 py-[0.4rem] rounded-md'>Admission 2024</Link>
           </div>
         </div>
         <div className='flex top-4 justify-center py-2'>
