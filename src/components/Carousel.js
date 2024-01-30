@@ -46,7 +46,7 @@ const Carousel = () => {
 
   return (
     <>
-      <div className='md:h-[500px] h-[350px] w-full m-auto relative group z-0'>
+      <div className='md:h-[450px] h-[350px] w-full m-auto relative group z-0'>
         <div
           style={{
             backgroundImage: `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(${slides[currentIndex].url})`,

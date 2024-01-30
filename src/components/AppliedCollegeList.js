@@ -31,13 +31,10 @@ const AppliedCollegeList = ({ appliedColleges, setappliedColleges }) => {
                         {appliedColleges?.data?.applications.map((college, index) => (
                             <div key={index} className='flex gap-2 flex-col border-2 border-solid border-[rgb(241,238,238)] rounded-lg shadow-md'>
                                 <div className='h-[25vh] w-[280px] md:w-[300px] relative bg-[lavender] flex flex-col items-center justify-center rounded-t-lg overflow-hidden'>
-                                    <div className='bg-cover bg-center'>
-                                        <Image src={college.collegeId.image[0]} width={1000} height={400} alt={college.collegeId.name} className='object-cover object-center h-full w-full filter brightness-[90%]' />
-                                    </div>
-                                    <div className='absolute bottom-[10%] bg-transparent'>
-                                        <p className='text-[#fff] md:text-sm'>
-                                            {college.collegeId.name}
-                                        </p>
+                                    <div className='h-48 w-full mx-[0.03rem] sm:h-56 bg-cover text-white px-4 rounded-t-md' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${college.collegeId.image[0]})`, display: 'flex', alignItems: 'flex-end',justifyContent:'center' }}>
+                                        <div className=' mb-5 w-fit relative whitespace-normal'>
+                                          <h2 className="font-semibold text-center text-[4.5vw] sm:text-[0.9vw]">{college.collegeId.name}</h2>
+                                          </div>
                                     </div>
                                 </div>
                                 <div className='px-2 space-y-2 text-lg mx-1'>

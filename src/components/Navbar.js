@@ -65,8 +65,8 @@ const Navbar = ({ className }) => {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <Link href="/" className="flex items-center text-white">
-                <Image src="/logo/tmc_white.png" className="h-20 mt-2 w-24 -mr-2" width={70} height={60} priority={true} alt="TMC" />
-                <span className="self-center text-2xl font-semibold whitespace-nowrap mt-2">ThatsMyCollege</span>
+                <Image src="/logo/tmc_white.png" className="h-17 mt-2 w-21 -mr-2" width={70} height={60} priority={true} alt="TMC" />
+                <span className="self-center text-xl tracking-wider font-semibold whitespace-nowrap mt-2">ThatsMyCollege</span>
               </Link>
             </div>
             {/* md navbar */}
