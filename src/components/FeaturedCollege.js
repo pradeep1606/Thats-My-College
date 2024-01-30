@@ -51,7 +51,7 @@ const FeaturedCollege = () => {
     }
     return (
         <div className='mt-12 px-4 pb-12 sm:px-8 bg-white'>
-            <div className='p-4 text-2xl sm:text-3xl text-[#262626] font-bold'>Top College</div>
+            <div className='p-4 text-2xl sm:text-3xl text-[#262626] font-bold pointer-events-none'>Top College</div>
             <div className="w-full mt-4">
                 <Carousel
                     showArrows={true}
