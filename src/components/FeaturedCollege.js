@@ -41,7 +41,7 @@ const FeaturedCollege = () => {
         return <FeaturedCollegeSkeleton />
     }
     if (error) {
-        return <p>Internal Server Error : `${error}`</p>
+        return <p>Please reload the page</p>
     }
     const featuredCollege = college.data.courses;
 

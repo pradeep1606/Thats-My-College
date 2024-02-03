@@ -21,7 +21,7 @@ const CollegeView = (currElm) => {
   const onlyCourseName = courseNames?.join(', ');
   return (
     <>
-      <div className="bg-white p-4 md:flex rounded">
+      <div className="bg-white p-4 pr-2 md:flex rounded">
         <div className='flex'>
           <div className='h-auto w-20'>
             <Image className='object-contain' src={logo} width={60} height={60} alt="" style={{ width: 'auto' }} />
@@ -33,10 +33,10 @@ const CollegeView = (currElm) => {
             {onlyCourseName && (
               <p className='text-sm mt-2'>Courses : <span className='text-gray-400'>{onlyCourseName}</span></p>
             )}
-            <Link href={`/colleges/${_id}`} className='text-sm text-blue-400'>View All Course Fee</Link>
+            <Link href={`/colleges/${_id}`} className='text-sm text-blue-600'>View All Course Fee</Link>
           </div>
         </div>
-        <div className='flex flex-col ml-auto space-y-4 md:mt-0 mt-3 text-center'>
+        <div className='flex flex-col  ml-auto space-y-4 md:mt-0 mt-3 text-center'>
           <button onClick={togglePopup} className="bg-blue-500 text-white px-4 py-[0.32rem] rounded-lg shadow-lg shadow-blue-500/50 hover:bg-blue-600">Apply Now</button>
           <button onClick={toggleEnqueryPopup} className='text-blue-600 border border-blue-600 px-8 py-1 rounded-lg hover:bg-blue-500 hover:text-white'>Enquery</button>
         </div>
