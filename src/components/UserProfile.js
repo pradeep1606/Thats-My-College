@@ -10,6 +10,7 @@ import axiosInstance from '@/config/AxiosIntercepter';
 import { useEffect, useState } from 'react';
 import AppliedCollegeList from './AppliedCollegeList';
 import AppliedInternship from './AppliedInternship';
+import { IoIosLogOut } from "react-icons/io";
 
 const UserProfile = ({ sessionData }) => {
   const { user = {} } = sessionData;
@@ -100,7 +101,7 @@ const UserProfile = ({ sessionData }) => {
           </div>
         </div>
         <div className='flex justify-center gap-[2vw] z-0'>
-          <Link href="" className='hidden md:block px-4 py-1 bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 text-center text-white rounded text-lg font-sans mt-2' onClick={handleLogout}>Log Out</Link>
+          <Link href="" className='hidden md:block px-4 py-[0.35rem] bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 text-center text-white rounded text-lg font-sans mt-2 md:flex justify-center items-center' onClick={handleLogout}><span>Log Out</span> <IoIosLogOut className="mx-1 mt-1" /></Link>
         </div>
       </div>
 

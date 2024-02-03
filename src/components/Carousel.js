@@ -71,7 +71,7 @@ const Carousel = () => {
           </div>
 
           <div className='mt-8'>
-            <Link href='/registration' className='bg-blue-700 text-white px-10 py-[0.4rem] rounded-md'>Admission 2024</Link>
+            <Link href='/registration' className='bg-blue-700 text-white px-10 py-[0.4rem] rounded-md'>Admission Enquiry 2024</Link>
           </div>
         </div>
         <div className='flex top-4 justify-center py-2'>
