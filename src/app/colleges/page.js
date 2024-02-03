@@ -90,10 +90,10 @@ const Colleges = () => {
         <div className="md:w-3/4 w-[100%] mx-2 space-y-4">
           <CollegesList activeCity={activeCity || ""} activeState={activeState || ""} page={page} activeType={activeType} activeCourse={activeCourse} courseType={courseType} />
           <div className={`flex text-white mx-[2%] ${page === 1 ? 'justify-end' : 'justify-between'}`}>
-            <button className={`text-white bg-gradient-to-r from-blue-500 to-cyan-400 hover:bg-gradient-to-bl py-1 px-2 flex justify-center gap-2 rounded-l ${page === 1 ? 'hidden' : ''}`} onClick={handlePrevClick}>
+            <button className={`text-white bg-blue-500 hover:bg-blue-600 py-1 px-2 flex justify-center gap-2 rounded-md ${page === 1 ? 'hidden' : ''}`} onClick={handlePrevClick}>
               <GrFormPrevious className='mt-1' />Prev
             </button>
-            <button className={`text-white bg-gradient-to-r from-cyan-400 to-blue-500 hover:bg-gradient-to-bl py-1 px-2 flex justify-center gap-2 rounded-l ${page === totalPages ? 'hidden' : ''}`} onClick={handleNextClick}>
+            <button className={`text-white bg-blue-500 hover:bg-blue-600 py-1 px-2 flex justify-center gap-2 rounded-md	 ${page === totalPages ? 'hidden' : ''}`} onClick={handleNextClick}>
               Next<GrFormNext className='mt-1' />
             </button>
           </div>
