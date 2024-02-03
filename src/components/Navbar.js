@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsLogin } from "@/store/slices/LoginSlice";
 import { RotatingLines } from 'react-loader-spinner'
 import { toast } from 'react-toastify';
+import { FaRegUser } from "react-icons/fa";
 
 const Navbar = ({ className }) => {
   const dispatch = useDispatch();
@@ -109,8 +110,9 @@ const Navbar = ({ className }) => {
                             <div className="mt-2">
                               <span className="font-semibold">Welcome {data?.user?.name}</span>
                             </div>
-                            <Link href='/profile' className="block bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 py-2 px-4 text-center text-white rounded text-xl md:text-base font-sans mt-2">
-                              Profile
+                            <Link href='/profile' className="flex justify-center items-center space-x-1 bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 py-2 px-4 text-center text-white rounded text-xl md:text-base font-sans mt-2">
+                              <span>Profile</span>
+                              <FaRegUser className="-mt-1" />
                             </Link>
                             <button onClick={handleSignOut} className="flex justify-center bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-blue-600 py-2 px-4 text-center text-white rounded text-xl md:text-base font-sans mt-2">
 
