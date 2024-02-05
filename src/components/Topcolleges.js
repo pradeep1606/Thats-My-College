@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchFeaturedCollege } from '@/store/slices/FeaturedSlice';
 import FeaturedCollegeSkeleton from '@/skeleton/FeaturedCollegeSkeleton';
 
-const FeaturedCollege = () => {
+const Topcolleges = () => {
     const dispatch = useDispatch();
     const { college, loading, error } = useSelector((state) => state.featuredCollege);
 
@@ -51,7 +51,7 @@ const FeaturedCollege = () => {
     }
     return (
         <div className=' px-4 pb-12 sm:px-8 bg-white'>
-            <div className='p-4 text-2xl sm:text-3xl text-[#262626] font-bold pointer-events-none'>Top College</div>
+            <div className='p-4 text-2xl sm:text-3xl text-[#262626] font-bold pointer-events-none'>Top B.Tech College</div>
             <div className="w-full mt-1">
                 <Carousel
                     showArrows={true}
@@ -118,4 +118,4 @@ const FeaturedCollege = () => {
     );
 };
 
-export default FeaturedCollege;
+export default Topcolleges;
