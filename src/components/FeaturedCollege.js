@@ -13,7 +13,7 @@ const FeaturedCollege = () => {
     const { college, loading, error } = useSelector((state) => state.featuredCollege);
 
     useEffect(() => {
-        const apiPost = `/api/courses/get-all/college-details?featured=true`
+        const apiPost = `/api/courses/get-all/college-details?collegeType=engineering&featured=true`
         dispatch(fetchFeaturedCollege(apiPost));
     }, [dispatch]);
 
@@ -51,7 +51,7 @@ const FeaturedCollege = () => {
     }
     return (
         <div className=' px-4 pb-12 sm:px-8 bg-white'>
-            <div className='p-4 text-2xl sm:text-3xl text-[#262626] font-bold pointer-events-none'>Top College</div>
+            <div className='p-4 text-2xl sm:text-3xl text-[#262626] font-bold pointer-events-none'>Top B.Tech Colleges</div>
             <div className="w-full mt-1">
                 <Carousel
                     showArrows={true}

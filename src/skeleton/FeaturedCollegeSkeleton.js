@@ -5,8 +5,8 @@ import 'react-loading-skeleton/dist/skeleton.css'
 const FeaturedCollegeSkeleton = () => {
     return (
         <>
-            <div className='mt-12 md:px-8 px-6 pb-12 bg-white'>
-                <div className='p-4 text-2xl sm:text-3xl text-[#262626] font-bold'>Top College</div>
+            <div className='md:px-8 px-6 pb-12 bg-white'>
+                <div className='p-4 text-2xl sm:text-3xl text-[#262626] font-bold'>Top Colleges</div>
                 <div className=" bg-white grid overflow-hidden md:grid-cols-3 lg:grid-cols-3 sm:grid-cols-2 md:px-8 px-4">
                     {
                         Array.from({ length: 3 }).map((el, indx) => {

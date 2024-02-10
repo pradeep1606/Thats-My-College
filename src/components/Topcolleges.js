@@ -5,16 +5,16 @@ import { Carousel } from 'react-responsive-carousel';
 import Link from 'next/link';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchFeaturedCollege } from '@/store/slices/FeaturedSlice';
+import { fetchTopCollege } from '@/store/slices/TopCollegeSlice';
 import FeaturedCollegeSkeleton from '@/skeleton/FeaturedCollegeSkeleton';
 
 const Topcolleges = () => {
     const dispatch = useDispatch();
-    const { college, loading, error } = useSelector((state) => state.featuredCollege);
+    const { college, loading, error } = useSelector((state) => state.topCollege);
 
     useEffect(() => {
-        const apiPost = `/api/courses/get-all/college-details?featured=true`
-        dispatch(fetchFeaturedCollege(apiPost));
+        const apiPost = `/api/courses/get-all/college-details?collegeType=management&featured=true`
+        dispatch(fetchTopCollege(apiPost));
     }, [dispatch]);
 
     const [chunkSize, setChunkSize] = useState(3);
@@ -49,9 +49,10 @@ const Topcolleges = () => {
     for (let i = 0; i < featuredCollege.length; i += chunkSize) {
         chunkedFeaturedColleges.push(featuredCollege.slice(i, i + chunkSize));
     }
+    const reversedChunkedFeaturedColleges = chunkedFeaturedColleges.reverse();
     return (
         <div className=' px-4 pb-12 sm:px-8 bg-white'>
-            <div className='p-4 text-2xl sm:text-3xl text-[#262626] font-bold pointer-events-none'>Top B.Tech College</div>
+            <div className='p-4 text-2xl sm:text-3xl text-[#262626] font-bold pointer-events-none'>Top Management Colleges</div>
             <div className="w-full mt-1">
                 <Carousel
                     showArrows={true}
@@ -83,7 +84,7 @@ const Topcolleges = () => {
                     }
                 >
 
-                    {chunkedFeaturedColleges.map((chunk, index) => (
+                    {reversedChunkedFeaturedColleges.map((chunk, index) => (
                         <div key={index} className="grid md:grid-cols-3 lg:grid-cols-3 sm:grid-cols-2 md:px-12 px-4 gap-4 bg-white">
                             {chunk.map(clg => (
                                 <div className="rounded-b-md" key={clg.collegeId} >
