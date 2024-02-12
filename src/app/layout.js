@@ -9,6 +9,8 @@ import { ToastContainer } from '@/app/reactToast'
 import 'react-toastify/dist/ReactToastify.css';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import { NextAuthProvider } from './Provider'
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const roboto = Roboto({
   weight: '400',
@@ -35,6 +37,8 @@ export default function RootLayout({ children }) {
             </ReduxProvider>
           </SkeletonTheme>
         </NextAuthProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
