@@ -151,16 +151,16 @@ const Contact = () => {
 
             <h2 className="text-xl font-semibold mt-8 mb-4 text-slate-700">Follow us on </h2>
             <div className="flex">
-              <a href="#" className="w-10 h-10 bg-blue-400 bg-opacity-20 mr-4 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-gray-500 hover:text-white" target='_blank'>
+              <a href="#" className="w-10 h-10 bg-blue-400 bg-opacity-20 mr-4 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-gray-500 hover:text-white">
                 <FaFacebookF />
               </a>
-              <a href="https://x.com/thatsmycollege?s=08" className="w-10 h-10 bg-blue-400 bg-opacity-20 mr-4 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-gray-500 hover:text-white" target='_blank'>
+              <a href="https://x.com/thatsmycollege?s=08" className="w-10 h-10 bg-blue-400 bg-opacity-20 mr-4 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-gray-500 hover:text-white">
                 <FaTwitter />
               </a>
-              <a href="https://www.instagram.com/thats_mycollege?utm_source=qr&igsh=czVsdmxnejI3Z3Ro" className="w-10 h-10 bg-blue-400 bg-opacity-20 mr-4 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-gray-500 hover:text-white" target='_blank'>
+              <a href="https://www.instagram.com/thats_mycollege?utm_source=qr&igsh=czVsdmxnejI3Z3Ro" className="w-10 h-10 bg-blue-400 bg-opacity-20 mr-4 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-gray-500 hover:text-white">
                 <FaInstagram />
               </a>
-              <a href="https://www.linkedin.com/in/that-s-my-college-3470392ab?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="w-10 h-10 bg-blue-400 bg-opacity-20 mr-4 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-gray-500 hover:text-white" target='_blank'>
+              <a href="https://www.linkedin.com/in/that-s-my-college-3470392ab?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="w-10 h-10 bg-blue-400 bg-opacity-20 mr-4 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-gray-500 hover:text-white">
                 <FaLinkedinIn />
               </a>
             </div>
