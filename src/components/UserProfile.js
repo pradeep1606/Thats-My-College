@@ -73,6 +73,7 @@ const UserProfile = ({ sessionData }) => {
   }, [userData, appliedColleges, setUserData]);
 
   const { firstName = "", lastName = "", phone, gender, profilePic, qualification } = userData?.data || {};
+  // console.log("colleges data  &&&&&&", appliedColleges?.data?.applications?.collegeId);
 
   return (
     <div className='max-h-[200vh]  w-[95vw] sm:w-[90vw]  rounded-[10px] bg-[#fff] overflow-hidden relative shadow-md'>
