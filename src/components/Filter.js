@@ -67,8 +67,8 @@ export const MobileFilter = ({ cities, activeCity, setActiveCity, activeState, s
 
         </div>
       </div>
-      <div className='absolute bottom-0 bg-blue-700 p-4 text-white w-full text-center text-lg'>
-        <Link onClick={toggleFilter} href="">Apply Filter</Link>
+      <div onClick={toggleFilter} className='absolute bottom-0 bg-blue-700 p-4 text-white w-full text-center text-lg'>
+        <Link href="">Apply Filter</Link>
       </div>
     </>
   );
