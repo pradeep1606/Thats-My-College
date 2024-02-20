@@ -1,7 +1,7 @@
 import ComingSoon from '@/components/ComingSoon'
 import React from 'react'
 
-function page() {
+const page = () => {
   return (
     <>
       <ComingSoon />
