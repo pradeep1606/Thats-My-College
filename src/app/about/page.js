@@ -34,7 +34,7 @@ const About = () => {
             {/* Yashraj */}
             <div className='card relative h-fit w-[75vw] sm:h-[50vh] sm:w-[18vw] bg-[lavender] pb-2 sm:pb-0 rounded-[10px] [box-shadow:0px_15px_30px_5px_rgba(0,0,0,0.06)] [transition:all_ease_0.5s]'>
               <div className='relative h-[fit-content] w-[80vw] flex sm:w-[18vw]'>
-                <div className=' photo h-[28vh] sm:h-[30vh] w-[50vw] sm:w-[16vw]  relative sm:ml-0 ml-5 top-[3vh] bg-[url("/team/yash_t.jpg")] bg-cover rounded-[10px] bg-center '></div>
+                <div className=' photo h-[28vh] sm:h-[30vh] w-[50vw] sm:w-[16vw]  relative sm:ml-0 ml-5 top-[3vh] bg-[url("/team/yash_t.JPG")] bg-cover rounded-[10px] bg-center '></div>
                 <div className='social sm:opacity-0 opacity-1 h-[35vh] w-[15vw] ml-[5vw] sm:w-[5vw] sm:ml-[0vw] text-[rgba(45,94,176,1)] [transition:all_ease_0.5s]'>
                   <div className="flex flex-col gap-3 mt-8">
                     <a href="mailto:Yashrajthakur280@gmail.com" className="w-10 text-lg  h-10 bg-white bg-opacity-20 mr-4 flex items-center justify-center rounded-full transition-colors duration-300 hover:text-gray-800 hover:bg-white">
