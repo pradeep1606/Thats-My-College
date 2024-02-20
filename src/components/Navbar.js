@@ -74,7 +74,7 @@ const Navbar = ({ className }) => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4 text-gray-900">
                 <Link href="/notes" className="block py-2 pl-3 pr-4 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Notes</Link>
-                <Link href="/" className="block py-2 pl-3 pr-4 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Internship</Link>
+                <Link href="/internship" className="block py-2 pl-3 pr-4 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Internship</Link>
                 <Link href="/courses" className=" white-link text-white md:border-0 md:hover:text-blue-500 px-3 py-2 rounded-md">Courses</Link>
                 <div className="inline-block relative group z-10">
                   <button className="white-link text-white md:border-0 md:hover:text-blue-500 rounded-md">Colleges</button>
@@ -148,7 +148,6 @@ const Navbar = ({ className }) => {
               <button
                 onClick={toggleNavbar}
                 className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-              // aria-expanded={isOpen}
               >
                 <span className="sr-only">Open main menu</span>
                 <svg
@@ -217,7 +216,7 @@ const Navbar = ({ className }) => {
                 <Link href="/profile" onClick={() => { toggleNavbar(); }} className="block py-2 pl-3 pr-4 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Login</Link>
               )}
               <Link href="/notes" onClick={toggleNavbar} className="block py-2 pl-3 pr-4 h-10 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Notes</Link>
-              <Link href="/" onClick={toggleNavbar} className="block py-2 pl-3 pr-4 h-10 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Internship</Link>
+              <Link href="/internship" onClick={toggleNavbar} className="block py-2 pl-3 pr-4 h-10 text-white bg-blue-700 hover:bg-blue-500 rounded md:px-4 md:py-[0.20rem]" aria-current="page">Internship</Link>
             </div>
           </div>
         </div>

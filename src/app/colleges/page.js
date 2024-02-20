@@ -88,7 +88,7 @@ const Colleges = () => {
           <DesktopFilter cities={cityOfState} activeCity={activeCity} setActiveCity={setActiveCity} activeState={activeState} setActiveState={handleState} stateType={cityAndState.map((st)=>st.stateName)} courses={selectedCourses} types={collegeStream.map((ctr) => ctr.name)} onSelectType={handleCourse} selectedType={activeType} onSelectCourse={setActiveCourse} selectedCourse={activeCourse} />
         </div>
         <div className="md:w-3/4 w-[100%] mx-2 space-y-4">
-          <CollegesList activeCity={activeCity || ""} activeState={activeState || ""} page={page} activeType={activeType} activeCourse={activeCourse} courseType={courseType} />
+          <CollegesList activeCity={activeCity || ""} setActiveCity={setActiveCity} activeState={activeState || ""} setActiveState={setActiveState} page={page} activeType={activeType} activeCourse={activeCourse} setActiveCourse={setActiveCourse} courseType={courseType} />
           <div className={`flex text-white mx-[2%] ${page === 1 ? 'justify-end' : 'justify-between'}`}>
             <button className={`text-white  bg-gradient-to-l from-blue-400 to-blue-600 hover:bg-gradient-to-br py-1 px-2 flex justify-center gap-2 rounded-l-md ${page === 1 ? 'hidden' : ''}`} onClick={handlePrevClick}>
               <GrFormPrevious className='mt-1' />Prev
