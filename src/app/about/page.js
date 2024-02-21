@@ -5,7 +5,6 @@ import { ImArrowUpRight2, AiOutlineMail } from "react-icons/im";
 import { MdOutlineMail } from "react-icons/md";
 export const metadata = { title: 'About' };
 
-
 const About = () => {
   return (
     <>
@@ -176,29 +175,6 @@ const About = () => {
               <div className=' name text-[#224074] relative [transition:all_ease_0.5s]'>
                 <h2 className=' text-xl'>Naman Raghuwanshi</h2>
                 <h2 className=' text-xl'>Social Media Manager</h2>
-              </div>
-            </div>
-            {/* Vaishnavi */}
-            <div className='card relative h-fit w-[75vw] sm:h-[50vh] sm:w-[18vw] bg-[lavender] pb-2 sm:pb-0 rounded-[10px] [box-shadow:0px_15px_30px_5px_rgba(0,0,0,0.06)] [transition:all_ease_0.5s]'>
-              <div className='relative h-[fit-content] w-[80vw] flex sm:w-[18vw]'>
-                <div className=' photo h-[28vh] sm:h-[30vh] w-[50vw] sm:w-[16vw]  relative sm:ml-0 ml-5 top-[3vh] bg-[url("/team/Vaishnavi.jpg")] bg-cover rounded-[10px] [box-shadow:0px_15px_30px_5px_rgba(0,0,0,0.06)] bg-center '></div>
-                <div className='social sm:opacity-0 opacity-1 h-[35vh] w-[15vw] ml-[5vw] sm:w-[5vw] sm:ml-[0vw] text-[rgba(45,94,176,1)] [transition:all_ease_0.5s]'>
-                  <div className="flex flex-col gap-3 mt-8">
-                    <a href="mailto:Vaishnavinew2003@gmail.com" className="w-10 text-lg  h-10 bg-white bg-opacity-20 mr-4 flex items-center justify-center rounded-full transition-colors duration-300 hover:text-gray-800 hover:bg-white">
-                      <MdOutlineMail />
-                    </a>
-                    <a href="https://m.youtube.com/channel/UCbgNIMX2nyCoa3BrXU33V7A?fbclid=PAAaZ-37FqdRMFGeaOxsvv-OM0njledmFmh1BnftrFMIU9tWJys7b5ejHpyAU" className="w-10 text-lg  h-10 bg-white bg-opacity-20 mr-4 flex items-center justify-center rounded-full transition-colors duration-300 hover:text-gray-800 hover:bg-white">
-                      <FaYoutube />
-                    </a>
-                    <a href="https://www.instagram.com/vistaaar7?igsh=anl1N3hpZmYzenZ2" className="w-10 text-lg  h-10 bg-white bg-opacity-20 mr-4 flex items-center justify-center rounded-full transition-colors duration-300 hover:text-gray-800 hover:bg-white">
-                      <FaInstagram />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className=' name text-[#224074] relative [transition:all_ease_0.5s]'>
-                <h2 className=' text-xl'>Vaishnavi Gupta</h2>
-                <h2 className=' text-xl'>Youtube Representative</h2>
               </div>
             </div>
             {/* Esha */}

@@ -1,5 +1,5 @@
 import ComingSoon from '@/components/ComingSoon'
-import React from 'react'
+export const metadata = { title: 'Internship' };
 
 function page() {
   return (

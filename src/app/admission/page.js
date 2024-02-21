@@ -1,9 +1,10 @@
-import React from 'react'
+import ComingSoon from '@/components/ComingSoon';
+export const metadata = { title: 'Admission' };
 
 const Admission = () => {
   return (
     <>
-      <div>Admission div</div>
+      <ComingSoon />
     </>
   )
 }

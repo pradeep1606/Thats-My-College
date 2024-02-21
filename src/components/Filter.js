@@ -75,8 +75,6 @@ export const MobileFilter = ({ cities, activeCity, setActiveCity, activeState, s
 };
 
 
-
-
 export const DesktopFilter = ({ cities, activeCity, setActiveCity, activeState, setActiveState, stateType, courses, types, onSelectType, onSelectCourse, selectedCourse, selectedType }) => {
   const [collegeTypeOpen, setCollegeTypeOpen] = useState(true);
   const [courseTypeOpen, setCourseTypeOpen] = useState(true)
@@ -123,7 +121,7 @@ export const DesktopFilter = ({ cities, activeCity, setActiveCity, activeState, 
           </div>
         )}
       </div>
-      
+
       {/* State Filter */}
       <div className='bg-white p-4 rounded'>
         <div className='px-4 py-2 flex justify-between items-center cursor-pointer' onClick={toggleAccordion4}>
