@@ -67,7 +67,7 @@ const About = () => {
               </div>
               <div className=' name text-[#224074] relative [transition:all_ease_0.5s]'>
                 <h2 className=' text-xl'>Ujjawal Tiwari</h2>
-                <h2 className=' text-xl'>Co-founder & CMO</h2>
+              //  <h2 className=' text-xl'>Co-founder & CMO</h2>
               </div>
             </div>
             {/* Pradeep */}
@@ -93,7 +93,7 @@ const About = () => {
               </div>
               <div className=' name text-[#224074] relative [transition:all_ease_0.5s]'>
                 <h2 className=' text-xl'>Pradeep Maurya</h2>
-                <h2 className=' text-xl'>Co-founder & CTO</h2>
+             //   <h2 className=' text-xl'>Co-founder & CTO</h2>
               </div>
             </div>
             {/* Ajay */}
@@ -120,7 +120,7 @@ const About = () => {
               </div>
               <div className=' name text-[#224074] relative [transition:all_ease_0.5s]'>
                 <h2 className=' text-xl'>Ajay Kumar Maurya</h2>
-                <h2 className=' text-xl'>Co-founder & Product Manager</h2>
+           //     <h2 className=' text-xl'>Co-founder & Product Manager</h2>
               </div>
             </div>
             {/* Yash */}
@@ -147,7 +147,7 @@ const About = () => {
               </div>
               <div className=' name text-[#224074] relative [transition:all_ease_0.5s]'>
                 <h2 className=' text-xl'>Yash Yadav</h2>
-                <h2 className=' text-xl'>Co-founder & Web Developer</h2>
+           //     <h2 className=' text-xl'>Co-founder & Web Developer</h2>
 
               </div>
             </div>
