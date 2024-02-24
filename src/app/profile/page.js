@@ -1,14 +1,14 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useSession } from 'next-auth/react';
+import LoginForm from '@/components/LoginForm';
 import SignInButton from "@/components/SignInButton";
 import UserProfile from "@/components/UserProfile";
-import LoginForm from '@/components/LoginForm';
-import { setIsLogin } from '@/store/slices/LoginSlice';
-import axios from 'axios';
+import axiosInstance from '@/config/AxiosIntercepter';
 import UserProfileSkeleton from '@/skeleton/UserProfileSkeleton';
+import { setIsLogin } from '@/store/slices/LoginSlice';
+import { useSession } from 'next-auth/react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Page = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const Page = () => {
 
   const checkEmailExistence = async (email) => {
     try {
-      const { data } = await axios.get(`${Api}/api/users/email/${email}`);
+      const { data } = await axiosInstance.get(`${Api}/api/users/email/${email}`);
       localStorage.setItem('authToken', data.data.authToken)
       return data.status;
     } catch (error) {
