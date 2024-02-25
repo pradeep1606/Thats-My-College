@@ -15,7 +15,7 @@ import { IoIosLogOut } from "react-icons/io";
 const UserProfile = ({ sessionData }) => {
   const { user = {} } = sessionData;
   const { email = {} } = user;
-  const Api = process.env.API_URL;
+  const Api = process.env.SERVICE_BASE_URL;
   const router = useRouter();
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({});

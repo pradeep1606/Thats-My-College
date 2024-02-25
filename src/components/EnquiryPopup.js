@@ -10,7 +10,7 @@ import axiosInstance from '@/config/AxiosIntercepter';
 
 const EnquiryPopup = ({ collegeData, toggleEnqueryPopup }) => {
     const { name } = collegeData;
-    const Api = process.env.API_URL;
+    const Api = process.env.SERVICE_BASE_URL;
     const { isLogin } = useSelector((state) => state.loginStatus);
     const { status, data: session } = useSession();
     const { user = {} } = session || {};

@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import axiosInstance from '@/config/AxiosIntercepter';
 import { setIsLogin } from '@/store/slices/LoginSlice';
-import axios from 'axios';
-import { RotatingLines } from 'react-loader-spinner'
+import { useState } from 'react';
+import { RotatingLines } from 'react-loader-spinner';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
 const LoginForm = ({ formData, setFormData }) => {
     const dispatch = useDispatch();
-    const Api = process.env.API_URL;
+    const Api = process.env.SERVICE_BASE_URL;
     const [isLoading, setIsLoading] = useState(false)
 
     const handleFormSubmit = async (e) => {
@@ -24,7 +24,7 @@ const LoginForm = ({ formData, setFormData }) => {
                 profilePic: formData.profilePic,
             };
 
-            const { data } = await axios.post(`${Api}/api/users/oauth-login`, requestData, {
+            const { data } = await axiosInstance.post(`${Api}/api/users/oauth-login`, requestData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
