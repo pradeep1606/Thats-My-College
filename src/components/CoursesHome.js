@@ -5,7 +5,7 @@ import Link from 'next/link'
 import axiosInstance from '@/config/AxiosIntercepter'
 
 const CoursesHome = () => {
-    const Api = process.env.API_URL;
+    const Api = process.env.SERVICE_BASE_URL;
     const [engineering, setEngineering] = useState()
     const [pharmacy, setPharmacy] = useState()
     const [management, setManagement] = useState()

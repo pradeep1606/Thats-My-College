@@ -12,7 +12,7 @@ import axiosInstance from '@/config/AxiosIntercepter';
 
 const Register = ({ college, toggleRegisterPopup }) => {
     const { name, logo, _id } = college;
-    const Api = process.env.API_URL;
+    const Api = process.env.SERVICE_BASE_URL;
     const { isLogin } = useSelector((state) => state.loginStatus);
     const { status, data: session } = useSession();
     const [userId, setUserId] = useState()

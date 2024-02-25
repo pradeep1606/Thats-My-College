@@ -1,7 +1,7 @@
 import axiosInstance from "@/config/AxiosIntercepter";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const Api = process.env.API_URL;
+const Api = process.env.SERVICE_BASE_URL;
 
 export const fetchColleges = createAsyncThunk("FilterCollege/fetchColleges", async (apiPost) => {
     try {

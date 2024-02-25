@@ -5,7 +5,7 @@ import axiosInstance from '@/config/AxiosIntercepter';
 import Link from 'next/link';
 
 const AppliedCollegeList = ({ appliedColleges, setappliedColleges }) => {
-  const Api = process.env.API_URL;
+  const Api = process.env.SERVICE_BASE_URL;
 
   const handleDelete = async (applicationId) => {
     const confirmDelete = window.confirm(`Are you sure you want to delete?`);

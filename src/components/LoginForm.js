@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 const LoginForm = ({ formData, setFormData }) => {
     const dispatch = useDispatch();
-    const Api = process.env.API_URL;
+    const Api = process.env.SERVICE_BASE_URL;
     const [isLoading, setIsLoading] = useState(false)
 
     const handleFormSubmit = async (e) => {

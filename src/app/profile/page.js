@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Page = () => {
   const dispatch = useDispatch();
-  const Api = process.env.API_URL;
+  const Api = process.env.SERVICE_BASE_URL;
   const { status, data: session } = useSession();
   const [formData, setFormData] = useState({});
   const { isLogin } = useSelector((state) => state.loginStatus);
