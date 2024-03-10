@@ -29,9 +29,6 @@ jobs:
     runs-on: [tmc_aws_ec2]
     steps:
 
-      - name: Pull image from Docker Hub
-        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend:latest
-
       - name: Stop old container
         run: |
           CONTAINER_ID=$(docker ps -q -f name=tmc-frontend-container)
@@ -53,6 +50,9 @@ jobs:
         run: |
           docker images -q ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend | xargs -I {} docker rmi {}
         shell: bash
+
+      - name: Pull image from Docker Hub
+        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend:latest
 
       - name: Create .env file locally
         run: |
