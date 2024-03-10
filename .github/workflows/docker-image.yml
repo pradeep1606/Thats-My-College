@@ -82,7 +82,4 @@ jobs:
 
       - name: Run docker container
         run: |
-          docker run -d -p 3000:3000 \
-            # --env-file .env \
-            --name tmc-frontend-container \
-            ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend
+          docker run -d -p 3000:3000 --name tmc-frontend-container ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend
