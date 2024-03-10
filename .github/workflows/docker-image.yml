@@ -24,30 +24,35 @@ jobs:
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend:latest
 
 
-  # deploy:
-  #   needs: build
-  #   runs-on: [aws-ec2]
-  #   steps:
-  #     - name: Pull image from Docker Hub
-  #       run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/tmc-backend:latest
+  deploy:
+    needs: build
+    runs-on: [tmc_aws-ec2]
+    steps:
+      - name: Pull image from Docker Hub
+        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend:latest
 
-  #     - name: Delete old container
-  #       run: |
-  #         docker stop tmc-backend-container
-  #         docker rm -f tmc-backend-container
+      - name: Delete old container
+        run: |
+          docker stop tmc-frontend-container
+          docker rm -f tmc-frontend-container
 
-  #     - name: Create .env file locally
-  #       run: |
-  #         touch .env
-  #         echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" > .env
-  #         echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
-  #         echo "TMC_API_CONFIG_KEY=${{ secrets.TMC_API_CONFIG_KEY }}" >> .env
-  #         echo "PORT=${{ secrets.PORT }}" >> .env
-  #         # Add more environment variables as needed
+      - name: Create .env file locally
+        run: |
+          touch .env
+          echo "SERVICE_BASE_URL=${{ secrets.SERVICE_BASE_URL }}" > .env
+          echo "EMAIL=${{ secrets.EMAIL }}" >> .env
+          echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env
+          echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> .env
+          echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env
+          echo "NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}" >> .env
+          echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env
+          echo "SERVICE_API_KEY=${{ secrets.SERVICE_API_KEY }}" >> .env
+          echo "SERVICE_API_KEY_VALUE=${{ secrets.SERVICE_API_KEY_VALUE }}" >> .env
+          # Add more environment variables as needed
 
-  #     - name: Run docker container
-  #       run: |
-  #         docker run -d -p 4000:4000 \
-  #           --env-file .env \
-  #           --name tmc-backend-container \
-  #           ${{ secrets.DOCKERHUB_USERNAME }}/tmc-backend
+      - name: Run docker container
+        run: |
+          docker run -d -p 3000:3000 \
+            --env-file .env \
+            --name tmc-frontend-container \
+            ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend
