@@ -31,9 +31,21 @@ jobs:
       - name: Pull image from Docker Hub
         run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend:latest
 
+      - name: Stop old container
+        run: |
+          CONTAINER_ID=$(docker ps -q -f name=tmc-frontend-container)
+          if [ -z "$CONTAINER_ID" ]; then
+            echo "Container not found. Skipping stop action."
+            exit 0
+          else
+            echo "Container found. Stopping..."
+            docker stop tmc-frontend-container
+            echo "Container stopped."
+          fi
+        shell: bash
+
       - name: Delete old container
         run: |
-          docker stop tmc-frontend-container
           docker rm -f tmc-frontend-container
 
       - name: Create .env file locally
