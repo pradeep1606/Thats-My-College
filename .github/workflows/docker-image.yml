@@ -16,26 +16,26 @@ jobs:
 
       - name: Create .env file locally
         run: |
-          touch .env.production
-          echo "SERVICE_BASE_URL=${{ secrets.SERVICE_BASE_URL }}" > .env.production
-          echo "EMAIL=${{ secrets.EMAIL }}" >> .env.production
-          echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env.production
-          echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> .env.production
-          echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env.production
-          echo "NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}" >> .env.production
-          echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env.production
-          echo "SERVICE_API_KEY=${{ secrets.SERVICE_API_KEY }}" >> .env.production
-          echo "SERVICE_API_KEY_VALUE=${{ secrets.SERVICE_API_KEY_VALUE }}" >> .env.production
+          touch .env
+          echo "SERVICE_BASE_URL=${{ secrets.SERVICE_BASE_URL }}" > .env
+          echo "EMAIL=${{ secrets.EMAIL }}" >> .env
+          echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env
+          echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> .env
+          echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env
+          echo "NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}" >> .env
+          echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env
+          echo "SERVICE_API_KEY=${{ secrets.SERVICE_API_KEY }}" >> .env
+          echo "SERVICE_API_KEY_VALUE=${{ secrets.SERVICE_API_KEY_VALUE }}" >> .env
           # Add more environment variables as needed
 
       - name: Build the Docker image
         run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend:latest .
         env:
          DOCKER_BUILDKIT: 1
-          # Include the .env.production file in the build context
+          # Include the .env file in the build context
         with:
           files: |
-            .env.production
+            .env
 
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }} docker.io
@@ -76,21 +76,21 @@ jobs:
 
       - name: Create .env file locally
         run: |
-          touch .env.production
-          echo "SERVICE_BASE_URL=${{ secrets.SERVICE_BASE_URL }}" > .env.production
-          echo "EMAIL=${{ secrets.EMAIL }}" >> .env.production
-          echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env.production
-          echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> .env.production
-          echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env.production
-          echo "NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}" >> .env.production
-          echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env.production
-          echo "SERVICE_API_KEY=${{ secrets.SERVICE_API_KEY }}" >> .env.production
-          echo "SERVICE_API_KEY_VALUE=${{ secrets.SERVICE_API_KEY_VALUE }}" >> .env.production
+          touch .env
+          echo "SERVICE_BASE_URL=${{ secrets.SERVICE_BASE_URL }}" > .env
+          echo "EMAIL=${{ secrets.EMAIL }}" >> .env
+          echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env
+          echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> .env
+          echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env
+          echo "NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}" >> .env
+          echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env
+          echo "SERVICE_API_KEY=${{ secrets.SERVICE_API_KEY }}" >> .env
+          echo "SERVICE_API_KEY_VALUE=${{ secrets.SERVICE_API_KEY_VALUE }}" >> .env
           # Add more environment variables as needed
 
       - name: Run docker container
         run: |
           docker run -d -p 3000:3000 \
-            --env-file .env.production \
+            --env-file .env \
             --name tmc-frontend-container \
             ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend
