@@ -7,13 +7,13 @@ WORKDIR /app
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
-
 # Copy the rest of the application code to the working directory
 COPY . .
 ARG ENV_FILE
 COPY $ENV_FILE .env
+
+# Install dependencies
+RUN npm ci
 
 # Build the Next.js application for production
 RUN npm run build
