@@ -17,15 +17,16 @@ jobs:
       - name: Create .env file locally
         run: |
           touch .env
-          echo "SERVICE_BASE_URL=${{ secrets.SERVICE_BASE_URL }}" > .env
-          echo "EMAIL=${{ secrets.EMAIL }}" >> .env
-          echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env
-          echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> .env
-          echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env
-          echo "NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}" >> .env
-          echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env
-          echo "SERVICE_API_KEY=${{ secrets.SERVICE_API_KEY }}" >> .env
-          echo "SERVICE_API_KEY_VALUE=${{ secrets.SERVICE_API_KEY_VALUE }}" >> .env
+          echo "PRODUCTION_ENV=${{ secrets.PRODUCTION_ENV }}" > .env
+          # echo "SERVICE_BASE_URL=${{ secrets.SERVICE_BASE_URL }}" > .env
+          # echo "EMAIL=${{ secrets.EMAIL }}" >> .env
+          # echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env
+          # echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> .env
+          # echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env
+          # echo "NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}" >> .env
+          # echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env
+          # echo "SERVICE_API_KEY=${{ secrets.SERVICE_API_KEY }}" >> .env
+          # echo "SERVICE_API_KEY_VALUE=${{ secrets.SERVICE_API_KEY_VALUE }}" >> .env
           # Add more environment variables as needed
 
       - name: Build the Docker image
@@ -77,15 +78,16 @@ jobs:
       - name: Create .env file locally
         run: |
           touch .env
-          echo "SERVICE_BASE_URL=${{ secrets.SERVICE_BASE_URL }}" > .env
-          echo "EMAIL=${{ secrets.EMAIL }}" >> .env
-          echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env
-          echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> .env
-          echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env
-          echo "NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}" >> .env
-          echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env
-          echo "SERVICE_API_KEY=${{ secrets.SERVICE_API_KEY }}" >> .env
-          echo "SERVICE_API_KEY_VALUE=${{ secrets.SERVICE_API_KEY_VALUE }}" >> .env
+          echo "PRODUCTION_ENV=${{ secrets.PRODUCTION_ENV }}" > .env
+          # echo "SERVICE_BASE_URL=${{ secrets.SERVICE_BASE_URL }}" > .env
+          # echo "EMAIL=${{ secrets.EMAIL }}" >> .env
+          # echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env
+          # echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> .env
+          # echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env
+          # echo "NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}" >> .env
+          # echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env
+          # echo "SERVICE_API_KEY=${{ secrets.SERVICE_API_KEY }}" >> .env
+          # echo "SERVICE_API_KEY_VALUE=${{ secrets.SERVICE_API_KEY_VALUE }}" >> .env
           # Add more environment variables as needed
 
       - name: Run docker container
