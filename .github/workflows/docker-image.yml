@@ -26,7 +26,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: [tmc_aws-ec2]
+    runs-on: [tmc_aws_ec2]
     steps:
       - name: Pull image from Docker Hub
         run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend:latest
