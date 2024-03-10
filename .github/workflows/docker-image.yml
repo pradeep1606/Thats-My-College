@@ -29,13 +29,13 @@ jobs:
           # Add more environment variables as needed
 
       - name: Build the Docker image
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend:latest .
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend:latest . --build-arg ENV_FILE=.env
         env:
          DOCKER_BUILDKIT: 1
           # Include the .env file in the build context
-        with:
-          files: |
-            .env
+        # with:
+        #   files: |
+        #     .env
 
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }} docker.io
