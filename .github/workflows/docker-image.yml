@@ -28,10 +28,6 @@ jobs:
     needs: build
     runs-on: [tmc_aws_ec2]
     steps:
-      - name: Remove old Docker images
-        run: |
-          docker images -q ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend | xargs -I {} docker rmi {}
-        shell: bash
 
       - name: Pull image from Docker Hub
         run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend:latest
@@ -52,6 +48,11 @@ jobs:
       - name: Delete old container
         run: |
           docker rm -f tmc-frontend-container
+
+      - name: Remove old Docker images
+        run: |
+          docker images -q ${{ secrets.DOCKERHUB_USERNAME }}/tmc-frontend | xargs -I {} docker rmi {}
+        shell: bash
 
       - name: Create .env file locally
         run: |
