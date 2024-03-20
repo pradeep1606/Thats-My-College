@@ -19,11 +19,15 @@ const roboto = Roboto({
 })
 
 export const metadata = {
+  metadataBase: new URL('https://www.thatsmycollege.com'),
   title: {
     default:'Thats My College',
     template:'%s - Thats My College'
   },
   description: 'Find a best college and Get Admission to start your education',
+  openGraph: {
+    images: '/logo/tmc_blue.png',
+  },
 }
 
 export default function RootLayout({ children }) {
