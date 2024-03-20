@@ -68,7 +68,7 @@ const SearchPopup = ({ onClose, isOpen }) => {
               <div className='py-2 px-6 text-xl text-blue-800'>{queryLimit}</div>
             ) : (
               loading ? (
-                <div><SearchSkeleton /></div> 
+                <div><SearchSkeleton /></div>
               ) : error ? (
                 <div>Error: {error.message}</div>
               ) : colleges.data ? (
@@ -84,10 +84,10 @@ const SearchPopup = ({ onClose, isOpen }) => {
                     ))}
                   </ul>
                 ) : (
-                  <div className='py-2 px-6 text-xl text-blue-800'>No college found</div> 
+                  <div className='py-2 px-6 text-xl text-blue-800'>No college found</div>
                 )
               ) : (
-                <div><SearchSkeleton /></div> 
+                <div><SearchSkeleton /></div>
               )
             )
           }
