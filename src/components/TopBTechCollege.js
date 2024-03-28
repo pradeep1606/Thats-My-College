@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import Link from 'next/link';
@@ -7,8 +7,9 @@ import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFeaturedCollege } from '@/store/slices/FeaturedSlice';
 import FeaturedCollegeSkeleton from '@/skeleton/FeaturedCollegeSkeleton';
+import Image from 'next/image';
 
-const FeaturedCollege = () => {
+const TopBTechCollege = () => {
     const dispatch = useDispatch();
     const { college, loading, error } = useSelector((state) => state.featuredCollege);
 
@@ -22,8 +23,10 @@ const FeaturedCollege = () => {
     useEffect(() => {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
-            if (screenWidth >= 768) {
-                setChunkSize(3);
+            if (screenWidth >= 1024) {
+                setChunkSize(4);
+            } else if (screenWidth >= 768) {
+                setChunkSize(3)
             } else if (screenWidth >= 640) {
                 setChunkSize(2);
             } else {
@@ -49,6 +52,20 @@ const FeaturedCollege = () => {
     for (let i = 0; i < featuredCollege.length; i += chunkSize) {
         chunkedFeaturedColleges.push(featuredCollege.slice(i, i + chunkSize));
     }
+
+    const firstCourseDetails = (coursesDetails) => {
+        return coursesDetails.map(elm => {
+            if (elm.courseName === 'BE/B.Tech' || elm.courseName === 'B.Tech' || elm.courseName === 'BE') {
+                return (
+                    <div key={elm.id} className='flex flex-col items-start'>
+                        <span className="font-semibold">{elm.courseName}</span>
+                        <span className="text-gray-600 text-sm">{elm.fee} Total Fees</span>
+                    </div>
+                );
+            }
+            return null;
+        });
+    };
     return (
         <div className=' px-4 pb-12 sm:px-8 bg-white'>
             <div className='p-4 text-2xl sm:text-3xl text-[#262626] font-bold pointer-events-none'>Top B.Tech Colleges</div>
@@ -59,6 +76,7 @@ const FeaturedCollege = () => {
                     showStatus={false}
                     showThumbs={false}
                     infiniteLoop={false}
+                    renderIndicator={false}
                     renderArrowPrev={(onClickHandler, hasPrev, label) =>
                         hasPrev && (
                             <button
@@ -82,9 +100,8 @@ const FeaturedCollege = () => {
                         )
                     }
                 >
-
                     {chunkedFeaturedColleges.map((chunk, index) => (
-                        <div key={index} className="grid md:grid-cols-3 lg:grid-cols-3 sm:grid-cols-2 md:px-12 px-4 gap-4 bg-white">
+                        <div key={index} className="grid md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 md:px-12 px-4 gap-4 bg-white">
                             {chunk.map(clg => (
                                 <div className="rounded-b-md" key={clg.collegeId} >
                                     <Link href={`/colleges/${clg.collegeId}`} className="h-48 mx-[0.03rem] sm:h-56 bg-cover text-white px-4 rounded-t-md" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${clg.college.image[0]})`, display: 'flex', alignItems: 'flex-end' }}>
@@ -94,10 +111,9 @@ const FeaturedCollege = () => {
                                         </div>
                                     </Link>
                                     <div className="p-4 border-2 border-t-0">
-                                        <div className="pb-2 sm:pb-4 flex flex-col items-start">
-                                            <p className="font-semibold">BE/B.Tech</p>
-                                            <p className="text-gray-600 text-sm">55000 Total Fees</p>
-                                            {/* <div className='text-right'>Rating 9/10</div> */}
+                                        <div className="pb-2 flex items-start justify-between">
+                                            {firstCourseDetails(clg.courses)}
+                                            <div className='flex gap-1 text-sm'><Image src='/images/rating.png' height={10} width={10} alt='rating' className='h-4' /> 9/10</div>
                                         </div>
                                         <div className='w-full h-[0.05rem] bg-slate-200'></div>
                                         <div className='flex flex-col items-start'>
@@ -118,4 +134,4 @@ const FeaturedCollege = () => {
     );
 };
 
-export default FeaturedCollege;
+export default TopBTechCollege;
