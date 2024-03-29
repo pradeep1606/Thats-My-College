@@ -200,7 +200,7 @@ const About = () => {
               </div>
               <div className=' name text-[#224074] relative [transition:all_ease_0.5s]'>
                 <h2 className=' text-xl'>Esha Gandhi</h2>
-                <h2 className=' text-xl'>Office Manager</h2>
+                <h2 className=' text-xl'>Co-founder & Web Developer</h2>
               </div>
             </div>
             {/* Bhavya */}
