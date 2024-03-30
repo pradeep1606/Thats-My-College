@@ -1,10 +1,10 @@
-import ComingSoon from '@/components/ComingSoon';
 export const metadata = { title: 'Admission' };
+import Admission_Equiry from "@/components/Admission_Equiry";
 
 const Admission = () => {
   return (
     <>
-      <ComingSoon />
+      <Admission_Equiry/>
     </>
   )
 }

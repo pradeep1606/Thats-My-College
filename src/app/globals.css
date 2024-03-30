@@ -72,7 +72,7 @@ body {
 }
 
 .library{
-    background: linear-gradient(rgba(0, 0, 0, 0.584), rgba(0, 0, 0, 0.575)),  url('/images/library.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.584), rgba(0, 0, 0, 0.575)),  url('/images/library.webp');
     background-size: cover;
     background-position: center;
     
