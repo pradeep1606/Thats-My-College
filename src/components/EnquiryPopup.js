@@ -114,7 +114,7 @@ const EnquiryPopup = ({ collegeData, toggleEnqueryPopup }) => {
                 <div className='mt-4 space-y-2'>
                     <p>Or contact with :</p>
                     <span className=' flex'><SiGmail className='text-lg' />&nbsp; thatsmycollege@outlook.com</span>
-                    <span className=' flex'><IoMdCall className='text-lg' />&nbsp; +91 7389796980</span>
+                    <span className=' flex'><IoMdCall className='text-lg' />&nbsp; +91 6267778255 , +91 7389796980 </span>
                 </div>
             </div>
         </>

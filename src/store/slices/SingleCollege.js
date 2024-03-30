@@ -12,7 +12,6 @@ export const fetchSingleCollege = createAsyncThunk("SingleCollegeCollege/fetchSi
     }
 });
 
-
 export const SingleCollege = createSlice({
     name: 'singleCollege',
     initialState: {
