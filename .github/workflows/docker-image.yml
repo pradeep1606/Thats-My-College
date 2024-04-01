@@ -17,7 +17,7 @@ jobs:
       - name: Build the Docker image
         run: docker build -t tmc-frontend:latest .
 
-      - name: Remove old images
+      - name: Remove all images
         run: |
           docker images -q tmc-frontend | xargs -I {} docker rmi {}
         shell: bash
