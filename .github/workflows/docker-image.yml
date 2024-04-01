@@ -14,8 +14,15 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
+      - name: Create .env file locally
+        run: |
+         touch .env
+             echo "SERVICE_BASE_URL=${{ secrets.SERVICE_BASE_URL }}" > .env
+             echo "SERVICE_API_KEY='${{ secrets.SERVICE_API_KEY }}'" >> .env
+             echo "SERVICE_API_KEY_VALUE='${{ secrets.SERVICE_API_KEY_VALUE }}'" >> .env
+
       - name: Build the Docker image
-        run: docker build -t tmc-frontend:latest .
+        run: docker build -t tmc-frontend:latest . --build-arg ENV_FILE=.env
 
       - name: Remove all images
         run: |
