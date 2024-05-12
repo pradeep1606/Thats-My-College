@@ -44,7 +44,7 @@ export const collegeStream = [
 export const cityAndState = [
     {
         stateName: "Madhya Pradesh",
-        cityName :["Bhopal", "Indore"]
+        cityName :["Bhopal", "Indore", "Sagar"]
     },
     {
         stateName: "Uttar Pradesh",

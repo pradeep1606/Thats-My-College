@@ -79,6 +79,7 @@ const Register = ({ college, toggleRegisterPopup }) => {
         setIsLoading(true);
 
         if (!(status === 'authenticated' && isLogin)) {
+            setIsLoading(false)
             return toast.error('Please Login first')
         }
         if (!formData.collegeName || !formData.name || !formData.email || !formData.mobile || !formData.city || !formData.course) {
