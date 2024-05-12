@@ -52,6 +52,7 @@ const TopBTechCollege = () => {
     for (let i = 0; i < featuredCollege.length; i += chunkSize) {
         chunkedFeaturedColleges.push(featuredCollege.slice(i, i + chunkSize));
     }
+    // console.log(chunkedFeaturedColleges)
 
     const firstCourseDetails = (coursesDetails) => {
         return coursesDetails.map(elm => {
@@ -100,8 +101,8 @@ const TopBTechCollege = () => {
                         )
                     }
                 >
-                    {chunkedFeaturedColleges.map((chunk, index) => (
-                        <div key={index} className="grid md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 md:px-12 px-4 gap-4 bg-white">
+                    {chunkedFeaturedColleges.map(chunk => (
+                        <div key={chunk[0].collegeId} className="grid md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 md:px-12 px-4 gap-4 bg-white">
                             {chunk.map(clg => (
                                 <div className="rounded-b-md" key={clg.collegeId} >
                                     <Link href={`/colleges/${clg.collegeId}`} className="h-48 mx-[0.03rem] sm:h-56 bg-cover text-white px-4 rounded-t-md" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(${clg.college.image[0]})`, display: 'flex', alignItems: 'flex-end' }}>
@@ -113,7 +114,7 @@ const TopBTechCollege = () => {
                                     <div className="p-4 border-2 border-t-0">
                                         <div className="pb-2 flex items-start justify-between">
                                             {firstCourseDetails(clg.courses)}
-                                            <div className='flex gap-1 text-sm'><Image src='/images/rating.png' height={10} width={10} alt='rating' className='h-4' /> 9/10</div>
+                                            <div className='flex gap-1 text-sm'><Image src='/images/rating.png' height={10} width={10} alt='rating' className='h-4' /> {clg?.college?.rating}</div>
                                         </div>
                                         <div className='w-full h-[0.05rem] bg-slate-200'></div>
                                         <div className='flex flex-col items-start'>

@@ -1,8 +1,6 @@
 import React from 'react';
 
 const CityFilter = ({ cities, activeCity, setActiveCity }) => {
-  // console.log(cities);
-
   return (
     <>
       <div className='pl-4 py-2 flex flex-col items-start'>

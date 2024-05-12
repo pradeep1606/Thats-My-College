@@ -28,7 +28,7 @@ const CollegeView = (currElm) => {
           </div>
           <div>
             <Link href={`/colleges/${_id}`} className='text-blue-700 text-xl'>{name}</Link>
-            <p className='flex gap-1 text-sm'><Image src='/images/rating.png' height={10} width={15} alt='rating' className='h-4' /> 9/10</p>
+            <p className='flex gap-1 text-sm'><Image src='/images/rating.png' height={10} width={15} alt='rating' className='h-4' /> {rating}</p>
             <p className='text-sm mt-2'>University : <span className='text-gray-500'>{university}</span></p>
             {onlyCourseName && (
               <p className='text-sm mt-2'>Courses : <span className='text-gray-400'>{onlyCourseName}</span></p>

@@ -3,7 +3,8 @@ import React from 'react'
 const Admission_Equiry = () => {
   return (
     <div>
-      addmition from
+      addmition form <br/>
+      Comming soon...
     </div>
   )
 }

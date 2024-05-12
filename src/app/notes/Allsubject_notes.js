@@ -23,7 +23,7 @@ const Allsubject_notes = ({ query, selectedStream, selectedYear, setSelectedYear
             selectedComponent = <Pharmacy />;
             break;
         default:
-            selectedComponent = null; // Render nothing if query name doesn't match any component
+            selectedComponent = null; 
             break;
     }
 
