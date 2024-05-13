@@ -53,7 +53,7 @@ const CollegesList = ({ activeState, setActiveState, activeCity, setActiveCity, 
                         </p>
                     )}
                 </div>
-                <p className='text-sm text-slate-500'>Found {totleColleges} colleges</p>
+                <p className='text-sm text-slate-500'>Found {totleColleges ? (totleColleges):("0")} colleges</p>
             </div>
             {courses.length > 0 ? (
                 courses.map((currElm, indx) => {
