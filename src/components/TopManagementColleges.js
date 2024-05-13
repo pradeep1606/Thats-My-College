@@ -114,11 +114,7 @@ const TopManagementColleges = () => {
                                     <div className="p-4 border-2 border-t-0">
                                         <div className="pb-2 flex items-start justify-between">
                                             {firstCourseDetails(clg.courses)}
-<<<<<<< HEAD
-                                            <div className='flex gap-1 text-sm'><Image src='/images/rating.png' height={10} width={10} alt='rating' className='h-4' /> {clg.college.rating}</div>
-=======
                                             <div className='flex gap-1 text-sm'><Image src='/images/rating.png' height={10} width={10} alt='rating' className='h-4' /> {clg?.college?.rating}</div>
->>>>>>> f446a64cfed72e33772e60bb6014e9d482af26ae
                                         </div>
                                         <div className='w-full h-[0.05rem] bg-slate-200'></div>
                                         <div className='flex flex-col items-start'>

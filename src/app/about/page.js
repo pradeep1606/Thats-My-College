@@ -29,17 +29,10 @@ const About = () => {
 
         <div className='team'>
           <h1 className='text-2xl sm:xl sm:text-3xl mt-5 sm:mt-0'>Meet Our Team</h1>
-<<<<<<< HEAD
           <div className=' h-fit w-full flex items-center justify-center flex-col sm:flex-row gap-5 px-10 py-16 flex-wrap'>
             <div className=' members h-[40vw] sm:h-[14vw] sm:w-[17vw] w-11/12 rounded-2xl  [box-shadow:0px_15px_30px_5px_rgba(0,0,0,0.10)] flex  bg-[url("https://img.freepik.com/free-vector/blue-white-gradient-abstract-background_53876-60240.jpg?w=740&t=st=1711735558~exp=1711736158~hmac=69a421f3f332ec4a0962d69b986426ba5b3a3a76c34a0ff3a1b7d6ddb0eb9f29")] bg-left-top bg-cover items-center justify-center sm:flex-col  gap-2'>
               <div className=' h-[11vh] sm:h-[15vh] w-[22vw] sm:w-[7vw]  relative  bg-[url("/team/yash_t.jpg")] bg-cover rounded-full [box-shadow:0px_15px_30px_5px_rgba(0,0,0,0.06)] bg-center '></div>
               <h1 className=' capitalize text-xl '>yash raj thakur</h1>
-=======
-          <div className=' h-fit w-full flex items-center justify-center flex-col sm:flex-row gap-5 px-10 py-16 flex-wrap'> 
-          <div className=' members h-[40vw] sm:h-[14vw] sm:w-[17vw] w-11/12 rounded-2xl  [box-shadow:0px_15px_30px_5px_rgba(0,0,0,0.10)] flex  bg-[url("https://img.freepik.com/free-vector/blue-white-gradient-abstract-background_53876-60240.jpg?w=740&t=st=1711735558~exp=1711736158~hmac=69a421f3f332ec4a0962d69b986426ba5b3a3a76c34a0ff3a1b7d6ddb0eb9f29")] bg-left-top bg-cover items-center justify-center sm:flex-col  gap-2'>
-            <div className=' h-[11vh] sm:h-[15vh] w-[22vw] sm:w-[7vw]  relative  bg-[url("/team/yash_t.JPG")] bg-cover rounded-full [box-shadow:0px_15px_30px_5px_rgba(0,0,0,0.06)] bg-center '></div>
-            <h1 className=' capitalize text-xl '>yash raj thakur</h1>
->>>>>>> f446a64cfed72e33772e60bb6014e9d482af26ae
             </div>
             <div className=' members h-[40vw] sm:h-[14vw] sm:w-[17vw] w-11/12 rounded-2xl  [box-shadow:0px_15px_30px_5px_rgba(0,0,0,0.10)] flex  bg-[url("https://img.freepik.com/free-vector/blue-white-gradient-abstract-background_53876-60240.jpg?w=740&t=st=1711735558~exp=1711736158~hmac=69a421f3f332ec4a0962d69b986426ba5b3a3a76c34a0ff3a1b7d6ddb0eb9f29")] bg-left-top bg-cover items-center justify-center sm:flex-col  gap-5'>
               <div className=' h-[11vh] sm:h-[15vh] w-[22vw] sm:w-[7vw]  relative  bg-[url("/team/ajay.jpg")] bg-cover rounded-full [box-shadow:0px_15px_30px_5px_rgba(0,0,0,0.06)] bg-center '></div>
